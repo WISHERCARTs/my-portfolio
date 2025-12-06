@@ -8,7 +8,7 @@ const skillsData = [
     {
         category: "Languages",
         icon: <Code className="w-6 h-6" />,
-        items: ["Python", "JavaScript", "TypeScript", "SQL", "HTML/CSS"]
+        items: ["HTML/CSS", "JavaScript", "TypeScript", "SQL", "Python", "Java", "R", "MATLAB", "Go", "Assembly"]
     },
     {
         category: "Data & AI Libraries",
@@ -23,7 +23,7 @@ const skillsData = [
     {
         category: "Tools & Platforms",
         icon: <Terminal className="w-6 h-6" />,
-        items: ["Git & GitHub", "Docker", "VS Code", "n8n", "Jupyter"]
+        items: ["Git & GitHub", "Docker", "VS Code", "n8n", "d"]
     }
 ];
 

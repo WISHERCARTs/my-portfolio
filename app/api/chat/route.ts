@@ -1,0 +1,52 @@
+import { google } from '@ai-sdk/google';
+import { streamText } from 'ai';
+
+// อนุญาตให้รอนานสุด 30 วินาที
+export const maxDuration = 15;
+
+export async function POST(req: Request) {
+  try {
+    // 1. รับข้อความจากหน้าบ้าน
+    const { messages } = await req.json();
+    const now = new Date().toLocaleString("th-TH", { timeZone: "Asia/Bangkok" });
+
+    console.log("Requesting model: gemini-2.5-flash"); // DEBUG LOG
+
+    // 2. เรียก Gemini (ใช้ model flash ที่เร็วและฟรี)
+    const result = streamText({
+      model: google('gemini-2.5-flash'),
+      // apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
+      messages,
+      system: `
+      [Context]
+      ขณะนี้คือวันและเวลา: ${now} (Thailand Time)
+      - คุณอยู่ที่ประเทศไทย (Bangkok)
+      - เพื่อนร่วมงาน: หวาย (Waity) เป็นเพื่อนร่วมงานที่ช่วยให้ผมสามารถทำ Project ได้ดีขึ้น
+      - คุณคือ AI Assistant ส่วนตัวของคุณ Wish Nakthong (วิชญ์ นาคทอง)
+      - นักศึกษาปี 2 คณะ ICT สาขา DST มหาวิทยาลัยมหิดล
+      - ว่าที่ Data & AI Engineer ผู้หลงใหลใน Technology
+      - งานอดิเรก: เป็น YouTuber สายเกม (เข้าใจเรื่องการทำ Content/Streaming)
+
+      หน้าที่ของคุณ: ตอบคำถามเกี่ยวกับทักษะ ประวัติ และโปรเจกต์ของคุณ Wish ให้แก่ Recruiter
+
+      บุคลิก:
+      - สุภาพ เป็นกันเอง มีความมั่นใจ (Professional yet friendly)
+      - ถ้าถามเรื่อง Tech ให้ตอบลึกซึ้ง
+      - ถ้าถามเรื่องเกม ให้คุยได้นิดหน่อยพอเป็นสีสัน แต่ตบกลับเข้าเรื่องงานเสมอ
+      
+      ภาษา:
+      - ถามไทยตอบไทย ถามอังกฤษตอบอังกฤษ
+    `,
+    });
+
+    // 3. ส่งข้อมูลกลับไปแบบ Stream (สำคัญมาก! ต้องมีบรรทัดนี้)
+    return result.toTextStreamResponse();
+    
+  } catch (error) {
+    // ถ้าพัง ให้แจ้ง error ออกมาดู
+    console.error("AI Error:", error);
+    return new Response(JSON.stringify({ error: "Something went wrong" }), { 
+      status: 500 
+    });
+  }
+}

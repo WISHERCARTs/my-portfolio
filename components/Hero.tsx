@@ -22,15 +22,16 @@ const Hero = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <span className="inline-block px-3 py-1 mb-4 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 rounded-full">
-                        Available for Internships
+                        {/* Internships */}
                     </span>
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                         Hi, I'm <span className="text-blue-600 dark:text-blue-400">Wish Nakthong</span>
                         <br />
-                        <span className="text-slate-700 dark:text-slate-200">Future Data & AI Engineer</span>
+                        <span className="text-slate-700 dark:text-slate-200">2nd Year Student at Mahidol University.</span>
                     </h1>
                     <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-lg">
-                        ICT DST Student at Mahidol University. Passionate about turning data into actionable insights and building intelligent systems.
+                        I'm studying B.Sc in Digital Science & Technology (DST)
+                        at Faculty of Information Communication and Technology.
                     </p>
 
                     <div className="flex flex-wrap gap-4">
@@ -58,13 +59,13 @@ const Hero = () => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="relative flex justify-center"
                 >
-                    <div className="relative w-64 h-64 md:w-80 md:h-80">
+                    <div className="relative w-64 h-64 md:w-80 md:h-110">
                         <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-full blur-2xl opacity-20 animate-pulse" />
                         <Image
-                            src="https://placehold.co/400x400/png"
+                            src="/images/Wish_resume.jpg"
                             alt="Wish Nakthong"
                             fill
-                            className="object-cover rounded-full border-4 border-white dark:border-slate-900 shadow-2xl"
+                            className="object-cover rounded-lg border border-slate-700 shadow-xl"
                             priority
                         />
                     </div>

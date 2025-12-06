@@ -2,12 +2,19 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Code2 } from 'lucide-react';
+import { Menu, X, Code2, Sun, Moon, Code2Icon } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -28,8 +35,8 @@ const Navbar = () => {
     return (
         <nav
             className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-                    ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm'
-                    : 'bg-transparent'
+                ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm'
+                : 'bg-transparent'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -37,7 +44,7 @@ const Navbar = () => {
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 font-bold text-xl md:text-2xl text-blue-600 dark:text-blue-400">
                         <Code2 className="w-8 h-8" />
-                        <span>Wish N.</span>
+                        <span>Wish Nakthong</span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -51,15 +58,31 @@ const Navbar = () => {
                                 {link.name}
                             </Link>
                         ))}
+                        <button
+                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                            aria-label="Toggle Theme"
+                        >
+                            {mounted && (theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />)}
+                        </button>
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <button
-                        className="md:hidden p-2 text-slate-600 dark:text-slate-300"
-                        onClick={() => setIsOpen(!isOpen)}
-                    >
-                        {isOpen ? <X /> : <Menu />}
-                    </button>
+                    <div className="flex items-center gap-4 md:hidden">
+                        <button
+                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                            aria-label="Toggle Theme"
+                        >
+                            {mounted && (theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />)}
+                        </button>
+                        <button
+                            className="p-2 text-slate-600 dark:text-slate-300"
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
+                            {isOpen ? <X /> : <Menu />}
+                        </button>
+                    </div>
                 </div>
             </div>
 
