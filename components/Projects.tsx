@@ -2,33 +2,33 @@
 
 import Section from "./Section";
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Folder } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const projects = [
   {
-    title: "AI-Powered Club Management",
+    title: "AI Automation Bot 🤖",
     description:
-      "A web application to manage university clubs with AI-driven recommendations for events and member engagement tracking.",
+      "An AI-powered automation bot that can perform tasks such as data entry, email responses, and more.",
     image: "https://placehold.co/600x400/png",
     tags: ["Next.js", "Python", "FastAPI", "PostgreSQL"],
     github: "#",
     demo: "#",
   },
   {
-    title: "DATABASE MANAGEMENT SYSTEMS",
+    title: "Portfolio Website and AI chatbot",
     description:
-      "A database management system for managing university clubs with AI-driven recommendations for events and member engagement tracking.",
-    image: "https://placehold.co/600x400/png",
-    tags: ["Python", "Pandas", "Streamlit", "Plotly"],
-    github: "#",
-    demo: "#",
+      "A modern portfolio website built with Next.js 14, featuring an AI-powered chatbot using Google Gemini API. Includes dark mode, responsive design, and real-time streaming chat responses.",
+    image: "/images/MyWebHome.png",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Google Gemini API"],
+    github: "https://github.com/WISHERCart/my-portfolio",
+    demo: "/",
   },
   {
     title: "CD Keys Website",
     description:
-      "This is a project for Web Technologies and Application Class.",
+      "This is a project for Web Technologies and Application Class. We made the CD-Keys Website",
     image: "/images/Home.png",
     tags: ["React", "Node.js", "Tailwind CSS", "MySQL", "Express"],
     github:
@@ -75,7 +75,7 @@ const Projects = () => {
               <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {project.title}
               </h3>
-              <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-3">
+              <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
                 {project.description}
               </p>
 
