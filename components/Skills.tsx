@@ -55,7 +55,7 @@ const skillsData = [
   {
     category: "Design & Content Tools",
     icon: <Terminal className="w-6 h-6" />,
-    items: ["Canva", "Figma", "draw.io"],
+    items: ["Canva", "Notion", "Figma", "draw.io"],
   },
   {
     category: "My Content Skills",
