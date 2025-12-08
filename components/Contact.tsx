@@ -28,7 +28,7 @@ const Contact = () => {
             <h3 className="text-xl font-bold mb-6">Connect with me</h3>
 
             <Link
-              href="mailto:wish.nak@student.mahidol.edu"
+              href="mailto:wishercarts@gmail.com"
               className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow"
             >
               <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
@@ -38,12 +38,12 @@ const Contact = () => {
                 <p className="text-sm text-slate-500 dark:text-slate-400">
                   Email
                 </p>
-                <p className="font-medium">wish.nak@student.mahidol.edu</p>
+                <p className="font-medium">wishercarts@gmail.com</p>
               </div>
             </Link>
 
             <Link
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/wish-nakthong-8710b8393"
               className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow"
             >
               <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
