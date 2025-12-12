@@ -68,7 +68,7 @@ const Contact = () => {
                 <p className="text-sm text-slate-500 dark:text-slate-400">
                   GitHub
                 </p>
-                <p className="font-medium">github.com/wish-n</p>
+                <p className="font-medium">github.com/WISHERCARTs</p>
               </div>
             </Link>
           </div>
