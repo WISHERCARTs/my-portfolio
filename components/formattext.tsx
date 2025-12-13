@@ -35,7 +35,7 @@ export const FormattedText: React.FC<FormattedTextProps> = ({ text }) => {
             </ol>
           ),
           li: ({ children }) => (
-            <li className="mb-2 last:mb-0 whitespace-pre-wrap">{children}</li>
+            <ul className="mb-2 last:mb-0 whitespace-pre-wrap">{children}</ul>
           ),
 
           // Code Blocks (pre)

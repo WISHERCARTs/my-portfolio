@@ -204,10 +204,7 @@ const Projects = () => {
 
               {/* Image Container */}
               <div className="relative flex items-center justify-center bg-slate-100 dark:bg-slate-800">
-                <div
-                  className="relative w-auto h-[50vh]"
-                  style={{ aspectRatio: "auto" }}
-                >
+                <div className="relative w-auto h-[50vh]">
                   <Image
                     src={selectedProject.demoImages[currentImageIndex]}
                     alt={`${selectedProject.title} demo ${
