@@ -53,6 +53,12 @@ export async function POST(req: Request) {
          - Tech: React, Node.js, Express, MySQL, Tailwind CSS
          - สิ่งที่เรียนรู้: Teamwork, Full-stack, Database design, Authentication
 
+      4. R-Data-Science-Labs
+         - ชุด Labs R จากวิชา ITDS125 - Introduction to Data Science
+         - เนื้อหา: R Basics, Data Visualization, Statistical Testing, Data Manipulation
+         - Tech: R, ggplot2, tidyverse (dplyr)
+         - สิ่งที่เรียนรู้: การวิเคราะห์ข้อมูล, สร้างกราฟ, ทดสอบสถิติ Chi-square/Fisher, จัดการข้อมูลด้วย pipe operator
+
       [งานอดิเรก]
       YouTuber สายเกม - เข้าใจเรื่อง Content creation และ Streaming
 
