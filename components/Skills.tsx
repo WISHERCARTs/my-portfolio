@@ -24,7 +24,6 @@ const skillsData = [
     category: "Data & AI Libraries",
     icon: <Database className="w-6 h-6" />,
     items: [
-      "React",
       "Pandas",
       "NumPy",
       "Scikit-learn",
@@ -37,6 +36,7 @@ const skillsData = [
     category: "Web Frameworks & APIs",
     icon: <Cpu className="w-6 h-6" />,
     items: [
+      "React",
       "Next.js",
       "Node.js",
       "Express.js",

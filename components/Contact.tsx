@@ -2,7 +2,7 @@
 
 import Section from "./Section";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Linkedin, Github, Send, Instagram, Youtube } from "lucide-react";
 import Link from "next/link";
 
 const Contact = () => {
@@ -43,7 +43,7 @@ const Contact = () => {
             </Link>
 
             <Link
-              href="https://www.linkedin.com/in/wish-nakthong-8710b8393"
+              href="https://www.linkedin.com/in/wish-nakthong/"
               className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow"
             >
               <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
@@ -69,6 +69,36 @@ const Contact = () => {
                   GitHub
                 </p>
                 <p className="font-medium">github.com/WISHERCARTs</p>
+              </div>
+            </Link>
+
+            <Link
+              href="https://www.instagram.com/wishercarts/"
+              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow"
+            >
+              <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
+                <Instagram className="w-6 h-6" />
+              </div>
+              <div>
+                <p className="text-sm text-slate-500 dark:text-slate-400">
+                  Instagram
+                </p>
+                <p className="font-medium">wishercarts</p>
+              </div>
+            </Link>
+
+            <Link
+              href="https://www.youtube.com/@wishercarts"
+              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow"
+            >
+              <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
+                <Youtube className="w-6 h-6" />
+              </div>
+              <div>
+                <p className="text-sm text-slate-500 dark:text-slate-400">
+                  YouTube
+                </p>
+                <p className="font-medium">wishercarts</p>
               </div>
             </Link>
           </div>
