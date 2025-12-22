@@ -23,7 +23,15 @@ const skillsData = [
   {
     category: "Data & AI Libraries",
     icon: <Database className="w-6 h-6" />,
-    items: ["React", "Pandas", "NumPy", "Scikit-learn", "Matplotlib"],
+    items: [
+      "React",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+      "Matplotlib",
+      "ggplot2",
+      "tidyverse",
+    ],
   },
   {
     category: "Web Frameworks & APIs",
@@ -35,6 +43,7 @@ const skillsData = [
       "Tailwind CSS",
       "REST API",
       "Axios",
+      "Google Gemini API",
     ],
   },
   {
@@ -50,7 +59,15 @@ const skillsData = [
   {
     category: "Tools & Platforms",
     icon: <Terminal className="w-6 h-6" />,
-    items: ["Git & GitHub", "Docker", "VS Code", "n8n", "Postman", "Trello"],
+    items: [
+      "Git & GitHub",
+      "Docker",
+      "VS Code",
+      "n8n",
+      "Postman",
+      "Trello",
+      "Google Sheets",
+    ],
   },
   {
     category: "Design & Content Tools",
