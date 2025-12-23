@@ -174,7 +174,7 @@ const Projects = () => {
                   className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
-                  Live Demo
+                  Preview
                 </button>
               </div>
             </div>

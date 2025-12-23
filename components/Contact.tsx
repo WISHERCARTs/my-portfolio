@@ -22,10 +22,10 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold mb-6">Connect with me</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Left Column - Contact */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold mb-4">Contact</h3>
 
             <Link
               href="mailto:wishercarts@gmail.com"
@@ -71,6 +71,11 @@ const Contact = () => {
                 <p className="font-medium">github.com/WISHERCARTs</p>
               </div>
             </Link>
+          </div>
+
+          {/* Right Column - Social */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold mb-4">Social</h3>
 
             <Link
               href="https://www.instagram.com/wishercarts/"

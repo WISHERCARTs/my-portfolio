@@ -48,6 +48,25 @@ const Education = () => {
                 <h1>Mahidol University, Salaya Campus, Thailand</h1>
               </h1>
             </div>
+
+            <div className="relative">
+              <div className="absolute -left-[39px] top-0 w-5 h-5 rounded-full border-4 border-white dark:border-slate-950 bg-blue-600" />
+              <h3 className="text-xl font-bold">Sukhondheerawidh School</h3>
+              <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">
+                High School
+              </p>
+              <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-4">
+                <Calendar className="w-4 h-4" />
+                <span>2019 - 2024</span>
+              </div>
+              <p className="text-slate-600 dark:text-slate-300 text-sm">
+                GPA: 3.51
+              </p>
+              <h1 className="list-disc list-inside text-slate-600 dark:text-slate-300 text-sm mt-2 space-y-1">
+                <h1>Sukhondheerawidh School</h1>
+                <h1>Nakhon Pathom, Thailand</h1>
+              </h1>
+            </div>
           </motion.div>
         </div>
 
