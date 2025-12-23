@@ -39,7 +39,7 @@ const projects = [
   {
     title: "CD Keys Website",
     description:
-      "This is a project for Web Technologies and Application Class. We made the CD-Keys Website",
+      "This is a project for Web Technologies and Application Class. We made the CD-Keys Website using React, Vite, JavaScript, Node.js, and MySQL to develop. My role in this project was backend part doing the Authentication using JSON Web Token, Steam API Players Count, Search, MySQL Databases, and also the frontend part by using API to connect with backend and databases.",
     image: "/images/CDkeys/CDkeys_Home.png",
     tags: ["React", "Node.js", "Tailwind CSS", "MySQL", "Express"],
     github:
