@@ -42,8 +42,7 @@ const projects = [
       "This is a project for Web Technologies and Application Class. We made the CD-Keys Website using React, Vite, JavaScript, Node.js, and MySQL to develop. My role in this project was backend part doing the Authentication using JSON Web Token, Steam API Players Count, Search, MySQL Databases, and also the frontend part by using API to connect with backend and databases.",
     image: "/images/CDkeys/CDkeys_Home.png",
     tags: ["React", "Node.js", "Tailwind CSS", "MySQL", "Express"],
-    github:
-      "https://drive.google.com/drive/u/3/folders/1MGfRxQvCkzua-zsm7XosIgSfb_nGPLRe",
+    github: "https://github.com/WISHERCARTs/Ayema5kon-project",
     demoImages: [
       "/images/CDkeys/CDkeys_Home.png",
       "/images/CDkeys/CDkeys_Products.png",
