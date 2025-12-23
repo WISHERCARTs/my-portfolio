@@ -119,18 +119,6 @@ Powered by **Google Gemini API** with streaming responses for a smooth user expe
 
 ---
 
-## 📸 Screenshots
-
-<div align="center">
-
-|                  Light Mode                   |                  Dark Mode                  |
-| :-------------------------------------------: | :-----------------------------------------: |
-| ![Light Mode](public/images/readme/light.png) | ![Dark Mode](public/images/readme/dark.png) |
-
-</div>
-
----
-
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
