@@ -15,7 +15,11 @@ const About = () => {
         className="max-w-3xl mx-auto text-center"
       >
         <div className="inline-flex items-center justify-center p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
-          <User className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+          <img
+            src="/avatar.jpg"
+            alt="Profile Avatar"
+            className="w-25 h-25 rounded-full object-cover"
+          />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
         <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">

@@ -18,23 +18,26 @@ const projects = [
     title: "AI Automation Bot",
     description:
       "A serverless bot that monitors tech news 24/7, uses AI to summarize content, and automatically updates the database without human intervention.",
-    image: "/images/n8n1.png",
+    image: "/images/n8n_tech_news/n8n1.png",
     tags: ["n8n", "Google Gemini", "Google Sheets"],
     github: "https://github.com/WISHERCARTs/n8n-automation-Tech-News-summerize",
     demoImages: [
-      "/images/n8n1.png",
-      "/images/n8n2.png",
-      "/images/n8n_sheet.png",
+      "/images/n8n_tech_news/n8n1.png",
+      "/images/n8n_tech_news/n8n2.png",
+      "/images/n8n_tech_news/n8n_sheet.png",
     ],
   },
   {
     title: "AI chatbot in my portfolio",
     description:
       "A modern portfolio website built with Next.js 14, featuring an AI-powered chatbot using Google Gemini API. Includes dark mode, responsive design, and real-time streaming chat responses.",
-    image: "/images/MyWebHome2.png",
+    image: "/images/AI_chatbot/MyWebHome2.png",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Google Gemini API"],
     github: "https://github.com/WISHERCARTs/my-portfolio",
-    demoImages: ["/images/MyWebHome.png", "/images/MyWebHome2.png"],
+    demoImages: [
+      "/images/AI_chatbot/MyWebHome.png",
+      "/images/AI_chatbot/MyWebHome2.png",
+    ],
   },
   {
     title: "CD Keys Website",
