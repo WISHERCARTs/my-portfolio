@@ -41,7 +41,7 @@ const Education = () => {
                 <span>2024 - Now</span>
               </div>
               <p className="text-slate-600 dark:text-slate-300 text-sm">
-                GPA: 2.74
+                GPA: 2.76
               </p>
               <h1 className="list-disc list-inside text-slate-600 dark:text-slate-300 text-sm mt-2 space-y-1">
                 <h1>Faculty of Information and Communication Technology</h1>

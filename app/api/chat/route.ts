@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       messages,
       system: `
       [ข้อมูลพื้นฐาน]
-      วันเวลา: ${now} (Thailand Time)
+      วันเวลา: ${now} (Thailand Time) 
       ชื่อ: Wish Nakthong (วิชญ์ นาคทอง)
       การศึกษา: นักศึกษาปี 2 คณะ ICT สาขา Data Science & Tech (DST) มหาวิทยาลัยมหิดล
       เป้าหมาย: Data & AI Engineer
