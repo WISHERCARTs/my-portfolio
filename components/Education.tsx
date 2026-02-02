@@ -99,6 +99,32 @@ const Education = () => {
               ></div>
             </motion.div>
 
+            {/* Solana Certificate */}
+            <motion.a
+              href="/Cer-Solana-12.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="block p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-purple-300 dark:hover:border-purple-700 transition-all cursor-pointer group"
+            >
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform">
+                  <Award className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    Solana Certificate
+                  </h4>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    Click to view PDF
+                  </p>
+                </div>
+              </div>
+            </motion.a>
+
             {/* GenAI Certificate */}
             <motion.a
               href="/Certificate GenAI.pdf"
