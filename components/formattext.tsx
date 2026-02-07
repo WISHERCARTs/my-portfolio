@@ -10,6 +10,18 @@ export const FormattedText: React.FC<FormattedTextProps> = ({ text }) => {
     <div className="text-sm leading-relaxed">
       <ReactMarkdown
         components={{
+          // Links: clickable and open in new tab
+          a: ({ href, children }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline underline-offset-2 transition-colors"
+            >
+              {children}
+            </a>
+          ),
+
           // Paragraphs: preserve whitespace/newlines
           p: ({ children }) => (
             <p className="mb-2 last:mb-0 whitespace-pre-wrap">{children}</p>
