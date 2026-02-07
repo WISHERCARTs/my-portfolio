@@ -8,12 +8,28 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  Globe,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 const projects = [
+  {
+    title: "Face Recognition System",
+    description:
+      "An end-to-end face identification system using PCA for dimensionality reduction and SVM for classification. Features a user-friendly Streamlit web interface for real-time face recognition.",
+    image: "/images/face/wishercarts-face-recognition_1.jpeg",
+    tags: ["Python", "Scikit-learn", "OpenCV", "Streamlit", "PCA", "SVM"],
+    github: "https://github.com/WISHERCARTs/face-recognition-system",
+    demo: "https://wishercarts-face-recognition-system-app-vti7zr.streamlit.app/",
+    demoImages: [
+      "/images/face/face_2.png",
+      "/images/face/face_3.jpeg",
+      "/images/face/face_4.jpeg",
+      "/images/face/face_5.jpeg",
+    ],
+  },
   {
     title: "AI Automation Bot",
     description:
@@ -34,6 +50,7 @@ const projects = [
     image: "/images/AI_chatbot/MyWebHome2.png",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Google Gemini API"],
     github: "https://github.com/WISHERCARTs/my-portfolio",
+    demo: "https://my-portfolio-wish.vercel.app/",
     demoImages: [
       "/images/AI_chatbot/MyWebHome.png",
       "/images/AI_chatbot/MyWebHome2.png",
@@ -98,7 +115,7 @@ const Projects = () => {
   const nextImage = () => {
     if (selectedProject) {
       setCurrentImageIndex((prev) =>
-        prev === selectedProject.demoImages.length - 1 ? 0 : prev + 1
+        prev === selectedProject.demoImages.length - 1 ? 0 : prev + 1,
       );
     }
   };
@@ -106,7 +123,7 @@ const Projects = () => {
   const prevImage = () => {
     if (selectedProject) {
       setCurrentImageIndex((prev) =>
-        prev === 0 ? selectedProject.demoImages.length - 1 : prev - 1
+        prev === 0 ? selectedProject.demoImages.length - 1 : prev - 1,
       );
     }
   };
@@ -166,11 +183,24 @@ const Projects = () => {
               <div className="flex items-center gap-4 mt-auto">
                 <Link
                   href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   <Github className="w-4 h-4" />
                   Code
                 </Link>
+                {"demo" in project && project.demo && (
+                  <Link
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+                  >
+                    <Globe className="w-4 h-4" />
+                    Live Demo
+                  </Link>
+                )}
                 <button
                   onClick={() => openModal(project)}
                   className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
