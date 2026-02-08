@@ -74,7 +74,7 @@ const projects = [
   {
     title: "CD Keys Website",
     description:
-      "This is a project for Web Technologies and Application Class. We made the CD-Keys Website using React, Vite, JavaScript, Node.js, and MySQL to develop. My role in this project was backend part doing the Authentication using JSON Web Token, Steam API Players Count, Search, MySQL Databases, and also the frontend part by using API to connect with backend and databases.",
+      "Developed a CD-Key marketplace platform for the 'Web Technologies and Application' class using React, Vite, Node.js, and MySQL. Responsible for the entire Frontend development, designing a responsive user interface with React and Vite. Led the system integration by handling API consumption and data binding to connect the UI with the Node.js backend and MySQL database. Managed state for key features including JWT Authentication and Search functionalities.",
     image: "/images/CDkeys/CDkeys_Home.png",
     tags: ["React", "Node.js", "Tailwind CSS", "MySQL", "Express"],
     github: "https://github.com/WISHERCARTs/Ayema5kon-project",
