@@ -34,15 +34,15 @@ const projects = [
     title: "Face Recognition System",
     description:
       "An end-to-end face identification system using PCA for dimensionality reduction and SVM for classification. Features a user-friendly Streamlit web interface for real-time face recognition.",
-    image: "/images/face/wishercarts-face-recognition_1.jpeg",
+    image: "/images/Face/wishercarts-face-recognition_1.jpeg",
     tags: ["Python", "Scikit-learn", "OpenCV", "Streamlit", "PCA", "SVM"],
     github: "https://github.com/WISHERCARTs/face-recognition-system",
     demo: "https://wishercarts-face-recognition-system-app-vti7zr.streamlit.app/",
     demoImages: [
-      "/images/face/face_2.png",
-      "/images/face/face_3.jpeg",
-      "/images/face/face_4.jpeg",
-      "/images/face/face_5.jpeg",
+      "/images/Face/face_2.png",
+      "/images/Face/face_3.jpeg",
+      "/images/Face/face_4.jpeg",
+      "/images/Face/face_5.jpeg",
     ],
   },
   {
