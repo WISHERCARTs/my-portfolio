@@ -35,7 +35,16 @@ export async function POST(req: Request) {
       - Content Creation: YouTube, Gaming content
 
       [โปรเจกต์]
-      1. Face Recognition System (AI/ML Project) ⭐
+      1. MLP Digit Recognition (AI/ML Project) ⭐
+         - ระบบจดจำตัวเลขเขียนมือด้วย Multi-Layer Perceptron (MLP)
+         - มี Web Interface ด้วย Streamlit รองรับการวาดตัวเลขและอัปโหลดรูปภาพ
+         - Neural Network: 2 hidden layers (256, 128 neurons) พร้อมแสดง Confidence score
+         - Tech: Python, Scikit-learn, Streamlit, MLP
+         - Live Demo: https://wishercarts-mlp-digit-recognition-app-at0kj5.streamlit.app/
+         - GitHub: https://github.com/WISHERCARTs/MLP-Digit-Recognition
+         - สิ่งที่เรียนรู้: Neural Network, MNIST dataset, Model deployment
+
+      2. Face Recognition System (AI/ML Project) ⭐
          - ระบบจดจำใบหน้าแบบ End-to-end ใช้ PCA ลดมิติและ SVM สำหรับ Classification
          - มี Web Interface ด้วย Streamlit สำหรับ Real-time face recognition
          - Tech: Python, Scikit-learn, OpenCV, Streamlit, PCA, SVM
@@ -43,14 +52,14 @@ export async function POST(req: Request) {
          - GitHub: https://github.com/WISHERCARTs/face-recognition-system
          - สิ่งที่เรียนรู้: Machine Learning pipeline, Computer Vision, Model deployment
 
-      2. AI Automation Bot (n8n)
+      3. AI Automation Bot (n8n)
          - ระบบ Serverless ที่ monitor ข่าว tech 24/7 โดยอัตโนมัติ
          - ใช้ AI (Google Gemini) สรุปข่าวและอัปเดตลง Google Sheets
          - Tech: n8n, Google Gemini, Google Sheets
          - GitHub: https://github.com/WISHERCARTs/n8n-automation-Tech-News-summerize
          - สิ่งที่เรียนรู้: Workflow automation, API integration, AI prompting
 
-      3. AI Chatbot Portfolio (เว็บนี้)
+      4. AI Chatbot Portfolio (เว็บนี้)
          - Portfolio website สร้างด้วย Next.js 14 + TypeScript
          - มี AI Chatbot ใช้ Google Gemini API แบบ streaming response
          - Tech: Next.js, TypeScript, Tailwind CSS, Google Gemini API
@@ -58,7 +67,7 @@ export async function POST(req: Request) {
          - GitHub: https://github.com/WISHERCARTs/my-portfolio
          - สิ่งที่เรียนรู้: Full-stack development, AI integration, Responsive design
 
-      4. CD Keys Website (Team Project)
+      5. CD Keys Website (Team Project)
          - เว็บขาย CD Keys ทำร่วมกับเพื่อน: หวาย (Waity), ซู (Su), บูม (Boom)
          - Project สำหรับวิชา Web Technologies
          - มีระบบ: ค้นหา, ตะกร้า, จัดการ keys, admin dashboard, Authentication (JWT)
@@ -66,7 +75,7 @@ export async function POST(req: Request) {
          - GitHub: https://github.com/WISHERCARTs/Ayema5kon-project
          - สิ่งที่เรียนรู้: Teamwork, Full-stack, Database design, Authentication
 
-      5. R-Data-Science-Labs
+      6. R-Data-Science-Labs
          - ชุด Labs R จากวิชา ITDS125 - Introduction to Data Science
          - เนื้อหา: R Basics, Data Visualization, Statistical Testing, Data Manipulation
          - Tech: R, ggplot2, tidyverse (dplyr)

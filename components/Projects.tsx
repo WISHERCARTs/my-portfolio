@@ -16,6 +16,21 @@ import { useState } from "react";
 
 const projects = [
   {
+    title: "MLP Digit Recognition",
+    description:
+      "Handwritten digit recognition using Multi-Layer Perceptron (MLP) with Streamlit web interface",
+    image: "/images/MLP/MLP_1.jpeg",
+    tags: ["Python", "Scikit-learn", "Streamlit", "MLP"],
+    github: "https://github.com/WISHERCARTs/MLP-Digit-Recognition",
+    demo: "https://wishercarts-mlp-digit-recognition-app-at0kj5.streamlit.app/",
+    demoImages: [
+      "/images/MLP/MLP_1.jpeg",
+      "/images/MLP/MLP_2.jpeg",
+      "/images/MLP/MLP_3.jpeg",
+      "/images/MLP/MLP_4.jpeg",
+    ],
+  },
+  {
     title: "Face Recognition System",
     description:
       "An end-to-end face identification system using PCA for dimensionality reduction and SVM for classification. Features a user-friendly Streamlit web interface for real-time face recognition.",
