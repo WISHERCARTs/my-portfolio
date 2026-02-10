@@ -22,7 +22,7 @@ const projects = [
     image: "/images/MLP/MLP_1.jpeg",
     tags: ["Python", "Scikit-learn", "Streamlit", "MLP"],
     github: "https://github.com/WISHERCARTs/MLP-Digit-Recognition",
-    demo: "https://wishercarts-mlp-digit-recognition-app-at0kj5.streamlit.app/",
+    demo: "https://mlp-wishercarts.streamlit.app/",
     demoImages: [
       "/images/MLP/MLP_1.jpeg",
       "/images/MLP/MLP_2.jpeg",
