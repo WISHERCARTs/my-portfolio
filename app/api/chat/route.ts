@@ -40,7 +40,7 @@ export async function POST(req: Request) {
          - มี Web Interface ด้วย Streamlit รองรับการวาดตัวเลขและอัปโหลดรูปภาพ
          - Neural Network: 2 hidden layers (256, 128 neurons) พร้อมแสดง Confidence score
          - Tech: Python, Scikit-learn, Streamlit, MLP
-         - Live Demo: https://wishercarts-mlp-digit-recognition-app-at0kj5.streamlit.app/
+         - Live Demo: https://mlp-wishercarts.streamlit.app/
          - GitHub: https://github.com/WISHERCARTs/MLP-Digit-Recognition
          - สิ่งที่เรียนรู้: Neural Network, MNIST dataset, Model deployment
 
