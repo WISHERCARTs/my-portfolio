@@ -2,7 +2,7 @@
 
 import Section from "./Section";
 import { motion } from "framer-motion";
-import { Code, Database, Terminal, Cpu } from "lucide-react";
+import { Code, Database, Terminal, Cpu, Wifi } from "lucide-react";
 
 const skillsData = [
   {
@@ -18,6 +18,8 @@ const skillsData = [
       "R",
       "MATLAB",
       "Go",
+      "Dart",
+      "C/C++",
     ],
   },
   {
@@ -37,7 +39,7 @@ const skillsData = [
     ],
   },
   {
-    category: "Web Frameworks & APIs",
+    category: "Web & Mobile Frameworks",
     icon: <Cpu className="w-6 h-6" />,
     items: [
       "React",
@@ -45,6 +47,7 @@ const skillsData = [
       "Node.js",
       "Express.js",
       "Tailwind CSS",
+      "Flutter",
       "REST API",
       "Axios",
       "Google Gemini API",
@@ -53,12 +56,12 @@ const skillsData = [
   {
     category: "Databases",
     icon: <Database className="w-6 h-6" />,
-    items: ["Relational Database Design", "MySQL", "SQLite", "Firebase"],
+    items: ["Relational Database Design", "MySQL", "SQLite", "Firebase", "Supabase"],
   },
   {
-    category: "Networking & System Tools",
+    category: "Security & Networking",
     icon: <Terminal className="w-6 h-6" />,
-    items: ["Wireshark", "wget"],
+    items: ["Wireshark", "wget", "Snort", "Suricata", "IDS/IPS"],
   },
   {
     category: "Tools & Platforms",
@@ -71,12 +74,19 @@ const skillsData = [
       "Postman",
       "Trello",
       "Google Sheets",
+      "Ollama",
+      "Claude Code",
     ],
   },
   {
     category: "Design & Content Tools",
     icon: <Terminal className="w-6 h-6" />,
     items: ["Canva", "Notion", "Figma", "draw.io"],
+  },
+  {
+    category: "Hardware & IoT",
+    icon: <Wifi className="w-6 h-6" />,
+    items: ["ESP32", "Microcontrollers"],
   },
   {
     category: "My Content Skills",
