@@ -7,27 +7,27 @@ import { FormattedText } from "./formattext";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-
   const [messages, setMessages] = useState<any[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || isLoading) return;
+    setError(null);
+    setIsLoading(true);
 
     const userMessage = {
       id: Date.now().toString(),
       role: "user",
-      content: input,
+      content: text,
     };
+
     setMessages((prev) => [...prev, userMessage]);
-    setInput("");
-    setIsLoading(true);
 
     try {
       const response = await fetch("/api/chat", {
@@ -67,18 +67,40 @@ export default function ChatWidget() {
           )
         );
       }
-    } catch (error) {
-      console.error("Chat Error:", error);
+    } catch (err: any) {
+      console.error("Chat Error:", err);
+      setError("เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง");
     } finally {
       setIsLoading(false);
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+    sendMessage(input);
+    setInput("");
+  };
+
+  const handleRetry = () => {
+    const userMsgs = messages.filter((m) => m.role === "user");
+    if (userMsgs.length > 0) {
+      const lastText = userMsgs[userMsgs.length - 1].content;
+      sendMessage(lastText);
+    }
+  };
+
+  const starterPrompts = [
+    { text: "ขอดูข้อมูลประวัติและการศึกษาหน่อย 🎓", search: "ขอดูประวัติย่อและข้อมูลการศึกษาของคุณหน่อยครับ" },
+    { text: "มีโครงการเด่นอะไรบ้างที่น่าสนใจ 💻", search: "ช่วยแนะนำโปรเจกต์เด่นๆ ที่น่าสนใจของคุณให้ฟังหน่อยครับ" },
+    { text: "เชี่ยวชาญทักษะและเทคโนโลยีใดบ้าง 🧠", search: "คุณมีความเชี่ยวชาญในทักษะและเทคโนโลยีทางด้านใดบ้างครับ" }
+  ];
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, isLoading, error]);
 
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end">
@@ -115,12 +137,25 @@ export default function ChatWidget() {
             {/* Chat Area */}
             <div className="h-[400px] overflow-y-auto p-4 bg-slate-50 dark:bg-slate-950/50 space-y-4">
               {messages.length === 0 && (
-                <div className="text-center text-slate-500 text-sm mt-10">
-                  <p>👋 สวัสดีครับ! ผมคือ AI ของคุณ Wish</p>
-                  <p className="mt-2">
-                    ถามข้อมูลเกี่ยวกับทักษะ, ประวัติ, โปรเจกต์ <br />
-                    ได้เลยครับ!
-                  </p>
+                <div className="flex flex-col items-center text-center text-slate-500 text-sm mt-6 space-y-4">
+                  <div>
+                    <p>👋 สวัสดีครับ! ผมคือ AI ของคุณ Wish</p>
+                    <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">
+                      ถามข้อมูลเกี่ยวกับทักษะ, ประวัติ, โปรเจกต์ ได้เลยครับ!
+                    </p>
+                  </div>
+                  <div className="w-full flex flex-col gap-2 pt-2 px-2">
+                    {starterPrompts.map((prompt, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => sendMessage(prompt.search)}
+                        className="w-full text-left px-4 py-2 bg-white dark:bg-slate-900 hover:bg-cyan-50 dark:hover:bg-cyan-950/20 text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/30 rounded-xl transition-all cursor-pointer font-medium"
+                      >
+                        {prompt.text}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -153,9 +188,26 @@ export default function ChatWidget() {
                   <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center shrink-0">
                     <Bot size={14} className="text-white" />
                   </div>
-                  <div className="bg-white dark:bg-slate-800 p-3 rounded-2xl rounded-tl-sm text-sm text-slate-500">
-                    ...
+                  <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-3 rounded-2xl rounded-tl-sm text-sm text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1.5 py-1 px-1">
+                      <span className="w-2 h-2 bg-cyan-500/60 rounded-full animate-bounce" style={{ animationDelay: "0ms", animationDuration: "0.8s" }} />
+                      <span className="w-2 h-2 bg-cyan-500/60 rounded-full animate-bounce" style={{ animationDelay: "150ms", animationDuration: "0.8s" }} />
+                      <span className="w-2 h-2 bg-cyan-500/60 rounded-full animate-bounce" style={{ animationDelay: "300ms", animationDuration: "0.8s" }} />
+                    </div>
                   </div>
+                </div>
+              )}
+
+              {error && (
+                <div className="flex flex-col items-center gap-2 p-3 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/50 rounded-2xl text-xs text-red-600 dark:text-red-400">
+                  <p>{error}</p>
+                  <button
+                    type="button"
+                    onClick={handleRetry}
+                    className="px-3 py-1 bg-red-100 dark:bg-red-900/40 hover:bg-red-200 dark:hover:bg-red-900/60 rounded-full font-medium transition-colors cursor-pointer"
+                  >
+                    ลองใหม่อีกครั้ง ↻
+                  </button>
                 </div>
               )}
               <div ref={messagesEndRef} />
