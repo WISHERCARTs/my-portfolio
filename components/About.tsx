@@ -3,6 +3,7 @@
 import Section from "./Section";
 import { motion } from "framer-motion";
 import { User } from "lucide-react";
+import Image from "next/image";
 
 const About = () => {
   return (
@@ -14,11 +15,14 @@ const About = () => {
         transition={{ duration: 0.5 }}
         className="max-w-3xl mx-auto text-center"
       >
-        <div className="inline-flex items-center justify-center p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
-          <img
+        <div className="inline-flex items-center justify-center p-1 border border-slate-200 dark:border-slate-800 rounded-full mb-6">
+          <Image
             src="/avatar.jpg"
             alt="Profile Avatar"
-            className="w-25 h-25 rounded-full object-cover"
+            width={100}
+            height={100}
+            className="rounded-full object-cover"
+            priority
           />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>

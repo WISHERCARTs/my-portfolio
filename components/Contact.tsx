@@ -29,9 +29,9 @@ const Contact = () => {
 
             <Link
               href="mailto:wishercarts@gmail.com"
-              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-colors"
             >
-              <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
+              <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 rounded-full text-cyan-500 dark:text-cyan-400">
                 <Mail className="w-6 h-6" />
               </div>
               <div>
@@ -44,9 +44,9 @@ const Contact = () => {
 
             <Link
               href="https://www.linkedin.com/in/wish-nakthong/"
-              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-colors"
             >
-              <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
+              <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 rounded-full text-cyan-500 dark:text-cyan-400">
                 <Linkedin className="w-6 h-6" />
               </div>
               <div>
@@ -59,9 +59,9 @@ const Contact = () => {
 
             <Link
               href="https://github.com/WISHERCARTs"
-              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-colors"
             >
-              <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
+              <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 rounded-full text-cyan-500 dark:text-cyan-400">
                 <Github className="w-6 h-6" />
               </div>
               <div>
@@ -79,9 +79,9 @@ const Contact = () => {
 
             <Link
               href="https://www.instagram.com/wishercarts/"
-              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-colors"
             >
-              <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
+              <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 rounded-full text-cyan-500 dark:text-cyan-400">
                 <Instagram className="w-6 h-6" />
               </div>
               <div>
@@ -94,9 +94,9 @@ const Contact = () => {
 
             <Link
               href="https://www.youtube.com/@wishercarts"
-              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow"
+              className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-colors"
             >
-              <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400">
+              <div className="p-3 bg-cyan-50 dark:bg-cyan-950/30 rounded-full text-cyan-500 dark:text-cyan-400">
                 <Youtube className="w-6 h-6" />
               </div>
               <div>

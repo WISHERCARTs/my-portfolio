@@ -120,10 +120,10 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:border-blue-500/50 transition-colors"
+            className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-colors"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-blue-600 dark:text-blue-400">
+              <div className="p-2 bg-cyan-50 dark:bg-cyan-950/30 rounded-lg text-cyan-500 dark:text-cyan-400">
                 {skillGroup.icon}
               </div>
               <h3 className="text-xl font-semibold">{skillGroup.category}</h3>

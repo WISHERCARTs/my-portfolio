@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const projects = [
   {
@@ -143,6 +143,20 @@ const Projects = () => {
     }
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    };
+    if (selectedProject) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedProject, currentImageIndex]);
+
   return (
     <Section id="projects" className="bg-slate-50 dark:bg-slate-900/50">
       <motion.div
@@ -165,7 +179,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all"
+            className="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 transition-all"
           >
             <div className="relative h-48 w-full overflow-hidden">
               <Image
@@ -177,7 +191,7 @@ const Projects = () => {
             </div>
 
             <div className="p-6">
-              <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
                 {project.title}
               </h3>
               <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
@@ -200,7 +214,7 @@ const Projects = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
                 >
                   <Github className="w-4 h-4" />
                   Code
@@ -218,7 +232,7 @@ const Projects = () => {
                 )}
                 <button
                   onClick={() => openModal(project)}
-                  className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
                   Preview
@@ -248,7 +262,7 @@ const Projects = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative z-10 bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-2xl max-w-[90vw] max-h-[90vh]"
+              className="relative z-10 bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 max-w-[90vw] max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
@@ -285,14 +299,14 @@ const Projects = () => {
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 p-2 rounded-full bg-white/90 dark:bg-slate-900/90 shadow-lg hover:bg-white dark:hover:bg-slate-900 transition-colors"
+                      className="absolute left-4 p-2 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-900 transition-colors"
                       title="Previous image"
                     >
                       <ChevronLeft className="w-6 h-6 text-slate-700 dark:text-slate-300" />
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 p-2 rounded-full bg-white/90 dark:bg-slate-900/90 shadow-lg hover:bg-white dark:hover:bg-slate-900 transition-colors"
+                      className="absolute right-4 p-2 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-900 transition-colors"
                       title="Next image"
                     >
                       <ChevronRight className="w-6 h-6 text-slate-700 dark:text-slate-300" />
@@ -310,7 +324,7 @@ const Projects = () => {
                       onClick={() => setCurrentImageIndex(idx)}
                       className={`w-2.5 h-2.5 rounded-full transition-colors ${
                         idx === currentImageIndex
-                          ? "bg-blue-600"
+                          ? "bg-cyan-500"
                           : "bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"
                       }`}
                       title={`Go to image ${idx + 1}`}

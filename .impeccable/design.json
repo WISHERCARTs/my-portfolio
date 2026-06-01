@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-01T22:32:00Z",
+  "title": "Design System: Wish Nakthong Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Neon Cyan",
+        "canonical": "oklch(0.72 0.16 195)",
+        "tonalRamp": [
+          "#022329",
+          "#043d47",
+          "#055c6b",
+          "#067f94",
+          "#06a3be",
+          "#06b6d4",
+          "#22d3ee",
+          "#67e8f9"
+        ]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Deep Cyan Accent",
+        "canonical": "oklch(0.60 0.15 195)",
+        "tonalRamp": [
+          "#021a20",
+          "#03303b",
+          "#054959",
+          "#076378",
+          "#087f9a",
+          "#0891b2",
+          "#22d3ee",
+          "#67e8f9"
+        ]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Slate Screen",
+        "canonical": "oklch(0.98 0.01 240)",
+        "tonalRamp": [
+          "#020617",
+          "#0f172a",
+          "#1e293b",
+          "#475569",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9",
+          "#f8fafc"
+        ]
+      },
+      "neutral-bg-dark": {
+        "role": "neutral",
+        "displayName": "Obsidian Dark",
+        "canonical": "oklch(0.12 0.03 240)",
+        "tonalRamp": [
+          "#020617",
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f8fafc"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display Text",
+        "purpose": "Hero and major headlines only."
+      },
+      "body": {
+        "displayName": "Body Text",
+        "purpose": "All paragraphs and technical descriptions."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for color and border transitions."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Used for main call-to-actions like viewing projects or downloading CVs.",
+      "html": "<button class=\"ds-btn-primary\">View My Projects</button>",
+      "css": ".ds-btn-primary { background-color: #06b6d4; color: #ffffff; padding: 12px 24px; font-family: var(--font-sans), system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; border: none; border-radius: 12px; cursor: pointer; transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover { background-color: #0891b2; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Used for secondary actions like CV download or social links.",
+      "html": "<button class=\"ds-btn-secondary\">Download CV</button>",
+      "css": ".ds-btn-secondary { background-color: transparent; color: #334155; padding: 12px 24px; font-family: var(--font-sans), system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid #e2e8f0; border-radius: 12px; cursor: pointer; transition: border-color 0.2s ease, color 0.2s ease; } .ds-btn-secondary:hover { border-color: #06b6d4; color: #06b6d4; } @media (prefers-color-scheme: dark) { .ds-btn-secondary { color: #cbd5e1; border-color: #1e293b; } .ds-btn-secondary:hover { color: #06b6d4; border-color: #06b6d4; } }"
+    },
+    {
+      "name": "Standard Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Used for displaying individual projects, education history, and certificates.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Project Title</h3><p class=\"ds-card-text\">This is a short description of a modern, data-driven application built using state-of-the-art Web frameworks.</p></div>",
+      "css": ".ds-card { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; font-family: var(--font-sans), system-ui, sans-serif; transition: border-color 0.2s ease; } .ds-card-title { font-size: 1.25rem; font-weight: 600; color: #0f172a; margin-top: 0; margin-bottom: 8px; } .ds-card-text { font-size: 1rem; font-weight: 400; color: #334155; margin: 0; line-height: 1.6; } @media (prefers-color-scheme: dark) { .ds-card { background-color: #020617; border-color: #1e293b; } .ds-card-title { color: #f8fafc; } .ds-card-text { color: #cbd5e1; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Neural Minimalist",
+    "overview": "\"The Neural Minimalist\" aesthetic combines the precision of Data Science and AI networks with a clean, highly structured, and readable portfolio layout. Spacing is treated as a core design element, providing clear breathing room that allows tech recruiters and employers to scan information in seconds. Every visual element is deliberate, functional, and aligned, avoiding unnecessary clutter.\n\nThis design system explicitly rejects generic AI clichés—such as saturated rainbow neon gradients, excessive border-radii (>24px) that look childish, and identical flat card grids with no hierarchy.",
+    "keyCharacteristics": [
+      "Crisp Grid Structure: Clean, logical alignments inspired by mathematical coordinate systems.",
+      "Cyber-Contrast: Neon-Cyan highlights cutting through a deep, pristine Slate background in Dark mode.",
+      "Flat & Layered Depth: Depicts hierarchy using subtle color shifts and precise border strokes rather than heavy shadows."
+    ],
+    "rules": [
+      {
+        "name": "The 10% Cyan Rule",
+        "body": "Neon Cyan is a highly luminous accent. It must be used on no more than 10% of any viewport's surface area. Excessive cyan creates visual fatigue and dilutes the focal point.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-All-Caps-Body Rule",
+        "body": "Uppercase is strictly limited to short labels (≤4 words). Running body text must never be capitalized, as it degrades readability.",
+        "section": "typography"
+      },
+      {
+        "name": "The Zero-Shadow Rule",
+        "body": "Drop shadows (box-shadow) are prohibited on cards, containers, and buttons. Depth must be conveyed strictly using flat color fills and 1px border lines.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do maintain a strict 1px border around all card containers to define their boundaries cleanly.",
+      "Do respect the 10% Cyan Rule, using the neon color only for emphasis and key calls to action.",
+      "Do cap body text line lengths at 70 characters (max-w-prose or max-w-2xl) for optimal scanning.",
+      "Do use backdrop-blur-md on navigation panels only when they overlap content during scrolling."
+    ],
+    "donts": [
+      "Don't use any large, soft drop shadows (shadow-lg, shadow-xl) on elements; stick strictly to flat-layered depth.",
+      "Don't use diagonal stripe backgrounds or sketchy SVG drawings. Keep assets clean and mathematically crisp.",
+      "Don't use overly rounded edges (rounded-[32px] or rounded-[40px]) on cards or containers.",
+      "Don't use text gradients (background-clip: text with a gradient) for headings. Use solid, high-contrast text colors."
+    ]
+  }
+}

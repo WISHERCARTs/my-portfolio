@@ -37,7 +37,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm"
+          ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800/50"
           : "bg-transparent"
       }`}
     >
@@ -46,7 +46,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 font-bold text-xl md:text-2xl text-blue-600 dark:text-blue-400"
+            className="flex items-center gap-2 font-bold text-xl md:text-2xl text-cyan-500 dark:text-cyan-400"
           >
             <Code2 className="w-8 h-8" />
             <span>Wish Nakthong</span>
@@ -58,7 +58,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
               >
                 {link.name}
               </Link>
@@ -116,7 +116,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-base font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  className="text-base font-medium text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400"
                 >
                   {link.name}
                 </Link>

@@ -108,7 +108,7 @@ const certificateData = [
 ];
 
 const colorVariants = {
-  blue: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white",
+  blue: "bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400 group-hover:bg-cyan-600 group-hover:text-white",
   emerald:
     "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white",
   slate:
@@ -136,7 +136,7 @@ const Certificates = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Certificates & Achievements
           </h2>
-          <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-6" />
+          <div className="w-20 h-1.5 bg-cyan-500 mx-auto rounded-full mb-6" />
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             A collection of professional certifications and courses I have
             completed to enhance my skills in technology and engineering.
@@ -149,7 +149,7 @@ const Certificates = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center justify-center p-6 bg-white dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300"
+            className="flex flex-col items-center justify-center p-6 bg-white dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 transition-all duration-300"
           >
             <div
               data-iframe-width="150"
@@ -173,7 +173,7 @@ const Certificates = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group relative bg-white dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1"
+              className="group relative bg-white dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500 dark:hover:border-cyan-500 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="flex justify-between items-start mb-4">
                 <div
@@ -181,7 +181,7 @@ const Certificates = () => {
                 >
                   {cert.icon}
                 </div>
-                <div className="text-slate-400 group-hover:text-blue-500 transition-colors">
+                <div className="text-slate-400 group-hover:text-cyan-500 transition-colors">
                   <ExternalLink className="w-5 h-5" />
                 </div>
               </div>
@@ -190,7 +190,7 @@ const Certificates = () => {
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 block">
                   {cert.category}
                 </span>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
                   {cert.title}
                 </h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
