@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Bot } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FormattedText } from "./formattext";
+import PixelOffice, { AgentStatus } from "./PixelOffice";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,7 @@ export default function ChatWidget() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [agentStatus, setAgentStatus] = useState<AgentStatus>("idle");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -20,6 +22,35 @@ export default function ChatWidget() {
     if (!text.trim() || isLoading) return;
     setError(null);
     setIsLoading(true);
+
+    // Scan text for keywords to update agent status
+    const textLower = text.toLowerCase();
+    let nextStatus: AgentStatus = "thinking";
+    if (
+      textLower.includes("ประวัติ") ||
+      textLower.includes("ศึกษา") ||
+      textLower.includes("education") ||
+      textLower.includes("background") ||
+      textLower.includes("เรียน") ||
+      textLower.includes("school") ||
+      textLower.includes("university") ||
+      textLower.includes("มหาลัย")
+    ) {
+      nextStatus = "searching_books";
+    } else if (
+      textLower.includes("project") ||
+      textLower.includes("ผลงาน") ||
+      textLower.includes("งาน") ||
+      textLower.includes("ทักษะ") ||
+      textLower.includes("skill") ||
+      textLower.includes("tech") ||
+      textLower.includes("เขียนโค้ด") ||
+      textLower.includes("code") ||
+      textLower.includes("ความสามารถ")
+    ) {
+      nextStatus = "searching_server";
+    }
+    setAgentStatus(nextStatus);
 
     const userMessage = {
       id: Date.now().toString(),
@@ -40,6 +71,9 @@ export default function ChatWidget() {
 
       const reader = response.body?.getReader();
       if (!reader) return;
+
+      // Set agent to talking when response stream starts
+      setAgentStatus("talking");
 
       const assistantMessage = {
         id: (Date.now() + 1).toString(),
@@ -72,6 +106,7 @@ export default function ChatWidget() {
       setError("เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง");
     } finally {
       setIsLoading(false);
+      setAgentStatus("idle");
     }
   };
 
@@ -134,8 +169,11 @@ export default function ChatWidget() {
               </button>
             </div>
 
+            {/* Pixel Visual Room Panel */}
+            <PixelOffice status={agentStatus} />
+
             {/* Chat Area */}
-            <div className="h-[400px] overflow-y-auto p-4 bg-slate-50 dark:bg-slate-950/50 space-y-4">
+            <div className="h-[280px] overflow-y-auto p-4 bg-slate-50 dark:bg-slate-950/50 space-y-4">
               {messages.length === 0 && (
                 <div className="flex flex-col items-center text-center text-slate-500 text-sm mt-6 space-y-4">
                   <div>
