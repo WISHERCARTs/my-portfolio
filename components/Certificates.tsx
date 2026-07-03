@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Section from "./Section";
 import { motion } from "framer-motion";
 import Script from "next/script";
@@ -12,97 +13,98 @@ import {
   Cpu,
   ExternalLink,
   ShieldCheck,
+  GraduationCap,
 } from "lucide-react";
 
 const certificateData = [
   {
     title: "GSA Certificate Creator Playground",
     issuer: "Google Student Ambassador",
+    description: "Graduation certificate for leading student tech communities and organizing Google Cloud/GenAI workshops.",
     date: "2026",
     link: "/GSA Certificate - วิชญ์ นาคทอง.pdf",
-    category: "Specialized",
-    icon: <Award className="w-5 h-5" />,
+    category: "Google & AI",
     color: "emerald",
   },
   {
     title: "Solana Certificate",
     issuer: "Solana Foundation",
+    description: "Web3 development fundamentals, Solana blockchain architecture, smart contracts (Rust), and decentralized applications.",
     date: "2026",
     link: "/Cer-Solana-12.pdf",
-    category: "Blockchain",
-    icon: <Award className="w-5 h-5" />,
+    category: "Programming & Tools",
     color: "indigo",
   },
   {
     title: "C++ Essentials 1",
     issuer: "Cisco Networking Academy",
+    description: "Basic C++ syntax, control flows, loops, functions, vectors, pointer manipulation, and memory management.",
     date: "2026",
     link: "/C--_Essentials_1_certificate_wish-nak-student-mahidol-edu_26db587d-2a99-4974-b3f7-29b87c0abd12.pdf",
-    category: "Programming",
-    icon: <Code className="w-5 h-5" />,
+    category: "Programming & Tools",
     color: "emerald",
   },
   {
     title: "CCNA: Introduction to Networks",
     issuer: "Cisco Networking Academy",
+    description: "Covers network architecture, protocols, IP addressing (IPv4/IPv6), ethernet switching, and routing basics.",
     date: "2025",
     link: "/CCNA-_Introduction_to_Networks_certificate_wish-nak-student-mahidol-edu_550a2863-c4b8-4448-bde1-b4c3636b5cc9.pdf",
-    category: "Networking",
-    icon: <Network className="w-5 h-5" />,
+    category: "Networks & Security",
     color: "blue",
   },
   {
     title: "CCNA ITN (Updated Version)",
     issuer: "Cisco Networking Academy",
+    description: "Validated network topology setup, subnetting, and switch/router configurations.",
     date: "2025",
     link: "/CCNAITNUpdated20251201-30-4p19p4.pdf",
-    category: "Networking",
-    icon: <ShieldCheck className="w-5 h-5" />,
+    category: "Networks & Security",
     color: "blue",
   },
   {
     title: "GitHub for Developer",
     issuer: "borntodev academy",
+    description: "Git command line, branching strategies, merge conflict resolution, pull requests, and collaborative code management.",
     date: "2025",
     link: "/borntodev-academy_GitHub for Developer _certificate.png",
-    category: "Development",
-    icon: <Github className="w-5 h-5" />,
+    category: "Programming & Tools",
     color: "slate",
   },
   {
     title: "Notion Database for Everyone",
     issuer: "borntodev academy",
+    description: "Database architecture, relations, rollups, custom formulas, and project management workspaces.",
     date: "2025",
     link: "/borntodev-academy_Notion Database for Everyone_certificate.png",
-    category: "Productivity",
-    icon: <Database className="w-5 h-5" />,
+    category: "Programming & Tools",
     color: "purple",
   },
   {
     title: "Generative AI",
     issuer: "Google / Academic",
+    description: "Completed foundational training in Generative AI, Large Language Models (LLMs), Image Generation, and Responsible AI on GCP.",
     date: "2025",
     link: "/Certificate GenAI.pdf",
-    category: "AI",
-    icon: <Cpu className="w-5 h-5" />,
+    category: "Google & AI",
     color: "amber",
   },
   {
     title: "Cisco Packet Tracer",
     issuer: "Cisco",
+    description: "Simulated network topologies, routing protocols (OSPF/RIP), NAT, and network troubleshooting.",
     date: "2025",
     link: "/Getting_Started_with_Cisco_Packet_Tracer_certificate_wish-nak-student-mahidol-edu_26b4bfd8-9199-4eb2-8244-563b5533ea24.pdf",
-    category: "Networking",
-    icon: <Network className="w-5 h-5" />,
+    category: "Networks & Security",
     color: "cyan",
   },
   {
     title: "Digital Awareness",
     issuer: "Mahidol University",
+    description: "Understanding digital literacy, cybersecurity awareness, privacy laws, and academic digital tools.",
     date: "2024",
     link: "/mpdf.pdf",
-    category: "General",
-    icon: <Award className="w-5 h-5" />,
+    category: "Other Achievements",
     color: "rose",
   },
 ];
@@ -123,7 +125,27 @@ const colorVariants = {
   rose: "bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 group-hover:bg-rose-600 group-hover:text-white",
 };
 
+const issuerLogos: Record<string, { logoUrl?: string; fallbackIcon?: React.ReactNode; isDarkInverted?: boolean }> = {
+  "Google Student Ambassador": { logoUrl: "https://cdn.simpleicons.org/google" },
+  "Google / Academic": { logoUrl: "https://cdn.simpleicons.org/google" },
+  "Cisco Networking Academy": { logoUrl: "https://cdn.simpleicons.org/cisco" },
+  "Cisco": { logoUrl: "https://cdn.simpleicons.org/cisco" },
+  "Solana Foundation": { logoUrl: "https://cdn.simpleicons.org/solana" },
+  "borntodev academy": { fallbackIcon: <Code className="w-5 h-5 text-orange-500" /> },
+  "Mahidol University": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> }
+};
+
 const Certificates = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const categories = ["All", "Google & AI", "Networks & Security", "Programming & Tools", "Other Achievements"];
+
+  const filteredCertificates = selectedCategory === "All"
+    ? certificateData
+    : certificateData.filter(cert => cert.category === selectedCategory);
+
+  const showCredly = selectedCategory === "All" || selectedCategory === "Networks & Security";
+
   return (
     <Section id="certificates">
       <div className="max-w-6xl mx-auto">
@@ -131,7 +153,7 @@ const Certificates = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Certificates & Achievements
@@ -143,72 +165,117 @@ const Certificates = () => {
           </p>
         </motion.div>
 
+        {/* Category Filters */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 py-2 text-sm font-semibold rounded-full border transition-all duration-300 cursor-pointer ${
+                selectedCategory === cat
+                  ? "bg-cyan-500 border-cyan-500 text-white shadow-md shadow-cyan-500/10"
+                  : "bg-white border-slate-200 text-slate-600 hover:border-cyan-500 dark:bg-slate-900/50 dark:border-slate-800 dark:text-slate-300 dark:hover:border-cyan-500"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Credly Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center justify-center p-6 bg-white dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 transition-all duration-300"
-          >
-            <div
-              data-iframe-width="150"
-              data-iframe-height="270"
-              data-share-badge-id="e81794ed-4901-47f8-a15a-dd3fd3a7e97e"
-              data-share-badge-host="https://www.credly.com"
-            ></div>
-            <Script src="//cdn.credly.com/assets/utilities/embed.js" async />
-            <p className="mt-4 text-xs font-medium text-slate-500 uppercase tracking-widest">
-              Official Badge
-            </p>
-          </motion.div>
-
-          {certificateData.map((cert, index) => (
-            <motion.a
-              key={index}
-              href={cert.link}
-              target="_blank"
-              rel="noopener noreferrer"
+          {showCredly && (
+            <motion.div
+              layout
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="group relative bg-white dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500 dark:hover:border-cyan-500 transition-all duration-300 hover:-translate-y-1"
+              className="flex flex-col items-center justify-center p-6 bg-white dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 transition-all duration-300"
             >
-              <div className="flex justify-between items-start mb-4">
-                <div
-                  className={`p-3 rounded-xl transition-all duration-300 ${colorVariants[cert.color as keyof typeof colorVariants]}`}
-                >
-                  {cert.icon}
-                </div>
-                <div className="text-slate-400 group-hover:text-cyan-500 transition-colors">
-                  <ExternalLink className="w-5 h-5" />
-                </div>
-              </div>
+              <div
+                data-iframe-width="150"
+                data-iframe-height="270"
+                data-share-badge-id="e81794ed-4901-47f8-a15a-dd3fd3a7e97e"
+                data-share-badge-host="https://www.credly.com"
+              ></div>
+              <Script src="//cdn.credly.com/assets/utilities/embed.js" async />
+              <p className="mt-4 text-xs font-medium text-slate-500 uppercase tracking-widest">
+                Official Badge
+              </p>
+            </motion.div>
+          )}
 
-              <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 block">
-                  {cert.category}
-                </span>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
-                  {cert.title}
-                </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                  {cert.issuer}
-                </p>
-                <div className="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
+          {filteredCertificates.map((cert, index) => {
+            const logoConfig = issuerLogos[cert.issuer];
+
+            return (
+              <motion.a
+                layout
+                key={cert.title}
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="group relative bg-white dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500 dark:hover:border-cyan-500 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-4">
+                    <div
+                      className={`p-3 rounded-xl transition-all duration-300 flex items-center justify-center ${
+                        logoConfig?.logoUrl 
+                          ? "bg-slate-100 dark:bg-slate-800/80" 
+                          : colorVariants[cert.color as keyof typeof colorVariants]
+                      }`}
+                    >
+                      {logoConfig?.logoUrl ? (
+                        <img
+                          src={logoConfig.logoUrl}
+                          alt={cert.issuer}
+                          className={`w-5 h-5 object-contain ${logoConfig.isDarkInverted ? "dark:invert" : ""}`}
+                        />
+                      ) : logoConfig?.fallbackIcon ? (
+                        logoConfig.fallbackIcon
+                      ) : (
+                        <Award className="w-5 h-5" />
+                      )}
+                    </div>
+                    <div className="text-slate-400 group-hover:text-cyan-500 transition-colors">
+                      <ExternalLink className="w-5 h-5" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 block">
+                      {cert.category}
+                    </span>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                      {cert.title}
+                    </h3>
+                    <p className="text-sm text-slate-650 dark:text-slate-350 font-medium mb-2">
+                      {cert.issuer}
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                      {cert.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500 mt-auto pt-2">
                   <span className="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-md">
                     {cert.date}
                   </span>
                 </div>
-              </div>
 
-              {/* Decorative background element */}
-              <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-10 transition-opacity">
-                <Award className="w-12 h-12" />
-              </div>
-            </motion.a>
-          ))}
+                {/* Decorative background element */}
+                <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-10 transition-opacity">
+                  <Award className="w-12 h-12" />
+                </div>
+              </motion.a>
+            );
+          })}
         </div>
       </div>
     </Section>
