@@ -34,7 +34,19 @@ export default function ChatWidget() {
       textLower.includes("เรียน") ||
       textLower.includes("school") ||
       textLower.includes("university") ||
-      textLower.includes("มหาลัย")
+      textLower.includes("มหาลัย") ||
+      textLower.includes("มหิดล") ||
+      textLower.includes("สุคนธีรวิทย์") ||
+      textLower.includes("เกรด") ||
+      textLower.includes("ฝึกงาน") ||
+      textLower.includes("internship") ||
+      textLower.includes("trainee") ||
+      textLower.includes("botnoi") ||
+      textLower.includes("บอทน้อย") ||
+      textLower.includes("cert") ||
+      textLower.includes("ใบรับรอง") ||
+      textLower.includes("เกียรติบัตร") ||
+      textLower.includes("certificate")
     ) {
       nextStatus = "searching_books";
     } else if (
