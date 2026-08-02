@@ -22,20 +22,27 @@ export async function POST(req: Request) {
       วันเวลา: ${now} (Thailand Time) 
       ชื่อ: Wish Nakthong (วิชญ์ นาคทอง)
       การศึกษา: นักศึกษาปี 2 คณะ ICT สาขา Data Science & Tech (DST) มหาวิทยาลัยมหิดล
+      ประสบการณ์ฝึกงาน: ผ่านการฝึกงานโครงการ BOTNOI Trainee Program 2026 ในตำแหน่ง AI Agent Builder (18 พ.ค. 2569 - 31 ก.ค. 2569)
       เป้าหมาย: Data & AI Engineer
 
       [ทักษะ]
-      - Languages: HTML/CSS, JavaScript, TypeScript, SQL, Python, Java, R, MATLAB, Go
-      - Data & AI Libraries: Pandas, NumPy, Scikit-learn, Matplotlib, Streamlit, Jupyter, OpenCV, Seaborn, ggplot2, tidyverse
+      - AI & Data Science: AI Agent Building, Prompt Engineering, NLP (Natural Language Processing), ASR & TTS (Speech AI), Pandas, NumPy, Scikit-learn, Matplotlib, Streamlit, Jupyter, OpenCV, Seaborn, ggplot2, tidyverse
+      - Languages: HTML/CSS, JavaScript, TypeScript, SQL, Python, Java, R, MATLAB, Go, C/C++
       - Web Frameworks & APIs: React, Next.js, Node.js, Express.js, Tailwind CSS, REST API, Axios, Google Gemini API
-      - Databases: Relational Database Design, MySQL, SQLite, Firebase
-      - Networking & System Tools: Wireshark, wget
-      - Tools & Platforms: Git & GitHub, Docker, VS Code, n8n, Postman, Trello, Google Sheets
+      - Databases: Relational Database Design, MySQL, SQLite, Firebase, Supabase
+      - Networking & System Tools: Wireshark, wget, IDS/IPS
+      - Tools & Platforms: Git & GitHub, Docker, VS Code, n8n, Postman, Trello, Google Sheets, Ollama, Claude Code
       - Design & Content Tools: Canva, Notion, Figma, draw.io
       - Content Creation: YouTube, Gaming content
 
       [โปรเจกต์]
-      1. MLP Digit Recognition (AI/ML Project) ⭐
+      1. BOTNOI AI Agent System (Internship Project @ BOTNOI Group) ⭐
+         - พัฒนาระบบ AI Agent อัจฉริยะร่วมกับทีมในช่วงฝึกงาน BOTNOI Trainee 2026
+         - ประยุกต์ใช้ NLP, ASR/TTS (ระบบประมวลผลเสียงพูดเป็นข้อความและข้อความกลับเป็นเสียง) และ Prompt Engineering ในการสร้าง AI Chatbot และระบบอัตโนมัติ
+         - Tech: AI Agents, Python, NLP, ASR/TTS, Prompt Engineering, Botnoi API
+         - Certificate: [View Certificate](/Certificate_วิชญ์  นาคทอง.pdf)
+
+      2. MLP Digit Recognition (AI/ML Project) ⭐
          - ระบบจดจำตัวเลขเขียนมือด้วย Multi-Layer Perceptron (MLP)
          - มี Web Interface ด้วย Streamlit รองรับการวาดตัวเลขและอัปโหลดรูปภาพ
          - Neural Network: 2 hidden layers (256, 128 neurons) พร้อมแสดง Confidence score
@@ -44,7 +51,7 @@ export async function POST(req: Request) {
          - GitHub: https://github.com/WISHERCARTs/MLP-Digit-Recognition
          - สิ่งที่เรียนรู้: Neural Network, MNIST dataset, Model deployment
 
-      2. Face Recognition System (AI/ML Project) ⭐
+      3. Face Recognition System (AI/ML Project) ⭐
          - ระบบจดจำใบหน้าแบบ End-to-end ใช้ PCA ลดมิติและ SVM สำหรับ Classification
          - มี Web Interface ด้วย Streamlit สำหรับ Real-time face recognition
          - Tech: Python, Scikit-learn, OpenCV, Streamlit, PCA, SVM
@@ -52,14 +59,14 @@ export async function POST(req: Request) {
          - GitHub: https://github.com/WISHERCARTs/face-recognition-system
          - สิ่งที่เรียนรู้: Machine Learning pipeline, Computer Vision, Model deployment
 
-      3. AI Automation Bot (n8n)
+      4. AI Automation Bot (n8n)
          - ระบบ Serverless ที่ monitor ข่าว tech 24/7 โดยอัตโนมัติ
          - ใช้ AI (Google Gemini) สรุปข่าวและอัปเดตลง Google Sheets
          - Tech: n8n, Google Gemini, Google Sheets
          - GitHub: https://github.com/WISHERCARTs/n8n-automation-Tech-News-summerize
          - สิ่งที่เรียนรู้: Workflow automation, API integration, AI prompting
 
-      4. AI Chatbot Portfolio (เว็บนี้)
+      5. AI Chatbot Portfolio (เว็บนี้)
          - Portfolio website สร้างด้วย Next.js 14 + TypeScript
          - มี AI Chatbot ใช้ Google Gemini API แบบ streaming response
          - Tech: Next.js, TypeScript, Tailwind CSS, Google Gemini API
@@ -67,7 +74,7 @@ export async function POST(req: Request) {
          - GitHub: https://github.com/WISHERCARTs/my-portfolio
          - สิ่งที่เรียนรู้: Full-stack development, AI integration, Responsive design
 
-      5. CD Keys Website (Team Project)
+      6. CD Keys Website (Team Project)
          - เว็บขาย CD Keys ทำร่วมกับเพื่อน: หวาย (Waity), ซู (Su), บูม (Boom)
          - Project สำหรับวิชา Web Technologies
          - มีระบบ: ค้นหา, ตะกร้า, จัดการ keys, admin dashboard, Authentication (JWT)

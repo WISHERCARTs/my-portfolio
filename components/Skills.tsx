@@ -5,7 +5,7 @@ import Section from "./Section";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Code, Database, Terminal, Cpu, Wifi, Network, Shield, 
-  Video, Gamepad2, LineChart 
+  Video, Gamepad2, LineChart, Bot, Mic
 } from "lucide-react";
 
 const skillsData = [
@@ -30,6 +30,10 @@ const skillsData = [
     category: "Data & AI Libraries",
     icon: <Database className="w-6 h-6" />,
     items: [
+      "AI Agent Building",
+      "Prompt Engineering",
+      "NLP (Natural Language)",
+      "ASR & TTS (Speech AI)",
       "Pandas",
       "NumPy",
       "Scikit-learn",
@@ -142,6 +146,18 @@ const skillLogos: Record<string, SkillConfig> = {
   },
 
   // Data & AI Libraries
+  "AI Agent Building": {
+    fallbackIcon: <Bot className="w-10 h-10 text-emerald-500" />
+  },
+  "Prompt Engineering": {
+    fallbackIcon: <Terminal className="w-10 h-10 text-purple-500" />
+  },
+  "NLP (Natural Language)": {
+    fallbackIcon: <Code className="w-10 h-10 text-cyan-500" />
+  },
+  "ASR & TTS (Speech AI)": {
+    fallbackIcon: <Mic className="w-10 h-10 text-amber-500" />
+  },
   "Pandas": {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg"
   },

@@ -14,9 +14,19 @@ import {
   ExternalLink,
   ShieldCheck,
   GraduationCap,
+  Bot,
 } from "lucide-react";
 
 const certificateData = [
+  {
+    title: "BOTNOI Trainee 2026 - AI Agent Builder",
+    issuer: "BOTNOI Group",
+    description: "Completed BOTNOI Trainee Program with team as AI Agent Builder. Focused on AI Agents, NLP, ASR/TTS speech tech, and conversational AI workflows.",
+    date: "2026",
+    link: "/Certificate_วิชญ์  นาคทอง.pdf",
+    category: "Google & AI",
+    color: "emerald",
+  },
   {
     title: "GSA Certificate Creator Playground",
     issuer: "Google Student Ambassador",
@@ -126,6 +136,7 @@ const colorVariants = {
 };
 
 const issuerLogos: Record<string, { logoUrl?: string; fallbackIcon?: React.ReactNode; isDarkInverted?: boolean }> = {
+  "BOTNOI Group": { fallbackIcon: <Bot className="w-5 h-5 text-emerald-500" /> },
   "Google Student Ambassador": { logoUrl: "https://cdn.simpleicons.org/google" },
   "Google / Academic": { logoUrl: "https://cdn.simpleicons.org/google" },
   "Cisco Networking Academy": { logoUrl: "https://cdn.simpleicons.org/cisco" },
