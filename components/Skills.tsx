@@ -4,8 +4,9 @@ import { useState } from "react";
 import Section from "./Section";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Code, Database, Terminal, Cpu, Wifi, Network, Shield, 
-  Video, Gamepad2, LineChart, Bot, Mic
+  Code, Database, Terminal, Cpu, Wifi, Shield, 
+  Video, Gamepad2, LineChart, Bot, Mic, Network,
+  Layers, Workflow, Sparkles, Layout
 } from "lucide-react";
 
 const skillsData = [
@@ -30,8 +31,12 @@ const skillsData = [
     category: "Data & AI Libraries",
     icon: <Database className="w-6 h-6" />,
     items: [
-      "AI Agent Building",
+      "RAG Systems",
+      "Multi-Agent Architecture",
+      "Agentic Design",
       "Prompt Engineering",
+      "AI Agent Building",
+      "Tourism Chatbots ('Local Soul')",
       "NLP (Natural Language)",
       "ASR & TTS (Speech AI)",
       "Pandas",
@@ -44,6 +49,18 @@ const skillsData = [
       "Seaborn",
       "ggplot2",
       "tidyverse",
+    ],
+  },
+  {
+    category: "Automation & Integration",
+    icon: <Cpu className="w-6 h-6" />,
+    items: [
+      "API Integration",
+      "n8n Workflow Automation",
+      "LINE OA Integration",
+      "Workflow Design",
+      "Automated Systems",
+      "Webhooks & System Integration",
     ],
   },
   {
@@ -146,20 +163,40 @@ const skillLogos: Record<string, SkillConfig> = {
   },
 
   // Data & AI Libraries
+  "RAG Systems": {
+    logoUrl: "https://cdn.simpleicons.org/langchain",
+    fallbackIcon: <Bot className="w-7 h-7 text-cyan-500" />
+  },
+  "Multi-Agent Architecture": {
+    logoUrl: "https://cdn.simpleicons.org/huggingface",
+    fallbackIcon: <Bot className="w-7 h-7 text-indigo-500" />
+  },
+  "Agentic Design": {
+    logoUrl: "https://cdn.simpleicons.org/probot",
+    fallbackIcon: <Bot className="w-7 h-7 text-purple-500" />
+  },
+  "Tourism Chatbots ('Local Soul')": {
+    logoUrl: "https://cdn.simpleicons.org/openai",
+    fallbackIcon: <Bot className="w-7 h-7 text-amber-500" />
+  },
   "AI Agent Building": {
-    fallbackIcon: <Bot className="w-10 h-10 text-emerald-500" />
+    logoUrl: "https://cdn.simpleicons.org/openai",
+    fallbackIcon: <Bot className="w-7 h-7 text-cyan-500" />
   },
   "Prompt Engineering": {
-    fallbackIcon: <Terminal className="w-10 h-10 text-purple-500" />
+    logoUrl: "https://cdn.simpleicons.org/openai",
+    fallbackIcon: <Bot className="w-7 h-7 text-amber-500" />
   },
   "NLP (Natural Language)": {
-    fallbackIcon: <Code className="w-10 h-10 text-cyan-500" />
+    fallbackIcon: <Bot className="w-7 h-7 text-blue-500" />
   },
   "ASR & TTS (Speech AI)": {
-    fallbackIcon: <Mic className="w-10 h-10 text-amber-500" />
+    logoUrl: "https://cdn.simpleicons.org/elevenlabs",
+    fallbackIcon: <Mic className="w-7 h-7 text-purple-500" />
   },
   "Pandas": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg"
+    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg",
+    isDarkInverted: true
   },
   "NumPy": {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg"
@@ -168,10 +205,10 @@ const skillLogos: Record<string, SkillConfig> = {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg"
   },
   "Matplotlib": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg"
+    fallbackIcon: <LineChart className="w-7 h-7 text-blue-500" />
   },
   "Streamlit": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-plain.svg"
+    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg"
   },
   "Jupyter": {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg"
@@ -180,13 +217,39 @@ const skillLogos: Record<string, SkillConfig> = {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg"
   },
   "Seaborn": {
-    fallbackIcon: <LineChart className="w-10 h-10 text-indigo-400" />
+    fallbackIcon: <LineChart className="w-7 h-7 text-[#3776ab]" />
   },
   "ggplot2": {
-    fallbackIcon: <LineChart className="w-10 h-10 text-indigo-500" />
+    fallbackIcon: <LineChart className="w-7 h-7 text-slate-400" />
   },
   "tidyverse": {
-    fallbackIcon: <Database className="w-10 h-10 text-cyan-500" />
+    fallbackIcon: <LineChart className="w-7 h-7 text-blue-400" />
+  },
+
+  // Automation & Integration
+  "API Integration": {
+    logoUrl: "https://cdn.simpleicons.org/fastapi",
+    fallbackIcon: <Network className="w-7 h-7 text-cyan-500" />
+  },
+  "n8n Workflow Automation": {
+    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/n8n/n8n-original.svg",
+    fallbackIcon: <Workflow className="w-7 h-7 text-red-500" />
+  },
+  "LINE OA Integration": {
+    logoUrl: "https://cdn.simpleicons.org/line",
+    fallbackIcon: <Bot className="w-7 h-7 text-emerald-500" />
+  },
+  "Workflow Design": {
+    logoUrl: "https://cdn.simpleicons.org/n8n",
+    fallbackIcon: <Cpu className="w-7 h-7 text-amber-500" />
+  },
+  "Automated Systems": {
+    logoUrl: "https://cdn.simpleicons.org/githubactions",
+    fallbackIcon: <Cpu className="w-7 h-7 text-indigo-500" />
+  },
+  "Webhooks & System Integration": {
+    logoUrl: "https://cdn.simpleicons.org/webhook",
+    fallbackIcon: <Network className="w-7 h-7 text-blue-500" />
   },
 
   // Web & Mobile Frameworks
@@ -211,18 +274,20 @@ const skillLogos: Record<string, SkillConfig> = {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg"
   },
   "REST API": {
-    fallbackIcon: <Network className="w-10 h-10 text-cyan-500" />
+    logoUrl: "https://cdn.simpleicons.org/fastapi",
+    fallbackIcon: <Network className="w-7 h-7 text-cyan-500" />
   },
   "Axios": {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg"
   },
   "Google Gemini API": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg"
+    logoUrl: "https://cdn.simpleicons.org/googlegemini",
+    fallbackIcon: <Sparkles className="w-7 h-7 text-blue-500" />
   },
 
   // Databases
   "Relational Database Design": {
-    fallbackIcon: <Database className="w-10 h-10 text-slate-500" />
+    fallbackIcon: <Database className="w-7 h-7 text-slate-400" />
   },
   "MySQL": {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
@@ -231,7 +296,7 @@ const skillLogos: Record<string, SkillConfig> = {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
   },
   "Firebase": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"
+    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg"
   },
   "Supabase": {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"
@@ -239,19 +304,21 @@ const skillLogos: Record<string, SkillConfig> = {
 
   // Security & Networking
   "Wireshark": {
-    fallbackIcon: <Network className="w-10 h-10 text-sky-500" />
+    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wireshark/wireshark-original.svg",
+    fallbackIcon: <Shield className="w-7 h-7 text-blue-500" />
   },
   "wget": {
-    fallbackIcon: <Terminal className="w-10 h-10 text-emerald-500" />
+    fallbackIcon: <Terminal className="w-7 h-7 text-[#3776ab]" />
   },
   "Snort": {
-    fallbackIcon: <Shield className="w-10 h-10 text-red-500" />
+    logoUrl: "https://cdn.simpleicons.org/snort",
+    fallbackIcon: <Shield className="w-7 h-7 text-red-500" />
   },
   "Suricata": {
-    fallbackIcon: <Shield className="w-10 h-10 text-amber-500" />
+    fallbackIcon: <Shield className="w-7 h-7 text-amber-500" />
   },
   "IDS/IPS": {
-    fallbackIcon: <Shield className="w-10 h-10 text-cyan-500" />
+    fallbackIcon: <Shield className="w-7 h-7 text-cyan-500" />
   },
 
   // Tools & Platforms
@@ -265,29 +332,33 @@ const skillLogos: Record<string, SkillConfig> = {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
   },
   "n8n": {
-    logoUrl: "https://cdn.simpleicons.org/n8n"
+    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/n8n/n8n-original.svg",
+    fallbackIcon: <Workflow className="w-7 h-7 text-red-500" />
   },
   "Postman": {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
   },
   "Trello": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-original.svg"
+    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-plain.svg"
   },
   "Google Sheets": {
-    logoUrl: "https://cdn.simpleicons.org/googlesheets"
+    logoUrl: "https://cdn.simpleicons.org/googlesheets",
+    fallbackIcon: <Terminal className="w-7 h-7 text-emerald-500" />
   },
   "Ollama": {
     logoUrl: "https://cdn.simpleicons.org/ollama",
-    isDarkInverted: true
+    isDarkInverted: true,
+    fallbackIcon: <Bot className="w-7 h-7 text-slate-200" />
   },
   "Claude Code": {
     logoUrl: "https://cdn.simpleicons.org/anthropic",
-    isDarkInverted: true
+    fallbackIcon: <Bot className="w-7 h-7 text-orange-500" />
   },
 
   // Design & Content Tools
   "Canva": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg"
+    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg",
+    fallbackIcon: <Layout className="w-7 h-7 text-cyan-500" />
   },
   "Notion": {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/notion/notion-original.svg",
@@ -297,24 +368,47 @@ const skillLogos: Record<string, SkillConfig> = {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
   },
   "draw.io": {
-    logoUrl: "https://cdn.simpleicons.org/diagramsdotnet"
+    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/drawio/drawio-original.svg",
+    fallbackIcon: <Terminal className="w-7 h-7 text-[#f08705]" />
   },
 
   // Hardware & IoT
   "ESP32": {
-    fallbackIcon: <Cpu className="w-10 h-10 text-red-500" />
+    fallbackIcon: <Wifi className="w-7 h-7 text-[#d00]" />
   },
   "Microcontrollers": {
-    fallbackIcon: <Cpu className="w-10 h-10 text-emerald-500" />
+    fallbackIcon: <Cpu className="w-7 h-7 text-[#00979d]" />
   },
 
   // My Content Skills
   "YouTube": {
-    fallbackIcon: <Video className="w-10 h-10 text-red-600" />
+    logoUrl: "https://cdn.simpleicons.org/youtube"
   },
   "Gaming content": {
-    fallbackIcon: <Gamepad2 className="w-10 h-10 text-purple-500" />
+    fallbackIcon: <Gamepad2 className="w-7 h-7 text-purple-500" />
   }
+};
+
+// Custom Component for Rendering Skill Logo with Auto-Fallback
+const SkillLogoItem = ({ item, logoConfig }: { item: string; logoConfig?: SkillConfig }) => {
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <div className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center shrink-0">
+      {logoConfig?.logoUrl && !hasError ? (
+        <img
+          src={logoConfig.logoUrl}
+          alt={item}
+          onError={() => setHasError(true)}
+          className={`w-9 h-9 sm:w-10 sm:h-10 object-contain transition-transform duration-200 ${
+            logoConfig.isDarkInverted ? "dark:invert" : ""
+          }`}
+        />
+      ) : (
+        logoConfig?.fallbackIcon || <Terminal className="w-7 h-7 text-cyan-500" />
+      )}
+    </div>
+  );
 };
 
 const Skills = () => {
@@ -326,34 +420,38 @@ const Skills = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-12"
+        transition={{ duration: 0.5 }}
+        className="max-w-6xl mx-auto"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Technical Skills
-        </h2>
-        <p className="text-slate-600 dark:text-slate-400">
-          My technical toolkit and areas of expertise
-        </p>
-      </motion.div>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Technical Skills</h2>
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium">
+            Core competencies across AI, Automation, Full-Stack Development, Data Libraries, and Infrastructure.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {skillsData.map((skillGroup, index) => (
-          <motion.div
-            key={skillGroup.category}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500/30 transition-colors flex flex-col justify-between"
-          >
-            <div>
+        {/* Category Cards Grid (Left-Right Side by Side Boxes) */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {skillsData.map((skillGroup, index) => (
+            <motion.div
+              key={skillGroup.category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 }}
+              className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 transition-colors shadow-xs"
+            >
+              {/* Category Header */}
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-cyan-50 dark:bg-cyan-950/30 rounded-lg text-cyan-500 dark:text-cyan-400">
+                <div className="p-2.5 bg-cyan-50 dark:bg-cyan-950/30 rounded-xl text-cyan-500 dark:text-cyan-400">
                   {skillGroup.icon}
                 </div>
-                <h3 className="text-xl font-semibold">{skillGroup.category}</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  {skillGroup.category}
+                </h3>
               </div>
 
+              {/* Skill Icon Badges */}
               <div className="flex flex-wrap gap-4">
                 {skillGroup.items.map((item) => {
                   const logoConfig = skillLogos[item];
@@ -367,28 +465,14 @@ const Skills = () => {
                       onMouseLeave={() => setHoveredSkill(null)}
                     >
                       <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        className="w-16 h-16 flex items-center justify-center rounded-2xl border bg-slate-50 border-slate-200 dark:bg-slate-800/40 dark:border-slate-800/80 hover:border-cyan-500/50 dark:hover:border-cyan-500/50 transition-colors duration-200 cursor-pointer shadow-sm"
+                        whileHover={{ scale: 1.1 }}
+                        className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center rounded-2xl border bg-slate-50 border-slate-200 dark:bg-slate-800/50 dark:border-slate-800/80 hover:border-cyan-500 dark:hover:border-cyan-400 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md"
                         title={item}
                       >
-                        <div className="w-10 h-10 flex items-center justify-center shrink-0">
-                          {logoConfig?.logoUrl ? (
-                            <img
-                              src={logoConfig.logoUrl}
-                              alt={item}
-                              className={`w-10 h-10 object-contain transition-transform duration-200 ${
-                                logoConfig.isDarkInverted ? "dark:invert" : ""
-                              }`}
-                            />
-                          ) : logoConfig?.fallbackIcon ? (
-                            logoConfig.fallbackIcon
-                          ) : (
-                            <Code className="w-10 h-10 text-slate-400" />
-                          )}
-                        </div>
+                        <SkillLogoItem item={item} logoConfig={logoConfig} />
                       </motion.div>
 
-                      {/* Custom Tooltip */}
+                      {/* Tooltip */}
                       <AnimatePresence>
                         {isHovered && (
                           <motion.div
@@ -396,10 +480,9 @@ const Skills = () => {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 8, scale: 0.95 }}
                             transition={{ duration: 0.15 }}
-                            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-3 py-1.5 bg-slate-900 dark:bg-slate-800 text-white text-xs font-semibold rounded-lg shadow-lg whitespace-nowrap z-50 pointer-events-none border border-slate-700/50 dark:border-slate-700"
+                            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-3 py-1.5 bg-slate-900 dark:bg-slate-800 text-white text-xs font-semibold rounded-lg shadow-xl whitespace-nowrap z-50 pointer-events-none border border-slate-700/50 dark:border-slate-700"
                           >
                             {item}
-                            {/* Down Arrow */}
                             <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900 dark:border-t-slate-800" />
                           </motion.div>
                         )}
@@ -408,10 +491,10 @@ const Skills = () => {
                   );
                 })}
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </Section>
   );
 };
