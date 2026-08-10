@@ -11,3 +11,76 @@ html {
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+/* ---------------------------------------------------------------------------
+   Sketchbook Index scope
+   Tokens + type are scoped to .sketch-scope so the Classic view keeps its own
+   Geist / cyan system untouched.
+   --------------------------------------------------------------------------- */
+
+.sketch-scope {
+  /* Silver studio field. Ink is near-black, muted clears 6.4:1 on the field. */
+  --sk-bg: #dcdcdc;
+  --sk-surface: #f2f2f2;
+  --sk-ink: #0b0b0c;
+  --sk-muted: #4a4a4a;
+  --sk-line: rgba(11, 12, 14, 0.16);
+  --sk-line-strong: rgba(11, 12, 14, 0.4);
+  --sk-grid: rgba(11, 12, 14, 0.055);
+  /* Periwinkle carries rules and fills; accent-ink is the text-safe variant. */
+  --sk-accent: #788eff;
+  --sk-accent-ink: #3f4fd8;
+  --sk-accent-contrast: #ffffff;
+
+  font-family: var(--font-mitr), ui-sans-serif, system-ui, sans-serif;
+  color: var(--sk-ink);
+  background-color: var(--sk-bg);
+}
+
+.dark .sketch-scope {
+  --sk-bg: #121214;
+  --sk-surface: #1a1a1e;
+  --sk-ink: #ededef;
+  --sk-muted: #9c9ca4;
+  --sk-line: rgba(237, 237, 239, 0.16);
+  --sk-line-strong: rgba(237, 237, 239, 0.38);
+  --sk-grid: rgba(237, 237, 239, 0.05);
+  --sk-accent: #97a8ff;
+  --sk-accent-ink: #97a8ff;
+  --sk-accent-contrast: #101018;
+}
+
+.sk-pixel {
+  font-family: var(--font-vt323), ui-monospace, SFMono-Regular, monospace;
+  font-weight: 400;
+  font-variant-ligatures: none;
+}
+
+.sk-paper {
+  background-image:
+    linear-gradient(to right, var(--sk-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--sk-grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+@keyframes sk-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.sk-caret {
+  animation: sk-blink 1.06s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sk-caret {
+    animation: none;
+    opacity: 1;
+  }
+}

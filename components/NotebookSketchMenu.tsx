@@ -1,77 +1,100 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
-  User,
-  FolderGit2,
-  Cpu,
+  ArrowUpRight,
   Award,
+  Cpu,
+  FolderGit2,
   GraduationCap,
   Mail,
-  Pencil,
-  ArrowRight,
+  Undo2,
+  User,
 } from "lucide-react";
 
-interface SketchCircleItem {
+interface SketchEntry {
   id: string;
+  index: string;
   label: string;
   subtitle: string;
+  note: string;
   icon: React.ElementType;
-  highlighterBg: string;
+  swatch: string;
   href: string;
 }
 
-const SKETCH_CIRCLES: SketchCircleItem[] = [
+const ENTRIES: SketchEntry[] = [
   {
     id: "about",
+    index: "01",
     label: "About Me",
-    subtitle: "UX/UI & Dev",
+    subtitle: "who I am",
+    note: "Third-year Digital Science & Technology at ICT Mahidol, working on systems that read data and answer back.",
     icon: User,
-    highlighterBg: "bg-yellow-200/80 dark:bg-yellow-500/30",
+    swatch: "#EFCD61",
     href: "#about",
   },
   {
     id: "projects",
+    index: "02",
     label: "Projects",
-    subtitle: "Interactive Work",
+    subtitle: "what I built",
+    note: "The Local Soul tourism chatbot, automated AI agents, and the coursework that grew into real builds.",
     icon: FolderGit2,
-    highlighterBg: "bg-cyan-200/80 dark:bg-cyan-500/30",
+    swatch: "#788EFF",
     href: "#projects",
   },
   {
     id: "skills",
+    index: "03",
     label: "Skills",
-    subtitle: "Tech & Tools",
+    subtitle: "what I use",
+    note: "Python, TypeScript, the AI agent stack, and the tools I reach for before I stop to think.",
     icon: Cpu,
-    highlighterBg: "bg-orange-200/80 dark:bg-orange-500/30",
+    swatch: "#FF5960",
     href: "#skills",
   },
   {
     id: "certificates",
+    index: "04",
     label: "Certificates",
-    subtitle: "Credentials",
+    subtitle: "what I earned",
+    note: "Google Student Ambassador 2026, BOTNOI Trainee 2026, and the rest of the paper trail.",
     icon: Award,
-    highlighterBg: "bg-emerald-200/80 dark:bg-emerald-500/30",
+    swatch: "#FFB0FF",
     href: "#certificates",
   },
   {
     id: "education",
+    index: "05",
     label: "Education",
-    subtitle: "ICT Degree",
+    subtitle: "where I study",
+    note: "B.Sc. in Digital Science & Technology, Faculty of ICT, Mahidol University.",
     icon: GraduationCap,
-    highlighterBg: "bg-pink-200/80 dark:bg-pink-500/30",
+    swatch: "#FFC060",
     href: "#education",
   },
   {
     id: "contact",
+    index: "06",
     label: "Contact",
-    subtitle: "Get in Touch",
+    subtitle: "say hi",
+    note: "Email, LinkedIn, GitHub. Internship and collaboration messages get answered first.",
     icon: Mail,
-    highlighterBg: "bg-purple-200/80 dark:bg-purple-500/30",
+    swatch: "#363636",
     href: "#contact",
   },
 ];
+
+/** ease-out-quint */
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+/* Hand-drawn double-loop pencil stroke, kept from the original sketchbook. */
+const PENCIL_OUTER =
+  "M 60 12 C 100 8, 140 26, 138 65 C 135 105, 105 138, 62 135 C 22 131, 8 95, 12 55 C 16 16, 48 12, 78 10 C 108 8, 138 20, 134 58";
+const PENCIL_INNER =
+  "M 68 16 C 108 12, 134 32, 131 70 C 128 108, 96 132, 56 129 C 16 126, 10 88, 14 50 C 18 12, 58 14, 88 16";
 
 interface NotebookSketchMenuProps {
   onSwitchToMain?: () => void;
@@ -80,192 +103,239 @@ interface NotebookSketchMenuProps {
 export default function NotebookSketchMenu({
   onSwitchToMain,
 }: NotebookSketchMenuProps) {
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const reduceMotion = useReducedMotion();
 
-  const handleCircleClick = (href: string) => {
+  const active = ENTRIES.find((entry) => entry.id === activeId) ?? null;
+
+  const goToSection = (href: string) => {
+    const scrollTo = () => {
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    };
+
     if (onSwitchToMain) {
       onSwitchToMain();
-      setTimeout(() => {
-        const elem = document.querySelector(href);
-        if (elem) elem.scrollIntoView({ behavior: "smooth" });
-      }, 350);
+      window.setTimeout(scrollTo, 350);
     } else {
-      const elem = document.querySelector(href);
-      if (elem) elem.scrollIntoView({ behavior: "smooth" });
+      scrollTo();
     }
   };
 
-  // Hand-drawn double-loop pencil SVG paths
-  const pencilPath1 =
-    "M 60 12 C 100 8, 140 26, 138 65 C 135 105, 105 138, 62 135 C 22 131, 8 95, 12 55 C 16 16, 48 12, 78 10 C 108 8, 138 20, 134 58";
-
-  const pencilPath2 =
-    "M 68 16 C 108 12, 134 32, 131 70 C 128 108, 96 132, 56 129 C 16 126, 10 88, 14 50 C 18 12, 58 14, 88 16";
-
   return (
-    <section className="relative w-full min-h-screen py-16 px-4 bg-[#FAF7F2] dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between items-center select-none overflow-hidden">
-      {/* Notebook Graph Grid Paper Background */}
-      <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)] bg-[size:1.75rem_1.75rem]" />
-        {/* Red Binder Margin Line */}
-        <div className="absolute top-0 bottom-0 left-8 md:left-20 w-0.5 bg-red-400/40" />
-      </div>
+    <section className="sketch-scope relative min-h-screen w-full overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
+      {/* Graph paper field */}
+      <div className="sk-paper pointer-events-none absolute inset-0" aria-hidden="true" />
 
-      {/* Main Single Notebook Paper Sheet Frame */}
-      <div className="relative z-10 w-full max-w-4xl bg-white/90 dark:bg-slate-900/90 rounded-3xl border-2 border-slate-800 dark:border-slate-700 shadow-2xl p-6 sm:p-10 md:p-12 my-auto backdrop-blur-xs">
-        {/* Spiral Binder Rings along Top */}
-        <div className="absolute -top-5 left-10 right-10 flex items-center justify-between pointer-events-none">
-          {Array.from({ length: 14 }).map((_, i) => (
-            <div
-              key={i}
-              className="w-3.5 h-7 bg-gradient-to-b from-slate-400 via-slate-200 to-slate-500 dark:from-slate-700 dark:to-slate-900 rounded-full border border-slate-500 shadow-md"
-            />
-          ))}
-        </div>
-
-        {/* Small Top Header Box (Clean & Centered) */}
-        <div className="relative z-20 mx-auto max-w-md mb-8">
-          <div className="relative px-6 py-3 rounded-2xl border-2 border-slate-800 bg-amber-100/90 dark:bg-slate-800 dark:border-slate-600 text-center shadow-sm">
-            {/* Corner Tape Detail */}
-            <div className="absolute -top-2 -left-3 w-10 h-4 bg-yellow-300/80 border border-yellow-400/80 -rotate-6" />
-            <div className="absolute -top-2 -right-3 w-10 h-4 bg-yellow-300/80 border border-yellow-400/80 rotate-6" />
-
-            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-amber-900 dark:text-amber-300">
-              <Pencil className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-              Wish's Interactive Sketchbook
-            </span>
-            <h2 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white mt-0.5">
-              Portfolio Sketchbook Index
-            </h2>
-          </div>
-          <p className="text-center text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">
-            Click any circle to jump to main page section! 🚀
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-x-14 gap-y-14 px-6 md:px-12 lg:grid-cols-[minmax(0,23rem)_minmax(0,1fr)]">
+        {/* ------------------------------------------------------------------
+            Left: identity + live preview of the hovered entry
+           ------------------------------------------------------------------ */}
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <p className="sk-pixel text-[1.0625rem] leading-none text-[var(--sk-muted)]">
+            wish nakthong / sketchbook
           </p>
-        </div>
 
-        {/* Structured Neat Grid of Small Circles (2 rows x 3 columns) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10 md:gap-12 place-items-center py-4 max-w-3xl mx-auto">
-          {SKETCH_CIRCLES.map((circle) => {
-            const isHovered = hoveredId === circle.id;
-            const IconComp = circle.icon;
-
-            return (
-              <motion.a
-                key={circle.id}
-                href={circle.href}
-                onMouseEnter={() => setHoveredId(circle.id)}
-                onMouseLeave={() => setHoveredId(null)}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleCircleClick(circle.href);
-                }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                whileHover={{
-                  scale: 1.1,
-                  transition: { type: "spring", stiffness: 400, damping: 20 },
-                }}
-                whileTap={{
-                  scale: 0.9,
-                  transition: { type: "spring", stiffness: 500, damping: 15 },
-                }}
-                className="relative cursor-pointer select-none group flex flex-col items-center justify-center p-2 w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40"
-              >
-                {/* Highlighter Wash Overlay on Hover */}
-                <motion.div
-                  className={`absolute inset-2 rounded-full ${circle.highlighterBg} opacity-0 group-hover:opacity-90 blur-xs transition-opacity duration-200 pointer-events-none`}
-                />
-
-                {/* SVG Hand-Drawn Pencil Stroke Circle */}
-                <svg
-                  viewBox="0 0 150 150"
-                  className="absolute inset-0 w-full h-full pointer-events-none text-slate-800 dark:text-slate-200 overflow-visible z-10"
-                >
-                  {/* Guide Circle */}
-                  <path
-                    d={pencilPath1}
-                    fill="none"
-                    stroke="rgba(0,0,0,0.08)"
-                    strokeWidth="4"
-                  />
-
-                  {/* Animated Live Pencil Circle on Hover */}
-                  <AnimatePresence>
-                    {isHovered ? (
-                      <>
-                        <motion.path
-                          d={pencilPath1}
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3.2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeDasharray="450"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.38, ease: "easeInOut" }}
-                        />
-                        <motion.path
-                          d={pencilPath2}
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeDasharray="450"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{
-                            duration: 0.45,
-                            delay: 0.08,
-                            ease: "easeInOut",
-                          }}
-                          className="opacity-75"
-                        />
-                      </>
-                    ) : (
-                      /* Default Resting Pencil Stroke */
-                      <path
-                        d={pencilPath1}
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        className="opacity-50"
-                      />
-                    )}
-                  </AnimatePresence>
-                </svg>
-
-                {/* Content inside small circle */}
-                <div className="relative z-20 flex flex-col items-center justify-center text-center p-2">
-                  <div className="p-2 sm:p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white shadow-xs group-hover:scale-110 transition-transform">
-                    <IconComp className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </div>
-                  <h3 className="mt-1.5 font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white tracking-tight group-hover:text-slate-950 dark:group-hover:text-white">
-                    {circle.label}
-                  </h3>
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium hidden sm:block">
-                    {circle.subtitle}
-                  </span>
-                </div>
-              </motion.a>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Bottom Switcher */}
-      <div className="relative z-20 mt-8 text-center">
-        {onSwitchToMain && (
-          <button
-            onClick={onSwitchToMain}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-xs sm:text-sm shadow-md hover:opacity-90 transition-opacity"
+          <h1
+            className="mt-3 text-[clamp(2.25rem,5.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.02em]"
+            style={{ textWrap: "balance" }}
           >
-            <span>Return to Main Portfolio Page 🏠</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        )}
+            the index
+          </h1>
+
+          <p className="mt-4 max-w-[42ch] text-[0.9375rem] font-light leading-relaxed text-[var(--sk-muted)]">
+            Six entries. Open one and it takes you to that section on the main
+            portfolio page.
+          </p>
+
+          {/* Preview screen */}
+          <div
+            className="relative mt-9 aspect-[4/3] w-full max-w-sm overflow-hidden rounded-xl border border-[var(--sk-line-strong)] bg-[var(--sk-surface)]"
+            aria-hidden="true"
+          >
+            <div className="sk-paper absolute inset-0 opacity-80" />
+
+            <AnimatePresence initial={false}>
+              <motion.div
+                key={active ? active.id : "idle"}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: reduceMotion ? 0 : 0.26, ease: EASE }}
+                className="absolute inset-0 grid place-items-center pb-8"
+              >
+                <div className="relative h-36 w-36">
+                  {active ? (
+                    <div
+                      className="absolute inset-6 rounded-full blur-xl"
+                      style={{ backgroundColor: `${active.swatch}66` }}
+                    />
+                  ) : null}
+
+                  <svg
+                    viewBox="0 0 150 150"
+                    className="absolute inset-0 h-full w-full overflow-visible text-[var(--sk-ink)]"
+                  >
+                    <motion.path
+                      d={PENCIL_OUTER}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      initial={reduceMotion ? false : { pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.55, ease: EASE }}
+                    />
+                    <motion.path
+                      d={PENCIL_INNER}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      opacity={0.5}
+                      initial={reduceMotion ? false : { pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.6, delay: 0.08, ease: EASE }}
+                    />
+                  </svg>
+
+                  <div className="absolute inset-0 grid place-items-center">
+                    {active ? (
+                      <active.icon className="h-9 w-9" strokeWidth={1.6} />
+                    ) : (
+                      <span className="sk-pixel sk-caret text-4xl leading-none">
+                        _
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Status bar */}
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 border-t border-[var(--sk-line)] bg-[var(--sk-surface)] px-3 py-1.5">
+              <span className="sk-pixel text-[1rem] leading-none text-[var(--sk-accent-ink)]">
+                {active ? active.index : "--"}
+              </span>
+              <span className="sk-pixel truncate text-[1rem] leading-none text-[var(--sk-muted)]">
+                {active ? active.note : "hover an entry to preview it"}
+              </span>
+            </div>
+          </div>
+
+          {onSwitchToMain && (
+            <button
+              type="button"
+              onClick={onSwitchToMain}
+              className="group mt-8 inline-flex items-center gap-2.5 rounded-none border-2 border-[var(--sk-ink)] px-4 py-2.5 text-[var(--sk-ink)] transition-colors duration-200 hover:bg-[var(--sk-ink)] hover:text-[var(--sk-bg)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--sk-accent-ink)]"
+            >
+              <Undo2
+                className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5"
+                strokeWidth={2}
+              />
+              <span className="sk-pixel text-[1.125rem] leading-none">
+                back to main portfolio
+              </span>
+            </button>
+          )}
+        </div>
+
+        {/* ------------------------------------------------------------------
+            Right: the index list
+           ------------------------------------------------------------------ */}
+        <nav aria-label="Portfolio index" className="lg:pt-2">
+          <div className="flex items-baseline justify-between border-b border-[var(--sk-line-strong)] pb-3">
+            <span className="sk-pixel text-[1.125rem] leading-none text-[var(--sk-muted)]">
+              contents
+            </span>
+            <span className="sk-pixel text-[1.125rem] leading-none text-[var(--sk-muted)]">
+              {ENTRIES.length} entries
+            </span>
+          </div>
+
+          <ol className="mt-1">
+            {ENTRIES.map((entry, i) => {
+              const Icon = entry.icon;
+
+              return (
+                <motion.li
+                  key={entry.id}
+                  initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.55,
+                    delay: reduceMotion ? 0 : 0.05 * i,
+                    ease: EASE,
+                  }}
+                >
+                  <a
+                    href={entry.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      goToSection(entry.href);
+                    }}
+                    onMouseEnter={() => setActiveId(entry.id)}
+                    onMouseLeave={() => setActiveId(null)}
+                    onFocus={() => setActiveId(entry.id)}
+                    onBlur={() => setActiveId(null)}
+                    className="group relative block border-b border-[var(--sk-line)] py-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--sk-accent-ink)] md:py-8"
+                  >
+                    {/* Accent rule sweeping in from the left on hover */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-0 bottom-[-1px] h-[2px] origin-left scale-x-0 bg-[var(--sk-accent)] transition-transform duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100 motion-reduce:transition-none"
+                    />
+
+                    <div className="flex items-center gap-5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-2 group-focus-visible:translate-x-2 motion-reduce:transform-none motion-reduce:transition-none md:gap-8">
+                      {/* Number + colour chip */}
+                      <span className="flex w-14 shrink-0 flex-col items-start gap-2 md:w-16">
+                        <span className="sk-pixel text-[1.5rem] leading-none text-[var(--sk-muted)] transition-colors duration-300 group-hover:text-[var(--sk-accent-ink)] group-focus-visible:text-[var(--sk-accent-ink)]">
+                          {entry.index}
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          className="h-2 w-2 origin-left transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-[2.75] group-focus-visible:scale-x-[2.75] motion-reduce:transform-none motion-reduce:transition-none"
+                          style={{ backgroundColor: entry.swatch }}
+                        />
+                      </span>
+
+                      {/* Label */}
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-[clamp(1.5rem,3.2vw,2.375rem)] font-normal leading-[1.15] tracking-[-0.015em]">
+                          {entry.label}
+                        </span>
+                        <span className="mt-1 block text-[0.9375rem] font-light text-[var(--sk-muted)]">
+                          {entry.subtitle}
+                        </span>
+                        <span className="sr-only">. {entry.note}</span>
+                      </span>
+
+                      {/* Trailing mark */}
+                      <span className="relative flex h-11 w-11 shrink-0 items-center justify-center">
+                        <Icon
+                          className="absolute h-5 w-5 text-[var(--sk-muted)] opacity-100 transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0"
+                          strokeWidth={1.6}
+                          aria-hidden="true"
+                        />
+                        <ArrowUpRight
+                          className="absolute h-6 w-6 text-[var(--sk-accent-ink)] opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none"
+                          strokeWidth={1.8}
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </div>
+                  </a>
+                </motion.li>
+              );
+            })}
+          </ol>
+
+          <p className="sk-pixel mt-6 text-[1.0625rem] leading-none text-[var(--sk-muted)]">
+            ICT Mahidol University / DST
+          </p>
+        </nav>
       </div>
     </section>
   );
