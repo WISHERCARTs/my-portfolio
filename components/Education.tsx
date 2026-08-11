@@ -2,8 +2,7 @@
 
 import Section from "./Section";
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Calendar } from "lucide-react";
-import Script from "next/script"; // โหลด Script ของ Credly
+import { GraduationCap, Calendar } from "lucide-react";
 
 const Education = () => {
   return (

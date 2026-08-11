@@ -34,7 +34,7 @@ const Hero = () => {
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
-            Hi, I'm{" "}
+            Hi, I&apos;m{" "}
             <span className="text-cyan-500 dark:text-cyan-400">
               Wish Nakthong
             </span>
@@ -46,7 +46,7 @@ const Hero = () => {
 
           <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-xl leading-relaxed">
             Passionate about <span className="font-semibold text-slate-800 dark:text-slate-200">AI, Data, and Automation</span>. 
-            Ex-AI Agent Builder Intern at Botnoi Group, creator of automated AI systems & the "Local Soul" tourism chatbot. 
+            Ex-AI Agent Builder Intern at Botnoi Group, creator of automated AI systems & the &quot;Local Soul&quot; tourism chatbot.
             Aspiring <span className="text-cyan-500 dark:text-cyan-400 font-semibold">AI Engineer</span> & <span className="text-cyan-500 dark:text-cyan-400 font-semibold">Solutions Architect</span>.
           </p>
 

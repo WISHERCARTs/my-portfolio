@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Section from "./Section";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Code, Database, Terminal, Cpu, Wifi, Shield, 
-  Video, Gamepad2, LineChart, Bot, Mic, Network,
-  Layers, Workflow, Sparkles, Layout
+import {
+  Code, Database, Terminal, Cpu, Wifi, Shield,
+  Gamepad2, LineChart, Bot, Mic, Network,
+  Workflow, Sparkles, Layout
 } from "lucide-react";
 
 const skillsData = [

@@ -1,20 +1,28 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { Menu, X, Code2, Sun, Moon, Code2Icon } from "lucide-react";
+import { Menu, X, Code2, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
+
+const noopSubscribe = () => () => {};
+
+// Theme is only known after client hydration; this reports false during SSR
+// and the initial client render so the toggle icon doesn't mismatch.
+function useMounted() {
+  return useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false
+  );
+}
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   useEffect(() => {
     const handleScroll = () => {

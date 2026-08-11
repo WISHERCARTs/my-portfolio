@@ -3,138 +3,92 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Bot } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useChat } from "@ai-sdk/react";
+import { TextStreamChatTransport, isTextUIPart, type UIMessage } from "ai";
 import { FormattedText } from "./formattext";
 import PixelOffice, { AgentStatus } from "./PixelOffice";
 
+const transport = new TextStreamChatTransport({ api: "/api/chat" });
+
+function getMessageText(message: UIMessage) {
+  return message.parts
+    .filter(isTextUIPart)
+    .map((part) => part.text)
+    .join("");
+}
+
+// Scans user text for keywords to pick which PixelOffice animation to play.
+function detectAgentStatus(text: string): AgentStatus {
+  const textLower = text.toLowerCase();
+  if (
+    textLower.includes("ประวัติ") ||
+    textLower.includes("ศึกษา") ||
+    textLower.includes("education") ||
+    textLower.includes("background") ||
+    textLower.includes("เรียน") ||
+    textLower.includes("school") ||
+    textLower.includes("university") ||
+    textLower.includes("มหาลัย") ||
+    textLower.includes("มหิดล") ||
+    textLower.includes("สุคนธีรวิทย์") ||
+    textLower.includes("เกรด") ||
+    textLower.includes("ฝึกงาน") ||
+    textLower.includes("internship") ||
+    textLower.includes("trainee") ||
+    textLower.includes("botnoi") ||
+    textLower.includes("บอทน้อย") ||
+    textLower.includes("cert") ||
+    textLower.includes("ใบรับรอง") ||
+    textLower.includes("เกียรติบัตร") ||
+    textLower.includes("certificate")
+  ) {
+    return "searching_books";
+  }
+  if (
+    textLower.includes("project") ||
+    textLower.includes("ผลงาน") ||
+    textLower.includes("งาน") ||
+    textLower.includes("ทักษะ") ||
+    textLower.includes("skill") ||
+    textLower.includes("tech") ||
+    textLower.includes("เขียนโค้ด") ||
+    textLower.includes("code") ||
+    textLower.includes("ความสามารถ")
+  ) {
+    return "searching_server";
+  }
+  return "thinking";
+}
+
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<any[]>([]);
   const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [agentStatus, setAgentStatus] = useState<AgentStatus>("idle");
+  const [pendingStatus, setPendingStatus] = useState<AgentStatus>("thinking");
+  const { messages, sendMessage, status, error, regenerate } = useChat({ transport });
+
+  const isLoading = status === "submitted" || status === "streaming";
+  const agentStatus: AgentStatus =
+    status === "streaming" ? "talking" : status === "submitted" ? pendingStatus : "idle";
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
-  const sendMessage = async (text: string) => {
+  const submitText = (text: string) => {
     if (!text.trim() || isLoading) return;
-    setError(null);
-    setIsLoading(true);
-
-    // Scan text for keywords to update agent status
-    const textLower = text.toLowerCase();
-    let nextStatus: AgentStatus = "thinking";
-    if (
-      textLower.includes("ประวัติ") ||
-      textLower.includes("ศึกษา") ||
-      textLower.includes("education") ||
-      textLower.includes("background") ||
-      textLower.includes("เรียน") ||
-      textLower.includes("school") ||
-      textLower.includes("university") ||
-      textLower.includes("มหาลัย") ||
-      textLower.includes("มหิดล") ||
-      textLower.includes("สุคนธีรวิทย์") ||
-      textLower.includes("เกรด") ||
-      textLower.includes("ฝึกงาน") ||
-      textLower.includes("internship") ||
-      textLower.includes("trainee") ||
-      textLower.includes("botnoi") ||
-      textLower.includes("บอทน้อย") ||
-      textLower.includes("cert") ||
-      textLower.includes("ใบรับรอง") ||
-      textLower.includes("เกียรติบัตร") ||
-      textLower.includes("certificate")
-    ) {
-      nextStatus = "searching_books";
-    } else if (
-      textLower.includes("project") ||
-      textLower.includes("ผลงาน") ||
-      textLower.includes("งาน") ||
-      textLower.includes("ทักษะ") ||
-      textLower.includes("skill") ||
-      textLower.includes("tech") ||
-      textLower.includes("เขียนโค้ด") ||
-      textLower.includes("code") ||
-      textLower.includes("ความสามารถ")
-    ) {
-      nextStatus = "searching_server";
-    }
-    setAgentStatus(nextStatus);
-
-    const userMessage = {
-      id: Date.now().toString(),
-      role: "user",
-      content: text,
-    };
-
-    setMessages((prev) => [...prev, userMessage]);
-
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: [...messages, userMessage] }),
-      });
-
-      if (!response.ok) throw new Error("Failed to send message");
-
-      const reader = response.body?.getReader();
-      if (!reader) return;
-
-      // Set agent to talking when response stream starts
-      setAgentStatus("talking");
-
-      const assistantMessage = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: "",
-      };
-
-      setMessages((prev) => [...prev, assistantMessage]);
-
-      const decoder = new TextDecoder();
-      let done = false;
-
-      while (!done) {
-        const { value, done: doneReading } = await reader.read();
-        done = doneReading;
-        const chunkValue = decoder.decode(value, { stream: true });
-
-        assistantMessage.content += chunkValue;
-
-        setMessages((prev) =>
-          prev.map((m) =>
-            m.id === assistantMessage.id
-              ? { ...m, content: assistantMessage.content }
-              : m
-          )
-        );
-      }
-    } catch (err: any) {
-      console.error("Chat Error:", err);
-      setError("เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง");
-    } finally {
-      setIsLoading(false);
-      setAgentStatus("idle");
-    }
+    setPendingStatus(detectAgentStatus(text));
+    sendMessage({ text });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isLoading) return;
-    sendMessage(input);
+    submitText(input);
     setInput("");
   };
 
   const handleRetry = () => {
-    const userMsgs = messages.filter((m) => m.role === "user");
-    if (userMsgs.length > 0) {
-      const lastText = userMsgs[userMsgs.length - 1].content;
-      sendMessage(lastText);
-    }
+    setPendingStatus("thinking");
+    regenerate();
   };
 
   const starterPrompts = [
@@ -166,7 +120,7 @@ export default function ChatWidget() {
                   <Bot size={20} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm">Wish's AI Assistant</h3>
+                  <h3 className="font-bold text-sm">Wish&apos;s AI Assistant</h3>
                   <p className="text-xs text-slate-400">
                     {isLoading ? "Typing..." : "Ask me anything!"}
                   </p>
@@ -199,7 +153,7 @@ export default function ChatWidget() {
                       <button
                         key={idx}
                         type="button"
-                        onClick={() => sendMessage(prompt.search)}
+                        onClick={() => submitText(prompt.search)}
                         className="w-full text-left px-4 py-2 bg-white dark:bg-slate-900 hover:bg-cyan-50 dark:hover:bg-cyan-950/20 text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-cyan-500/30 rounded-xl transition-all cursor-pointer font-medium"
                       >
                         {prompt.text}
@@ -209,7 +163,7 @@ export default function ChatWidget() {
                 </div>
               )}
 
-              {messages.map((m: any) => (
+              {messages.map((m) => (
                 <div
                   key={m.id}
                   className={`flex gap-2 ${
@@ -228,7 +182,7 @@ export default function ChatWidget() {
                         : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 rounded-2xl rounded-tl-sm"
                     }`}
                   >
-                    <FormattedText text={m.content} />
+                    <FormattedText text={getMessageText(m)} />
                   </div>
                 </div>
               ))}
@@ -250,7 +204,7 @@ export default function ChatWidget() {
 
               {error && (
                 <div className="flex flex-col items-center gap-2 p-3 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/50 rounded-2xl text-xs text-red-600 dark:text-red-400">
-                  <p>{error}</p>
+                  <p>เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง</p>
                   <button
                     type="button"
                     onClick={handleRetry}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 export type AgentStatus = "idle" | "searching_books" | "searching_server" | "thinking" | "talking";
 
@@ -8,46 +8,47 @@ interface PixelOfficeProps {
   status: AgentStatus;
 }
 
+function targetXForStatus(status: AgentStatus) {
+  switch (status) {
+    case "searching_books":
+      return 50; // Bookshelf
+    case "searching_server":
+      return 80; // Server Rack
+    default:
+      return 18; // Desk
+  }
+}
+
+function bubbleTextForStatus(status: AgentStatus) {
+  switch (status) {
+    case "idle":
+      return "Zzz...";
+    case "searching_books":
+      return "📚 Searching...";
+    case "searching_server":
+      return "💾 DB Query...";
+    case "thinking":
+      return "🧠 Reasoning...";
+    case "talking":
+      return "💬 Talking...";
+  }
+}
+
 export default function PixelOffice({ status }: PixelOfficeProps) {
   // Coordinates in percentage (%)
   const [currentX, setCurrentX] = useState(18); // Default at Desk (18%)
-  const [targetX, setTargetX] = useState(18);
   const [isWalking, setIsWalking] = useState(false);
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [showBubble, setShowBubble] = useState(false);
   const [bubbleText, setBubbleText] = useState("");
 
-  const prevStatusRef = useRef<AgentStatus>(status);
-
-  // Sync state machine logic
+  // Sync state machine logic: kicks off a setTimeout-driven walk animation
+  // whenever `status` changes, so the setState calls below are genuinely
+  // synchronizing with an external timer, not derivable render state.
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
-    let target = 18; // Default Desk
-    let text = "";
-
-    switch (status) {
-      case "idle":
-        target = 18; // Back to desk
-        text = "Zzz...";
-        break;
-      case "searching_books":
-        target = 50; // Bookshelf
-        text = "📚 Searching...";
-        break;
-      case "searching_server":
-        target = 80; // Server Rack
-        text = "💾 DB Query...";
-        break;
-      case "thinking":
-        target = 18; // Desk
-        text = "🧠 Reasoning...";
-        break;
-      case "talking":
-        target = 18; // Desk
-        text = "💬 Talking...";
-        break;
-    }
-
-    setTargetX(target);
+    const target = targetXForStatus(status);
+    const text = bubbleTextForStatus(status);
 
     // If target position changes, trigger walking state
     if (target !== currentX) {
@@ -76,9 +77,8 @@ export default function PixelOffice({ status }: PixelOfficeProps) {
         setShowBubble(false);
       }
     }
-
-    prevStatusRef.current = status;
   }, [status, currentX]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   // Hide bubble sometimes during idle so it's not permanently sleeping
   useEffect(() => {

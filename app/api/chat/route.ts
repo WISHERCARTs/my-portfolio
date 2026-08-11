@@ -1,21 +1,18 @@
 import { google } from '@ai-sdk/google';
-import { streamText } from 'ai';
+import { streamText, convertToModelMessages, type UIMessage } from 'ai';
 
 // อนุญาตให้รอนานสุด 15 วินาที
 export const maxDuration = 15;
 
 export async function POST(req: Request) {
   try {
-    // 1. รับข้อความจากหน้าบ้าน
-    const { messages } = await req.json();
-    const now = new Date().toLocaleString("th-TH", { timeZone: "Asia/Bangkok" });
-
-    console.log("Requesting model: gemini-2.5-flash"); // DEBUG LOG
+    // 1. รับข้อความจากหน้าบ้าน (useChat ส่งมาเป็น UIMessage[])
+    const { messages }: { messages: UIMessage[] } = await req.json();
 
     // 2. เรียก Gemini (ใช้ model flash ที่เร็วและฟรี)
     const result = streamText({
       model: google('gemini-2.5-flash'),
-      messages,
+      messages: await convertToModelMessages(messages),
       system: `
       คุณคือ AI Assistant ประจำเว็บ Portfolio ของ Wish Nakthong (วิชญ์ นาคทอง)
       หน้าที่ของคุณคือตอบคำถามเกี่ยวกับประวัติ ทักษะ ผลงาน การศึกษา และช่องทางการติดต่อของ Wish

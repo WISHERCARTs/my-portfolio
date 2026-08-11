@@ -6,13 +6,8 @@ import { motion } from "framer-motion";
 import Script from "next/script";
 import {
   Award,
-  Network,
   Code,
-  Database,
-  Github,
-  Cpu,
   ExternalLink,
-  ShieldCheck,
   GraduationCap,
   Bot,
 } from "lucide-react";

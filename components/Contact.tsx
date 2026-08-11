@@ -2,7 +2,8 @@
 
 import Section from "./Section";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Send, Instagram, Youtube } from "lucide-react";
+import { Mail } from "lucide-react";
+import { Linkedin, Github, Instagram, Youtube } from "./BrandIcons";
 import Link from "next/link";
 
 const Contact = () => {
@@ -17,7 +18,7 @@ const Contact = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <p className="text-slate-600 dark:text-slate-400">
-            I'm currently looking for internship opportunities. Feel free to
+            I&apos;m currently looking for internship opportunities. Feel free to
             reach out!
           </p>
         </div>

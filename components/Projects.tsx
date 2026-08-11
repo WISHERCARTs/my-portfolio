@@ -3,16 +3,16 @@
 import Section from "./Section";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Github,
   ExternalLink,
   X,
   ChevronLeft,
   ChevronRight,
   Globe,
 } from "lucide-react";
+import { Github } from "./BrandIcons";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const projects = [
   {
@@ -127,21 +127,21 @@ const Projects = () => {
     setCurrentImageIndex(0);
   };
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     if (selectedProject) {
       setCurrentImageIndex((prev) =>
         prev === selectedProject.demoImages.length - 1 ? 0 : prev + 1,
       );
     }
-  };
+  }, [selectedProject]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     if (selectedProject) {
       setCurrentImageIndex((prev) =>
         prev === 0 ? selectedProject.demoImages.length - 1 : prev - 1,
       );
     }
-  };
+  }, [selectedProject]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -155,7 +155,7 @@ const Projects = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedProject, currentImageIndex]);
+  }, [selectedProject, nextImage, prevImage]);
 
   return (
     <Section id="projects" className="bg-slate-50 dark:bg-slate-900/50">
@@ -167,7 +167,7 @@ const Projects = () => {
       >
         <h2 className="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
         <p className="text-slate-600 dark:text-slate-400">
-          Some of the projects I've worked on
+          Some of the projects I&apos;ve worked on
         </p>
       </motion.div>
 
