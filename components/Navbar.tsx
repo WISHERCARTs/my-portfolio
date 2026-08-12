@@ -54,7 +54,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 font-bold text-xl md:text-2xl text-cyan-500 dark:text-cyan-400"
+            className="flex items-center gap-2 font-bold text-xl md:text-2xl text-cyan-700 dark:text-cyan-300"
           >
             <Code2 className="w-8 h-8" />
             <span>Wish Nakthong</span>

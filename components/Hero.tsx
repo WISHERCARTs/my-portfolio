@@ -35,7 +35,7 @@ const Hero = () => {
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
             Hi, I&apos;m{" "}
-            <span className="text-cyan-500 dark:text-cyan-400">
+            <span className="text-cyan-700 dark:text-cyan-300">
               Wish Nakthong
             </span>
             <br />
@@ -47,13 +47,13 @@ const Hero = () => {
           <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-xl leading-relaxed">
             Passionate about <span className="font-semibold text-slate-800 dark:text-slate-200">AI, Data, and Automation</span>. 
             Ex-AI Agent Builder Intern at Botnoi Group, creator of automated AI systems & the &quot;Local Soul&quot; tourism chatbot.
-            Aspiring <span className="text-cyan-500 dark:text-cyan-400 font-semibold">AI Engineer</span> & <span className="text-cyan-500 dark:text-cyan-400 font-semibold">Solutions Architect</span>.
+            Aspiring <span className="text-cyan-700 dark:text-cyan-300 font-semibold">AI Engineer</span> & <span className="text-cyan-700 dark:text-cyan-300 font-semibold">Solutions Architect</span>.
           </p>
 
           <div className="flex flex-wrap gap-4">
             <Link
               href="#projects"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl font-semibold shadow-lg shadow-cyan-500/25 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-700 hover:bg-cyan-800 text-white text-lg rounded-xl font-semibold shadow-lg shadow-cyan-500/25 transition-all"
             >
               View My Projects
               <ArrowRight className="w-4 h-4" />

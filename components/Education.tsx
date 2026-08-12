@@ -29,7 +29,7 @@ const Education = () => {
           <div className="relative">
             <div className="absolute -left-[39px] top-0 w-5 h-5 rounded-full border-4 border-white dark:border-slate-950 bg-cyan-500" />
             <h3 className="text-xl font-bold">Mahidol University</h3>
-            <p className="text-cyan-500 dark:text-cyan-400 font-medium mb-1">
+            <p className="text-cyan-700 dark:text-cyan-300 font-medium mb-1">
               Bachelor Degree in Digital Science & Technology (B.Sc) (DST Major)
             </p>
             <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-4">
@@ -49,7 +49,7 @@ const Education = () => {
           <div className="relative">
             <div className="absolute -left-[39px] top-0 w-5 h-5 rounded-full border-4 border-white dark:border-slate-950 bg-cyan-500" />
             <h3 className="text-xl font-bold">Sukhondheerawidh School</h3>
-            <p className="text-cyan-500 dark:text-cyan-400 font-medium mb-1">
+            <p className="text-cyan-700 dark:text-cyan-300 font-medium mb-1">
               High School
             </p>
             <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-4">

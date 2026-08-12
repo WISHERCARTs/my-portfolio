@@ -236,7 +236,7 @@ const Projects = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
+                  className="flex items-center gap-2 py-3 -my-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
                 >
                   <Github className="w-4 h-4" />
                   Code
@@ -246,7 +246,7 @@ const Projects = () => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+                    className="flex items-center gap-2 py-3 -my-3 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
                   >
                     <Globe className="w-4 h-4" />
                     Live Demo
@@ -254,7 +254,7 @@ const Projects = () => {
                 )}
                 <button
                   onClick={() => openModal(project)}
-                  className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
+                  className="flex items-center gap-2 py-3 -my-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
                   Preview

@@ -328,7 +328,7 @@ export default function PixelOffice({ status }: PixelOfficeProps) {
         {/* Floating thought/speech bubble above the character's head */}
         {showBubble && bubbleText && (
           <div
-            className="absolute bottom-[36px] left-[50%] transform translate-x-[-50%] bg-slate-900 border border-cyan-500/50 text-cyan-400 text-[9px] px-2 py-0.5 rounded font-mono whitespace-nowrap z-30 animate-bubble"
+            className="absolute bottom-[36px] left-[50%] transform translate-x-[-50%] bg-slate-900 border border-cyan-500/50 text-cyan-300 text-[9px] px-2 py-0.5 rounded font-mono whitespace-nowrap z-30 animate-bubble"
             style={{
               boxShadow: "0 0 5px rgba(6, 182, 212, 0.2)",
               transform: `translateX(-50%) ${direction === "left" ? "scaleX(-1)" : "scaleX(1)"}`

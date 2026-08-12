@@ -27,7 +27,7 @@ const About = () => {
             />
           </div>
           <h2 className="text-3xl md:text-5xl font-extrabold mb-4">About Me</h2>
-          <p className="text-base md:text-lg font-semibold text-cyan-600 dark:text-cyan-400 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg font-semibold text-cyan-700 dark:text-cyan-300 max-w-2xl mx-auto">
             Third-Year DST Student @ ICT Mahidol University | Ex-AI Agent Builder Intern @ Botnoi Group | Google Student Ambassador 2026 [BATCH 1]
           </p>
         </div>
@@ -38,7 +38,7 @@ const About = () => {
             I am a 3rd-year Digital Science and Technology (DST) student at Mahidol University (Faculty of ICT) and a <strong className="text-slate-900 dark:text-white">Google Student Ambassador 2026 [BATCH 1]</strong>. I am deeply passionate about AI, data, and automation.
           </p>
           <p>
-            Recently, as an <strong className="text-slate-900 dark:text-white">AI Agent Builder Intern at Botnoi Group</strong>, I developed automated AI systems and built a tourism chatbot titled <strong className="text-cyan-600 dark:text-cyan-400">&quot;Local Soul&quot;</strong>. My work focuses on designing intelligent agentic workflows, building multi-agent RAG pipelines, and integrating seamless API automation.
+            Recently, as an <strong className="text-slate-900 dark:text-white">AI Agent Builder Intern at Botnoi Group</strong>, I developed automated AI systems and built a tourism chatbot titled <strong className="text-cyan-700 dark:text-cyan-300">&quot;Local Soul&quot;</strong>. My work focuses on designing intelligent agentic workflows, building multi-agent RAG pipelines, and integrating seamless API automation.
           </p>
           <p>
             I love solving complex problems and am currently seeking to connect with tech professionals and explore future opportunities as an <strong className="text-slate-900 dark:text-white">AI Engineer</strong> or <strong className="text-slate-900 dark:text-white">Solutions Architect</strong>.
