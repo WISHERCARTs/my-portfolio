@@ -109,6 +109,28 @@ const projects = [
       "/images/R_Lab/R_Lab6.jpeg",
     ],
   },
+  {
+    title: "Fuwari Time",
+    description:
+      "Gamified Pomodoro & study companion mobile app with a virtual companion, Lo-fi music shop, and weather-synced ambience. Built as ITDS283 Mobile Application Development group project.",
+    image: "/images/FuwariTime/day.jpg",
+    tags: ["Flutter", "Dart", "Supabase", "Provider", "OpenWeatherMap API"],
+    github: "https://github.com/WISHERCARTs/ITDS283-FuwariTime-6787003-6787074",
+    demoImages: [
+      "/images/FuwariTime/day.jpg",
+      "/images/FuwariTime/night.jpg",
+      "/images/FuwariTime/shop.jpg",
+    ],
+  },
+  {
+    title: "LINE OA AI Chatbot",
+    description:
+      "Thai-language LINE Official Account chatbot backed by FastAPI and the Google Gemini API, with webhook signature validation and hot-reloadable prompts.",
+    image: "/images/line-chatbot/cover.svg",
+    tags: ["Python", "FastAPI", "Google Gemini API", "LINE Bot SDK"],
+    github: "https://github.com/WISHERCARTs/line-ai-chatbot-gemini",
+    demoImages: ["/images/line-chatbot/cover.svg"],
+  },
 ];
 
 const Projects = () => {

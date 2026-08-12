@@ -1,0 +1,23 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#0e2a3a"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g opacity="0.12" stroke="#22d3ee" stroke-width="2">
+    <circle cx="120" cy="500" r="180" fill="none"/>
+    <circle cx="700" cy="80" r="140" fill="none"/>
+  </g>
+  <g transform="translate(400,255)">
+    <rect x="-90" y="-70" width="180" height="130" rx="24" fill="#0b1220" stroke="#22d3ee" stroke-width="4"/>
+    <circle cx="-40" cy="-10" r="12" fill="#22d3ee"/>
+    <circle cx="40" cy="-10" r="12" fill="#22d3ee"/>
+    <rect x="-30" y="28" width="60" height="8" rx="4" fill="#22d3ee"/>
+    <polygon points="-20,60 0,90 20,60" fill="#0b1220" stroke="#22d3ee" stroke-width="4"/>
+  </g>
+  <text x="400" y="400" text-anchor="middle" font-family="monospace" font-size="30" fill="#e2f7fb" font-weight="700">LINE OA AI Chatbot</text>
+  <text x="400" y="436" text-anchor="middle" font-family="monospace" font-size="18" fill="#7fd8e6">FastAPI + Google Gemini API</text>
+</svg>
