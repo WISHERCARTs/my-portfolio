@@ -114,6 +114,11 @@ const certificateData = [
   },
 ];
 
+const credlyBadges = [
+  { id: "e81794ed-4901-47f8-a15a-dd3fd3a7e97e", category: "Networks & Security" },
+  { id: "ae9ebccb-4f83-4b72-9045-890c26d69443", category: "Programming & Tools" },
+];
+
 const colorVariants = {
   blue: "bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400 group-hover:bg-cyan-600 group-hover:text-white",
   emerald:
@@ -150,7 +155,9 @@ const Certificates = () => {
     ? certificateData
     : certificateData.filter(cert => cert.category === selectedCategory);
 
-  const showCredly = selectedCategory === "All" || selectedCategory === "Networks & Security";
+  const visibleBadges = credlyBadges.filter(
+    (badge) => selectedCategory === "All" || selectedCategory === badge.category
+  );
 
   return (
     <Section id="certificates">
@@ -189,9 +196,13 @@ const Certificates = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Credly Badge */}
-          {showCredly && (
+          {/* Credly Badges */}
+          {visibleBadges.length > 0 && (
+            <Script src="//cdn.credly.com/assets/utilities/embed.js" async />
+          )}
+          {visibleBadges.map((badge) => (
             <motion.div
+              key={badge.id}
               layout
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -201,15 +212,14 @@ const Certificates = () => {
               <div
                 data-iframe-width="150"
                 data-iframe-height="270"
-                data-share-badge-id="e81794ed-4901-47f8-a15a-dd3fd3a7e97e"
+                data-share-badge-id={badge.id}
                 data-share-badge-host="https://www.credly.com"
               ></div>
-              <Script src="//cdn.credly.com/assets/utilities/embed.js" async />
               <p className="mt-4 text-xs font-medium text-slate-500 uppercase tracking-widest">
                 Official Badge
               </p>
             </motion.div>
-          )}
+          ))}
 
           {filteredCertificates.map((cert, index) => {
             const logoConfig = issuerLogos[cert.issuer];
