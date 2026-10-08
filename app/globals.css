@@ -13,84 +13,75 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
-   Sketchbook Index scope
-   Tokens + type are scoped to .sketch-scope so the Classic view keeps its own
-   Geist / cyan system untouched.
+   Folio scope
+   Black stage, cream type, a cream graph-paper panel and colour stickers.
+   Scoped to .folio so the Classic view keeps its own Geist / cyan system.
    --------------------------------------------------------------------------- */
 
-.sketch-scope {
-  /* Silver studio field. Ink is near-black, muted clears 6.4:1 on the field. */
-  --sk-bg: #ffffff;
-  --sk-surface: #f3f3f3;
-  --sk-ink: #0b0b0c;
-  --sk-muted: #4a4a4a;
-  --sk-line: rgba(11, 12, 14, 0.16);
-  --sk-line-strong: rgba(11, 12, 14, 0.4);
-  --sk-grid: rgba(11, 12, 14, 0.055);
-  /* Periwinkle carries rules and fills; accent-ink is the text-safe variant. */
-  --sk-accent: #788eff;
-  --sk-accent-ink: #3f4fd8;
-  --sk-accent-contrast: #ffffff;
-  /* Red pencil for hand-drawn loops and margin notes. */
-  --sk-pen: #d4312f;
-  --sk-tag-ink: #0b0b0c;
+/* In the components layer so Tailwind utilities can still override. */
+@layer components {
+  .folio {
+    --f-bg: #0e0e0e;
+    --f-cream: #eee7da;
+    /* 7.6:1 on the stage, for secondary copy. */
+    --f-dim: #a7a299;
+    --f-line: rgba(238, 231, 218, 0.16);
+    --f-line-strong: rgba(238, 231, 218, 0.34);
+    --f-panel: #eee7da;
+    --f-panel-ink: #121212;
+    --f-grid: rgba(18, 18, 18, 0.1);
+    --f-sticker-ink: #111111;
 
-  font-family: var(--font-mitr), ui-sans-serif, system-ui, sans-serif;
-  color: var(--sk-ink);
-  background-color: var(--sk-bg);
-}
-
-.dark .sketch-scope {
-  --sk-bg: #121214;
-  --sk-surface: #1a1a1e;
-  --sk-ink: #ededef;
-  --sk-muted: #9c9ca4;
-  --sk-line: rgba(237, 237, 239, 0.16);
-  --sk-line-strong: rgba(237, 237, 239, 0.38);
-  --sk-grid: rgba(237, 237, 239, 0.05);
-  --sk-accent: #97a8ff;
-  --sk-accent-ink: #97a8ff;
-  --sk-accent-contrast: #101018;
-  --sk-pen: #ff6f6b;
-}
-
-.sk-pixel {
-  font-family: var(--font-vt323), ui-monospace, SFMono-Regular, monospace;
-  font-weight: 400;
-  font-variant-ligatures: none;
-}
-
-.sk-marker {
-  font-family: var(--font-marker), var(--font-mitr), ui-sans-serif, sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-.sk-paper {
-  background-image:
-    linear-gradient(to right, var(--sk-grid) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--sk-grid) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-
-@keyframes sk-blink {
-  0%,
-  49% {
-    opacity: 1;
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+    color: var(--f-cream);
+    background-color: var(--f-bg);
   }
-  50%,
-  100% {
-    opacity: 0;
+
+  .f-display {
+    font-family: var(--font-display), Impact, "Arial Narrow", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: -0.005em;
+  }
+
+  .f-mono {
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .f-grid {
+    background-color: var(--f-panel);
+    background-image:
+      linear-gradient(to right, var(--f-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--f-grid) 1px, transparent 1px);
+    background-size: 44px 44px;
+    background-position: -1px -1px;
+  }
+
+  .f-sticker {
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--f-sticker-ink);
   }
 }
 
-.sk-caret {
-  animation: sk-blink 1.06s steps(1) infinite;
+@keyframes f-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.f-spin {
+  animation: f-spin 18s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sk-caret {
+  .f-spin {
     animation: none;
-    opacity: 1;
   }
 }
