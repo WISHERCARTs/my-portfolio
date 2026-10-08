@@ -12,7 +12,7 @@ import {
   Bot,
 } from "lucide-react";
 
-const certificateData = [
+export const certificateData = [
   {
     title: "BOTNOI Trainee 2026 - AI Agent Builder",
     issuer: "BOTNOI Group",
@@ -114,7 +114,7 @@ const certificateData = [
   },
 ];
 
-const credlyBadges = [
+export const credlyBadges = [
   { id: "e81794ed-4901-47f8-a15a-dd3fd3a7e97e", category: "Networks & Security" },
   { id: "ae9ebccb-4f83-4b72-9045-890c26d69443", category: "Programming & Tools" },
 ];

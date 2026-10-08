@@ -14,7 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 
-const projects = [
+export const projects = [
   {
     title: "MLP Digit Recognition",
     description:

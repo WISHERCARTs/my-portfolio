@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Mitr, VT323 } from "next/font/google";
+import { Geist, Geist_Mono, Mitr, Permanent_Marker, VT323 } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import ChatWidget from "@/components/ChatWidget";
@@ -29,6 +29,14 @@ const vt323 = VT323({
   display: "swap",
 });
 
+// Marker pen for sketchbook display type: the big name and page titles.
+const marker = Permanent_Marker({
+  variable: "--font-marker",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Wish N. | Data & AI Portfolio",
   description: "Portfolio of Wish Nakthong, an ICT DST Student specializing in Data Science and Tech.",
@@ -42,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${mitr.variable} ${vt323.variable} antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100`}
+        className={`${geistSans.variable} ${geistMono.variable} ${mitr.variable} ${vt323.variable} ${marker.variable} antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100`}
       >
         <Providers>
           {children}

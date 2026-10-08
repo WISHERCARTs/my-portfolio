@@ -9,7 +9,7 @@ import {
   Workflow, Sparkles, Layout
 } from "lucide-react";
 
-const skillsData = [
+export const skillsData = [
   {
     category: "Languages",
     icon: <Code className="w-6 h-6" />,
@@ -120,13 +120,13 @@ const skillsData = [
   },
 ];
 
-interface SkillConfig {
+export interface SkillConfig {
   logoUrl?: string;
   isDarkInverted?: boolean;
   fallbackIcon?: React.ReactNode;
 }
 
-const skillLogos: Record<string, SkillConfig> = {
+export const skillLogos: Record<string, SkillConfig> = {
   // Languages
   "HTML/CSS": {
     logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"

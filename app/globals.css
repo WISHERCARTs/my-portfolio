@@ -20,8 +20,8 @@ body {
 
 .sketch-scope {
   /* Silver studio field. Ink is near-black, muted clears 6.4:1 on the field. */
-  --sk-bg: #dcdcdc;
-  --sk-surface: #f2f2f2;
+  --sk-bg: #ffffff;
+  --sk-surface: #f3f3f3;
   --sk-ink: #0b0b0c;
   --sk-muted: #4a4a4a;
   --sk-line: rgba(11, 12, 14, 0.16);
@@ -31,6 +31,9 @@ body {
   --sk-accent: #788eff;
   --sk-accent-ink: #3f4fd8;
   --sk-accent-contrast: #ffffff;
+  /* Red pencil for hand-drawn loops and margin notes. */
+  --sk-pen: #d4312f;
+  --sk-tag-ink: #0b0b0c;
 
   font-family: var(--font-mitr), ui-sans-serif, system-ui, sans-serif;
   color: var(--sk-ink);
@@ -48,12 +51,19 @@ body {
   --sk-accent: #97a8ff;
   --sk-accent-ink: #97a8ff;
   --sk-accent-contrast: #101018;
+  --sk-pen: #ff6f6b;
 }
 
 .sk-pixel {
   font-family: var(--font-vt323), ui-monospace, SFMono-Regular, monospace;
   font-weight: 400;
   font-variant-ligatures: none;
+}
+
+.sk-marker {
+  font-family: var(--font-marker), var(--font-mitr), ui-sans-serif, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .sk-paper {
