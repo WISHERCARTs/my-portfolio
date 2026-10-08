@@ -9,7 +9,7 @@ function SkillMark({ item }: { item: string }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <span className="flex h-9 w-9 shrink-0 items-center justify-center">
+    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--f-cream)] text-[var(--f-panel-ink)]">
       {config?.logoUrl && !failed ? (
         // Logos come from external CDNs and fall back to an icon on error,
         // which next/image can't do without a remote loader per host.
@@ -18,10 +18,10 @@ function SkillMark({ item }: { item: string }) {
           src={config.logoUrl}
           alt=""
           onError={() => setFailed(true)}
-          className={`h-8 w-8 object-contain ${config.isDarkInverted ? "dark:invert" : ""}`}
+          className="h-6 w-6 object-contain"
         />
       ) : (
-        config?.fallbackIcon ?? <Terminal className="h-6 w-6 text-[var(--sk-muted)]" />
+        config?.fallbackIcon ?? <Terminal className="h-5 w-5" />
       )}
     </span>
   );
@@ -29,18 +29,15 @@ function SkillMark({ item }: { item: string }) {
 
 export default function SkillsPage() {
   return (
-    <div className="space-y-16">
+    <div className="space-y-20">
       {skillsData.map((group, i) => (
         <section key={group.category} aria-labelledby={`skills-${i}`}>
-          <div className="flex items-baseline justify-between gap-4 border-b border-[var(--sk-line-strong)] pb-3">
-            <h2
-              id={`skills-${i}`}
-              className="text-[clamp(1.375rem,3vw,2rem)] font-normal leading-tight"
-            >
+          <div className="flex items-end justify-between gap-4 border-b border-[var(--f-line-strong)] pb-4">
+            <h2 id={`skills-${i}`} className="f-display text-[clamp(2rem,4.5vw,3.5rem)] leading-[0.95]">
               {group.category}
             </h2>
-            <span className="sk-pixel shrink-0 text-[1.125rem] leading-none text-[var(--sk-muted)]">
-              {group.items.length} items
+            <span className="f-mono shrink-0 pb-1 text-[0.6875rem] text-[var(--f-dim)]">
+              {String(group.items.length).padStart(2, "0")} items
             </span>
           </div>
 
@@ -48,12 +45,10 @@ export default function SkillsPage() {
             {group.items.map((item) => (
               <li
                 key={item}
-                className="flex min-h-14 items-center gap-3 border-b border-[var(--sk-line)] py-2.5"
+                className="flex min-h-16 items-center gap-4 border-b border-[var(--f-line)] py-2.5"
               >
                 <SkillMark item={item} />
-                <span className="text-[0.9375rem] font-light leading-snug">
-                  {item}
-                </span>
+                <span className="text-[0.9375rem] leading-snug">{item}</span>
               </li>
             ))}
           </ul>

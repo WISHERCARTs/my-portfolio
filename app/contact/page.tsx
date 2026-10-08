@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import SketchShell from "@/components/sketch/SketchShell";
-import ContactPage from "@/components/sketch/pages/ContactPage";
+import FolioShell from "@/components/folio/FolioShell";
+import ContactPage from "@/components/folio/pages/ContactPage";
 
 export const metadata: Metadata = {
   title: "Contact | Wish Nakthong",
@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <SketchShell slug="contact">
+    <FolioShell slug="contact">
       <ContactPage />
-    </SketchShell>
+    </FolioShell>
   );
 }

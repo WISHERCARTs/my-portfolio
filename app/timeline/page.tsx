@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import FolioShell from "@/components/folio/FolioShell";
-import EducationPage from "@/components/folio/pages/EducationPage";
+import TimelinePage from "@/components/folio/pages/TimelinePage";
 
 export const metadata: Metadata = {
-  title: "Education | Wish Nakthong",
+  title: "Timeline | Wish Nakthong",
 };
 
 export default function Page() {
   return (
-    <FolioShell slug="education">
-      <EducationPage />
+    <FolioShell slug="timeline">
+      <TimelinePage />
     </FolioShell>
   );
 }

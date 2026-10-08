@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Mitr, Permanent_Marker, VT323 } from "next/font/google";
+import { Anton, Archivo, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import ChatWidget from "@/components/ChatWidget";
@@ -14,26 +14,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Sketchbook Index only. Mitr carries Thai + Latin; VT323 is the pixel voice.
-const mitr = Mitr({
-  variable: "--font-mitr",
-  subsets: ["latin", "thai"],
-  weight: ["200", "300", "400", "500", "600"],
-  display: "swap",
-});
-
-const vt323 = VT323({
-  variable: "--font-vt323",
+// Folio pages: Anton for the poster-size display type, Archivo for copy
+// and stickers.
+const display = Anton({
+  variable: "--font-display",
   subsets: ["latin"],
   weight: "400",
   display: "swap",
 });
 
-// Marker pen for sketchbook display type: the big name and page titles.
-const marker = Permanent_Marker({
-  variable: "--font-marker",
+const body = Archivo({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "700", "800"],
   display: "swap",
 });
 
@@ -50,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${mitr.variable} ${vt323.variable} ${marker.variable} antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100`}
+        className={`${geistSans.variable} ${geistMono.variable} ${display.variable} ${body.variable} antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100`}
       >
         <Providers>
           {children}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Pencil } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -24,8 +24,8 @@ export default function ClassicPage() {
         href="/"
         className="fixed top-20 right-6 z-40 flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-300 dark:border-slate-800 rounded-full shadow-xl text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-colors"
       >
-        <Pencil className="w-3.5 h-3.5" />
-        <span>Sketchbook View 📝</span>
+        <ArrowLeft className="w-3.5 h-3.5" />
+        <span>Back to new site</span>
       </Link>
 
       <Hero />

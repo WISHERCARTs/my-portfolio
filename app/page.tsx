@@ -1,5 +1,5 @@
-import SketchHome from "@/components/sketch/SketchHome";
+import FolioHome from "@/components/folio/FolioHome";
 
 export default function Home() {
-  return <SketchHome />;
+  return <FolioHome />;
 }
