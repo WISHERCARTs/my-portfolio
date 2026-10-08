@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Script from "next/script";
 import { ArrowUpRight } from "lucide-react";
 import { certificateData, credlyBadges } from "@/components/Certificates";
+import { certPreviewSrc } from "@/lib/certPreview";
 
 const CATEGORIES = [
   "All",
@@ -55,7 +57,7 @@ export default function CertificatesPage() {
               href={cert.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-start gap-x-5 gap-y-1 border-b border-[var(--f-line)] py-7 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)] md:grid-cols-[4rem_minmax(0,1fr)_8rem_2rem] md:items-center md:gap-x-8"
+              className="group relative grid grid-cols-[2.75rem_minmax(0,1fr)_auto] items-start gap-x-5 gap-y-1 border-b border-[var(--f-line)] py-7 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)] md:grid-cols-[4rem_minmax(0,1fr)_minmax(0,15rem)_5rem_2rem] md:items-center md:gap-x-8"
             >
               <span
                 aria-hidden="true"
@@ -75,7 +77,17 @@ export default function CertificatesPage() {
                   {cert.description}
                 </span>
               </span>
-              <span className="f-mono justify-self-end text-[0.6875rem] text-[var(--f-dim)] md:justify-self-start">
+              {/* Preview of page one of the certificate */}
+              <span className="relative col-span-2 col-start-2 row-start-2 mt-4 block aspect-[1100/777] w-full max-w-[20rem] overflow-hidden rounded-md bg-white shadow-[0_10px_24px_-14px_rgba(0,0,0,0.8)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-rotate-2 group-hover:scale-[1.04] motion-reduce:transition-none md:col-span-1 md:col-start-auto md:row-start-auto md:mt-0">
+                <Image
+                  src={certPreviewSrc(cert.title)}
+                  alt={`Preview of the ${cert.title} certificate`}
+                  fill
+                  sizes="(min-width: 768px) 240px, 80vw"
+                  className="object-contain"
+                />
+              </span>
+              <span className="f-mono col-start-3 row-start-1 justify-self-end text-[0.6875rem] text-[var(--f-dim)] md:col-start-auto md:row-start-auto md:justify-self-start">
                 {cert.date}
               </span>
               <ArrowUpRight
