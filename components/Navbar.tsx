@@ -42,7 +42,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link
-            href="/"
+            href="/classic"
             className="flex items-center gap-2 font-bold text-xl md:text-2xl text-cyan-700 dark:text-cyan-300"
           >
             <Code2 className="w-8 h-8" />
