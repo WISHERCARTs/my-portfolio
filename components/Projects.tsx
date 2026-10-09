@@ -25,6 +25,15 @@ export const projects = [
     demoImages: ["/images/local-soul/home.jpg"],
   },
   {
+    title: "Thai RAG with Evaluation",
+    description:
+      "Thai question answering over 40 Thai Wikipedia articles, with an evaluation harness that measures it. On 80 questions, Gemini embedding search put the source passage in the top 3 every time, while BM25 over PyThaiNLP word segmentation missed 4. Answers cite their sources and refused all 10 questions the articles could not answer.",
+    image: "/images/thai-rag/cover.svg",
+    tags: ["Python", "RAG", "Google Gemini API", "PyThaiNLP", "BM25", "Evaluation"],
+    github: "https://github.com/WISHERCARTs/thai-rag-eval",
+    demoImages: ["/images/thai-rag/cover.svg"],
+  },
+  {
     title: "MLP Digit Recognition",
     description:
       "Handwritten digit recognition using Multi-Layer Perceptron (MLP) with Streamlit web interface",

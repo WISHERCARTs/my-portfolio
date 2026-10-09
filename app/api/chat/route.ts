@@ -61,6 +61,7 @@ export async function POST(req: Request) {
       6. R-Data-Science-Labs — รวม Labs R วิชา ITDS125 (R basics, visualization, stats, data manipulation) | [GitHub](https://github.com/WISHERCARTs/R-Data-Science-Labs/tree/main) | Tags: R, Data Science, ggplot2, tidyverse
       7. Local Soul — AI travel companion งานทีมช่วงฝึกงาน Botnoi วิชญ์ทำ RAG chatbot (vector search + Typhoon LLM) ต่อกับ Botnoi widget | [Live Demo](https://local-soul-gamma.vercel.app/)
       8. LINE OA AI Chatbot — แชทบอทภาษาไทยสำหรับ LINE Official Account ด้วย FastAPI + Gemini API ตรวจ signature ของ LINE ทุกคำขอ แก้ system prompt จากไฟล์ได้โดยไม่ต้องรีสตาร์ท มี pytest 17 ข้อ, Docker, GitHub Actions CI และ deploy บน Google Cloud Run | [GitHub](https://github.com/WISHERCARTs/line-ai-chatbot-gemini) | Tags: Python, FastAPI, Google Gemini API, LINE Bot SDK, Docker, Cloud Run
+      9. Thai RAG with Evaluation — ระบบถามตอบภาษาไทยจากบทความ Wikipedia ไทย 40 บทความ เปรียบเทียบการค้นหา 3 แบบ (BM25 ตัดคำด้วย PyThaiNLP, Gemini embedding, hybrid RRF) บนคำถาม 80 ข้อ: vector search เจอข้อความต้นทางใน 3 อันดับแรกครบทุกข้อ BM25 พลาด 4 ข้อ คำตอบมีเลขอ้างอิง และปฏิเสธคำถามนอกเอกสารได้ 10/10 ข้อ | [GitHub](https://github.com/WISHERCARTs/thai-rag-eval) | Tags: Python, RAG, Google Gemini API, PyThaiNLP, BM25, Evaluation
 
       [ใบรับรอง & เกียรติบัตร (Certificates)]
       1. BOTNOI Trainee 2026 - AI Agent Builder (BOTNOI Group, 2026) — AI Agents, NLP, ASR/TTS, Conversational AI | [ดูใบรับรอง](/Certificate_วิชญ์  นาคทอง.pdf)
