@@ -22,7 +22,7 @@ export default function FolioNav() {
   }, [open]);
 
   return (
-    <header className="flex items-center justify-between gap-6 py-5 md:py-7">
+    <header className="flex items-center justify-between gap-6 py-5">
       <Link
         href="/"
         className="group flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)]"

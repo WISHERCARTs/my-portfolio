@@ -51,7 +51,7 @@ export default function ContactPage() {
             <a
               href={contact.href}
               {...(contact.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="group relative flex min-h-28 items-center gap-5 border-b border-[var(--f-line)] py-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)] md:gap-10"
+              className="group relative flex min-h-20 items-center gap-5 border-b border-[var(--f-line)] py-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)] md:gap-10"
             >
               <span
                 aria-hidden="true"
@@ -63,7 +63,7 @@ export default function ContactPage() {
               <span className="f-mono hidden w-28 shrink-0 text-[0.75rem] text-[var(--f-dim)] sm:block">
                 {contact.label}
               </span>
-              <span className="f-display min-w-0 flex-1 break-words text-[clamp(1.75rem,5vw,3.75rem)] normal-case transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-2 motion-reduce:transform-none motion-reduce:transition-none">
+              <span className="f-display min-w-0 flex-1 break-words text-[clamp(1.5rem,3.2vw,2.5rem)] normal-case transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-2 motion-reduce:transform-none motion-reduce:transition-none">
                 <span className="sr-only sm:hidden">{contact.label}: </span>
                 {contact.value}
               </span>
