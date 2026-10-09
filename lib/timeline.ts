@@ -186,6 +186,13 @@ export const TIMELINE: TimelineYear[] = [
           href: "/Coursera-Google-Cloud-Fundamentals.pdf",
         },
       },
+      {
+        kind: "build",
+        when: "Oct",
+        title: "Thai RAG with evaluation",
+        body: "Question answering over Thai Wikipedia that compares keyword, embedding and hybrid search on 80 questions and checks the answers cite their sources.",
+        href: "/projects",
+      },
     ],
   },
 ];
