@@ -141,7 +141,7 @@ export const TIMELINE: TimelineYear[] = [
           title: "Google Student Ambassador Class of 2026",
           href: "/GSA-Certificate-Portfolio.pdf",
         },
-        photos: Array.from({ length: 17 }, (_, i) => ({
+        photos: Array.from({ length: 24 }, (_, i) => ({
           src: `/images/timeline/gsa-2026-${String(i + 1).padStart(2, "0")}.jpg`,
           alt: `Google Student Ambassador 2026, Batch 1, photo ${i + 1}`,
         })),
