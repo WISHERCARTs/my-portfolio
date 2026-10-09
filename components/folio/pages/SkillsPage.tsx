@@ -9,10 +9,10 @@ function SkillMark({ item }: { item: string }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--f-cream)] text-[var(--f-panel-ink)]">
+    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--f-cream)] text-[var(--f-panel-ink)] [&>svg]:h-4 [&>svg]:w-4">
       {config?.logoUrl && !failed ? (
-        // Logos come from external CDNs and fall back to an icon on error,
-        // which next/image can't do without a remote loader per host.
+        // Logos are self-hosted SVGs in /icons/skills; a missing file falls
+        // back to the item's icon, which next/image can't do on its own.
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={config.logoUrl}
