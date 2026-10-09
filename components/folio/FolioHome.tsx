@@ -13,7 +13,7 @@ import { StickerFace, StickerLink } from "./Stickers";
 /* Where each sticker sits on the panel on wide screens, plus its tilt. */
 const PLACEMENT: Record<string, { className: string; rotate: number }> = {
   about: { className: "md:left-[9%] md:top-[7%]", rotate: -8 },
-  skills: { className: "md:left-[2.5%] md:top-[45%]", rotate: -6 },
+  skills: { className: "md:left-[2.5%] md:top-[50%]", rotate: -6 },
   certificates: { className: "md:left-[12%] md:bottom-[6%]", rotate: 7 },
   projects: { className: "md:left-[64%] md:top-[9%]", rotate: 5 },
   education: { className: "md:right-[9%] md:top-[36%]", rotate: -9 },
@@ -37,7 +37,7 @@ export default function FolioHome() {
       <div className="mx-auto max-w-[88rem] px-5 md:px-10">
         <FolioNav />
 
-        <h1 className="f-display mt-6 text-[clamp(3.75rem,21vw,7.5rem)] md:mt-8 md:whitespace-nowrap md:text-[min(calc((100vw-5rem)/6.45),12.85rem)]">
+        <h1 className="f-display mt-4 text-[clamp(3.75rem,21vw,7.5rem)] md:mt-3 md:whitespace-nowrap md:text-[min(calc((100vw-5rem)/6.45),15svh,12.85rem)]">
           <span className="sr-only">Wish Nakthong, </span>
           <motion.span className="block md:inline-block" {...rise(0.05)}>
             AI Agent
@@ -48,7 +48,7 @@ export default function FolioHome() {
         </h1>
 
         <motion.div
-          className="mt-6 grid gap-6 text-[0.9375rem] leading-relaxed text-[var(--f-dim)] md:mt-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:gap-10"
+          className="mt-5 grid gap-5 text-[0.9375rem] leading-relaxed text-[var(--f-dim)] md:mt-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:gap-10"
           {...rise(0.3)}
         >
           <p className="max-w-[44ch]">
@@ -86,9 +86,9 @@ export default function FolioHome() {
       </div>
 
       {/* The panel bleeds off the left edge and rounds off on the right. */}
-      <div className="mt-10 pr-5 md:mt-14 md:pr-10 xl:pr-[calc((100vw-88rem)/2+2.5rem)]">
+      <div className="mt-8 pr-5 md:mt-8 md:pr-10 xl:pr-[calc((100vw-88rem)/2+2.5rem)]">
         <motion.div
-          className="f-grid relative rounded-br-[9rem] text-[var(--f-panel-ink)] md:h-[clamp(25rem,38vw,34rem)] md:rounded-r-full"
+          className="f-grid relative rounded-br-[9rem] text-[var(--f-panel-ink)] md:h-[clamp(19rem,calc(85svh-13rem),34rem)] md:rounded-r-full"
           initial={reduceMotion ? false : { opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.25, ease: FOLIO_EASE }}
@@ -121,7 +121,7 @@ export default function FolioHome() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.55, delay: 0.6 + i * 0.08, ease: FOLIO_EASE }}
                 >
-                  <div className="md:scale-[1.1] lg:scale-[1.25]">
+                  <div className="md:scale-[0.9] lg:scale-[1.1] [@media(min-width:768px)_and_(max-height:820px)]:scale-[0.8]">
                     <StickerLink entry={entry} rotate={place.rotate}>
                       <StickerFace entry={entry} count={projects.length} />
                     </StickerLink>

@@ -12,6 +12,15 @@ import {
   Bot,
 } from "lucide-react";
 
+/** Display order of the certificate groups. */
+export const CERT_CATEGORIES = [
+  "Internship",
+  "Google",
+  "Mahidol",
+  "Networking & IoT",
+  "Other",
+];
+
 export const certificateData = [
   {
     title: "BOTNOI Trainee 2026 - AI Agent Builder",
@@ -19,7 +28,7 @@ export const certificateData = [
     description: "Completed BOTNOI Trainee Program with team as AI Agent Builder. Focused on AI Agents, NLP, ASR/TTS speech tech, and conversational AI workflows.",
     date: "2026",
     link: "/Certificate_วิชญ์  นาคทอง.pdf",
-    category: "Google & AI",
+    category: "Internship",
     color: "emerald",
   },
   {
@@ -28,25 +37,25 @@ export const certificateData = [
     description: "Graduation certificate for leading student tech communities and organizing Google Cloud/GenAI workshops.",
     date: "2026",
     link: "/GSA Certificate - วิชญ์ นาคทอง.pdf",
-    category: "Google & AI",
+    category: "Google",
     color: "emerald",
   },
   {
     title: "Solana Certificate",
-    issuer: "Solana Foundation",
+    issuer: "Faculty of ICT, Mahidol University",
     description: "Web3 development fundamentals, Solana blockchain architecture, smart contracts (Rust), and decentralized applications.",
     date: "2026",
     link: "/Cer-Solana-12.pdf",
-    category: "Programming & Tools",
+    category: "Mahidol",
     color: "indigo",
   },
   {
     title: "C++ Essentials 1",
-    issuer: "Cisco Networking Academy",
+    issuer: "Faculty of ICT, Mahidol University (Cisco Networking Academy)",
     description: "Basic C++ syntax, control flows, loops, functions, vectors, pointer manipulation, and memory management.",
     date: "2026",
     link: "/C--_Essentials_1_certificate_wish-nak-student-mahidol-edu_26db587d-2a99-4974-b3f7-29b87c0abd12.pdf",
-    category: "Programming & Tools",
+    category: "Mahidol",
     color: "emerald",
   },
   {
@@ -55,7 +64,7 @@ export const certificateData = [
     description: "Covers network architecture, protocols, IP addressing (IPv4/IPv6), ethernet switching, and routing basics.",
     date: "2025",
     link: "/CCNA-_Introduction_to_Networks_certificate_wish-nak-student-mahidol-edu_550a2863-c4b8-4448-bde1-b4c3636b5cc9.pdf",
-    category: "Networks & Security",
+    category: "Networking & IoT",
     color: "blue",
   },
   {
@@ -64,7 +73,7 @@ export const certificateData = [
     description: "Validated network topology setup, subnetting, and switch/router configurations.",
     date: "2025",
     link: "/CCNAITNUpdated20251201-30-4p19p4.pdf",
-    category: "Networks & Security",
+    category: "Networking & IoT",
     color: "blue",
   },
   {
@@ -73,7 +82,7 @@ export const certificateData = [
     description: "Git command line, branching strategies, merge conflict resolution, pull requests, and collaborative code management.",
     date: "2025",
     link: "/borntodev-academy_GitHub for Developer _certificate.png",
-    category: "Programming & Tools",
+    category: "Other",
     color: "slate",
   },
   {
@@ -82,16 +91,16 @@ export const certificateData = [
     description: "Database architecture, relations, rollups, custom formulas, and project management workspaces.",
     date: "2025",
     link: "/borntodev-academy_Notion Database for Everyone_certificate.png",
-    category: "Programming & Tools",
+    category: "Other",
     color: "purple",
   },
   {
     title: "Generative AI",
-    issuer: "Google / Academic",
+    issuer: "Faculty of ICT, Mahidol University",
     description: "Completed foundational training in Generative AI, Large Language Models (LLMs), Image Generation, and Responsible AI on GCP.",
     date: "2025",
     link: "/Certificate GenAI.pdf",
-    category: "Google & AI",
+    category: "Mahidol",
     color: "amber",
   },
   {
@@ -100,23 +109,23 @@ export const certificateData = [
     description: "Simulated network topologies, routing protocols (OSPF/RIP), NAT, and network troubleshooting.",
     date: "2025",
     link: "/Getting_Started_with_Cisco_Packet_Tracer_certificate_wish-nak-student-mahidol-edu_26b4bfd8-9199-4eb2-8244-563b5533ea24.pdf",
-    category: "Networks & Security",
+    category: "Networking & IoT",
     color: "cyan",
   },
   {
     title: "Digital Awareness",
-    issuer: "Mahidol University",
+    issuer: "Mahidol University (MUx)",
     description: "Understanding digital literacy, cybersecurity awareness, privacy laws, and academic digital tools.",
     date: "2024",
     link: "/mpdf.pdf",
-    category: "Other Achievements",
+    category: "Mahidol",
     color: "rose",
   },
 ];
 
 export const credlyBadges = [
-  { id: "e81794ed-4901-47f8-a15a-dd3fd3a7e97e", category: "Networks & Security" },
-  { id: "ae9ebccb-4f83-4b72-9045-890c26d69443", category: "Programming & Tools" },
+  { id: "e81794ed-4901-47f8-a15a-dd3fd3a7e97e", category: "Networking & IoT" },
+  { id: "ae9ebccb-4f83-4b72-9045-890c26d69443", category: "Mahidol" },
 ];
 
 const colorVariants = {
@@ -138,18 +147,18 @@ const colorVariants = {
 const issuerLogos: Record<string, { logoUrl?: string; fallbackIcon?: React.ReactNode; isDarkInverted?: boolean }> = {
   "BOTNOI Group": { fallbackIcon: <Bot className="w-5 h-5 text-emerald-500" /> },
   "Google Student Ambassador": { logoUrl: "https://cdn.simpleicons.org/google" },
-  "Google / Academic": { logoUrl: "https://cdn.simpleicons.org/google" },
   "Cisco Networking Academy": { logoUrl: "https://cdn.simpleicons.org/cisco" },
   "Cisco": { logoUrl: "https://cdn.simpleicons.org/cisco" },
-  "Solana Foundation": { logoUrl: "https://cdn.simpleicons.org/solana" },
   "borntodev academy": { fallbackIcon: <Code className="w-5 h-5 text-orange-500" /> },
-  "Mahidol University": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> }
+  "Faculty of ICT, Mahidol University": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> },
+  "Faculty of ICT, Mahidol University (Cisco Networking Academy)": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> },
+  "Mahidol University (MUx)": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> }
 };
 
 const Certificates = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const categories = ["All", "Google & AI", "Networks & Security", "Programming & Tools", "Other Achievements"];
+  const categories = ["All", ...CERT_CATEGORIES];
 
   const filteredCertificates = selectedCategory === "All"
     ? certificateData

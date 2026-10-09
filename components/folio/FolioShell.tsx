@@ -32,7 +32,7 @@ export default function FolioShell({ slug, children }: { slug: string; children:
         <FolioNav />
 
         <motion.div
-          className="f-mono mt-8 flex items-center gap-3 text-[0.75rem] text-[var(--f-dim)] md:mt-12"
+          className="f-mono mt-6 flex items-center gap-3 text-[0.75rem] text-[var(--f-dim)] md:mt-8"
           {...rise(0)}
         >
           <span
@@ -44,7 +44,7 @@ export default function FolioShell({ slug, children }: { slug: string; children:
         </motion.div>
 
         <motion.h1
-          className="f-display mt-4 text-[clamp(3.75rem,15vw,11.5rem)]"
+          className="f-display mt-3 text-[clamp(3rem,11vw,4rem)] md:text-[clamp(3.5rem,min(6.5vw,11svh),6rem)]"
           style={{ textWrap: "balance" }}
           {...rise(0.08)}
         >
@@ -52,10 +52,10 @@ export default function FolioShell({ slug, children }: { slug: string; children:
         </motion.h1>
 
         <motion.div
-          className="mt-6 grid gap-6 md:mt-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end"
+          className="mt-4 grid gap-4 md:mt-5 md:grid-cols-[minmax(0,1fr)_auto] md:items-end"
           {...rise(0.2)}
         >
-          <p className="max-w-[56ch] text-[0.9375rem] leading-relaxed text-[var(--f-dim)] md:text-[1rem]">
+          <p className="max-w-[64ch] text-[0.9375rem] leading-relaxed text-[var(--f-dim)]">
             {entry.intro}
           </p>
           <Link
@@ -70,16 +70,16 @@ export default function FolioShell({ slug, children }: { slug: string; children:
           </Link>
         </motion.div>
 
-        <motion.main className="mt-14 md:mt-20" {...rise(0.3)}>
+        <motion.main className="mt-10 md:mt-12" {...rise(0.3)}>
           {children}
         </motion.main>
       </div>
 
       {/* Next section: the cream panel again, bleeding off the left edge. */}
-      <div className="mt-24 pr-5 md:mt-32 md:pr-10 xl:pr-[calc((100vw-88rem)/2+2.5rem)]">
+      <div className="mt-16 pr-5 md:mt-20 md:pr-10 xl:pr-[calc((100vw-88rem)/2+2.5rem)]">
         <Link
           href={next.href}
-          className="f-grid group relative block rounded-r-full py-10 pl-5 pr-24 text-[var(--f-panel-ink)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)] md:py-14 md:pl-[max(2.5rem,calc((100vw-88rem)/2+2.5rem))] md:pr-40"
+          className="f-grid group relative block rounded-r-full py-7 pl-5 pr-24 text-[var(--f-panel-ink)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)] md:py-9 md:pl-[max(2.5rem,calc((100vw-88rem)/2+2.5rem))] md:pr-40"
         >
           <span className="f-mono flex items-center gap-3 text-[0.75rem]">
             <span
@@ -89,7 +89,7 @@ export default function FolioShell({ slug, children }: { slug: string; children:
             />
             Next / {next.index}
           </span>
-          <span className="f-display mt-3 flex items-center gap-4 text-[clamp(2.75rem,9vw,7.5rem)]">
+          <span className="f-display mt-2 flex items-center gap-4 text-[clamp(2.25rem,5.5vw,4.5rem)]">
             {next.title}
             <ArrowRight
               className="h-[0.6em] w-[0.6em] shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-3 motion-reduce:transition-none"

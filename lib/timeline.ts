@@ -16,6 +16,8 @@ export interface TimelineEvent {
   body: string;
   href?: string;
   photos?: { src: string; alt: string }[];
+  /** A certificate earned from this event, shown as a small preview. */
+  cert?: { title: string; href: string };
 }
 
 export interface TimelineYear {
@@ -138,6 +140,10 @@ export const TIMELINE: TimelineYear[] = [
         when: "May - Jul",
         title: "AI Agent Builder Intern, Botnoi Group",
         body: "Built chatbot workflows, multi-agent RAG pipelines and the Local Soul tourism chatbot.",
+        cert: {
+          title: "BOTNOI Trainee 2026 - AI Agent Builder",
+          href: "/Certificate_วิชญ์  นาคทอง.pdf",
+        },
       },
       {
         kind: "build",

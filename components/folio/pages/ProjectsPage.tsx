@@ -51,13 +51,13 @@ export default function ProjectsPage() {
 
   return (
     <>
-      <ol className="border-t border-[var(--f-line-strong)]">
+      <ol className="grid border-t border-[var(--f-line-strong)] lg:grid-cols-2 lg:gap-x-10">
         {projects.map((project, i) => (
           <li
             key={project.title}
-            className="grid gap-6 border-b border-[var(--f-line)] py-10 md:grid-cols-[4rem_minmax(0,22rem)_minmax(0,1fr)] md:gap-10 md:py-12"
+            className="grid gap-4 border-b border-[var(--f-line)] py-5 md:grid-cols-[2rem_minmax(0,11rem)_minmax(0,1fr)] md:gap-5"
           >
-            <span className="f-display text-[2.5rem] text-[var(--f-dim)]">
+            <span className="f-display text-[1.5rem] text-[var(--f-dim)]">
               {String(i + 1).padStart(2, "0")}
             </span>
 
@@ -65,28 +65,28 @@ export default function ProjectsPage() {
               type="button"
               onClick={() => open(project)}
               aria-label={`Preview ${project.title}`}
-              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-tr-[4rem] bg-[var(--f-cream)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)]"
+              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-tr-[2.5rem] bg-[var(--f-cream)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)]"
             >
               <Image
                 src={project.image}
                 alt=""
                 fill
-                sizes="(min-width: 768px) 352px, 100vw"
+                sizes="(min-width: 768px) 176px, 100vw"
                 className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] motion-reduce:transition-none"
               />
             </button>
 
             <div className="min-w-0">
-              <h2 className="f-display text-[clamp(2rem,4vw,3.25rem)] leading-[0.95]">{project.title}</h2>
-              <p className="mt-4 max-w-[60ch] text-[0.9375rem] leading-relaxed text-[var(--f-dim)]">
+              <h2 className="f-display text-[clamp(1.375rem,2vw,1.75rem)] leading-[0.95]">{project.title}</h2>
+              <p className="mt-2 line-clamp-3 max-w-[70ch] text-[0.8125rem] leading-relaxed text-[var(--f-dim)]">
                 {project.description}
               </p>
 
-              <ul className="mt-5 flex flex-wrap gap-2">
+              <ul className="mt-3 flex flex-wrap gap-1.5">
                 {project.tags.map((tag, t) => (
                   <li
                     key={tag}
-                    className="f-sticker rounded-full px-3 py-1.5 text-[0.6875rem] tracking-[0.02em]"
+                    className="f-sticker rounded-full px-2.5 py-1 text-[0.625rem] tracking-[0.02em]"
                     style={{
                       backgroundColor: t === 0 ? "var(--f-accent)" : "var(--f-cream)",
                     }}
@@ -96,7 +96,7 @@ export default function ProjectsPage() {
                 ))}
               </ul>
 
-              <div className="mt-4 flex flex-wrap items-center gap-x-7">
+              <div className="mt-2 flex flex-wrap items-center gap-x-6">
                 <a href={project.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
                   <Github className="h-4 w-4" />
                   Code
