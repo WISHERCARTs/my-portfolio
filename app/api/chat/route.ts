@@ -61,16 +61,19 @@ export async function POST(req: Request) {
 
       [ใบรับรอง & เกียรติบัตร (Certificates)]
       1. BOTNOI Trainee 2026 - AI Agent Builder (BOTNOI Group, 2026) — AI Agents, NLP, ASR/TTS, Conversational AI | [ดูใบรับรอง](/Certificate_วิชญ์  นาคทอง.pdf)
-      2. GSA Certificate Creator Playground (Google Student Ambassador, 2026) — Google Cloud/GenAI workshops | [ดูใบรับรอง](/GSA Certificate - วิชญ์ นาคทอง.pdf)
-      3. Solana Certificate (Solana Foundation, 2026) — Web3, Blockchain, Smart Contracts | [ดูใบรับรอง](/Cer-Solana-12.pdf)
-      4. C++ Essentials 1 (Cisco Networking Academy, 2026) | [ดูใบรับรอง](/C--_Essentials_1_certificate_wish-nak-student-mahidol-edu_26db587d-2a99-4974-b3f7-29b87c0abd12.pdf)
-      5. CCNA: Introduction to Networks (Cisco Networking Academy, 2025) | [ดูใบรับรอง](/CCNA-_Introduction_to_Networks_certificate_wish-nak-student-mahidol-edu_550a2863-c4b8-4448-bde1-b4c3636b5cc9.pdf)
-      6. CCNA ITN Updated Version (Cisco Networking Academy, 2025) | [ดูใบรับรอง](/CCNAITNUpdated20251201-30-4p19p4.pdf)
-      7. GitHub for Developer (borntodev academy, 2025) | [ดูใบรับรอง](/borntodev-academy_GitHub for Developer _certificate.png)
-      8. Notion Database for Everyone (borntodev academy, 2025) | [ดูใบรับรอง](/borntodev-academy_Notion Database for Everyone_certificate.png)
-      9. Generative AI (Google / Academic, 2025) — LLMs, Image Gen, Responsible AI on GCP | [ดูใบรับรอง](/Certificate GenAI.pdf)
-      10. Cisco Packet Tracer (Cisco, 2025) | [ดูใบรับรอง](/Getting_Started_with_Cisco_Packet_Tracer_certificate_wish-nak-student-mahidol-edu_26b4bfd8-9199-4eb2-8244-563b5533ea24.pdf)
-      11. Digital Awareness (Mahidol University, 2024) | [ดูใบรับรอง](/mpdf.pdf)
+      2. Google Student Ambassador Class of 2026 (Google Student Ambassador, 2026) — ประกาศนียบัตรสำเร็จการศึกษา GSA คัดเลือกจากนักศึกษา 1,700 คนทั่วประเทศ | [ดูใบรับรอง](/GSA-Certificate-Portfolio.pdf)
+      3. Google Cloud Fundamentals: Core Infrastructure (Google Cloud via Coursera, Oct 2026) | [ดูใบรับรอง](/Coursera-Google-Cloud-Fundamentals.pdf)
+      4. Gemini Academy (Google for Education & The S Curve, Feb 2026) — อบรมการใช้ Gemini และเครื่องมือ Google AI | [ดูใบรับรอง](/Gemini-Academy-GSA.pdf)
+      5. GSA Certificate Creator Playground (Google Student Ambassador, 2026) — อบรมการใช้ Google AI และการสร้างคอนเทนต์ | [ดูใบรับรอง](/GSA Certificate - วิชญ์ นาคทอง.pdf)
+      6. Solana Certificate (Solana Foundation, 2026) — Web3, Blockchain, Smart Contracts | [ดูใบรับรอง](/Cer-Solana-12.pdf)
+      7. C++ Essentials 1 (Cisco Networking Academy, 2026) | [ดูใบรับรอง](/C--_Essentials_1_certificate_wish-nak-student-mahidol-edu_26db587d-2a99-4974-b3f7-29b87c0abd12.pdf)
+      8. CCNA: Introduction to Networks (Cisco Networking Academy, 2025) | [ดูใบรับรอง](/CCNA-_Introduction_to_Networks_certificate_wish-nak-student-mahidol-edu_550a2863-c4b8-4448-bde1-b4c3636b5cc9.pdf)
+      9. CCNA ITN Updated Version (Cisco Networking Academy, 2025) | [ดูใบรับรอง](/CCNAITNUpdated20251201-30-4p19p4.pdf)
+      10. GitHub for Developer (borntodev academy, 2025) | [ดูใบรับรอง](/borntodev-academy_GitHub for Developer _certificate.png)
+      11. Notion Database for Everyone (borntodev academy, 2025) | [ดูใบรับรอง](/borntodev-academy_Notion Database for Everyone_certificate.png)
+      12. Generative AI (Google / Academic, 2025) — LLMs, Image Gen, Responsible AI on GCP | [ดูใบรับรอง](/Certificate GenAI.pdf)
+      13. Cisco Packet Tracer (Cisco, 2025) | [ดูใบรับรอง](/Getting_Started_with_Cisco_Packet_Tracer_certificate_wish-nak-student-mahidol-edu_26b4bfd8-9199-4eb2-8244-563b5533ea24.pdf)
+      14. Digital Awareness (Mahidol University, 2024) | [ดูใบรับรอง](/mpdf.pdf)
 
       [ช่องทางติดต่อ (Contact)]
       - Email: wishercarts@gmail.com
