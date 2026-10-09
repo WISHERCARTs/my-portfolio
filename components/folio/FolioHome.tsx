@@ -10,15 +10,16 @@ import FolioNav from "./FolioNav";
 import FolioFooter from "./FolioFooter";
 import { StickerFace, StickerLink } from "./Stickers";
 
-/* Where each sticker sits on the panel on wide screens, plus its tilt. */
+/* Where each sticker floats on the panel from lg up, plus its tilt.
+   Below lg the stickers wrap in a group under the photo instead. */
 const PLACEMENT: Record<string, { className: string; rotate: number }> = {
-  about: { className: "md:left-[9%] md:top-[7%]", rotate: -8 },
-  skills: { className: "md:left-[2.5%] md:top-[45%]", rotate: -6 },
-  certificates: { className: "md:left-[12%] md:bottom-[6%]", rotate: 7 },
-  projects: { className: "md:left-[64%] md:top-[9%]", rotate: 5 },
-  education: { className: "md:right-[9%] md:top-[36%]", rotate: -9 },
-  contact: { className: "md:left-[63%] md:bottom-[5%]", rotate: 0 },
-  timeline: { className: "md:left-[77%] md:bottom-[7%]", rotate: -6 },
+  about: { className: "lg:left-[9%] lg:top-[7%]", rotate: -8 },
+  skills: { className: "lg:left-[2.5%] lg:top-[45%]", rotate: -6 },
+  certificates: { className: "lg:left-[12%] lg:bottom-[6%]", rotate: 7 },
+  projects: { className: "lg:left-[64%] lg:top-[9%]", rotate: 5 },
+  education: { className: "lg:right-[9%] lg:top-[36%]", rotate: -9 },
+  contact: { className: "lg:left-[63%] lg:bottom-[5%]", rotate: 0 },
+  timeline: { className: "lg:left-[77%] lg:bottom-[7%]", rotate: -6 },
 };
 
 export default function FolioHome() {
@@ -88,20 +89,20 @@ export default function FolioHome() {
       {/* The panel bleeds off the left edge and rounds off on the right. */}
       <div className="mt-10 pr-5 md:mt-14 md:pr-10 xl:pr-[calc((100vw-88rem)/2+2.5rem)]">
         <motion.div
-          className="f-grid relative rounded-br-[9rem] text-[var(--f-panel-ink)] md:h-[clamp(25rem,38vw,34rem)] md:rounded-r-full"
+          className="f-grid relative rounded-br-[9rem] text-[var(--f-panel-ink)] lg:h-[clamp(25rem,38vw,34rem)] lg:rounded-r-full"
           initial={reduceMotion ? false : { opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.25, ease: FOLIO_EASE }}
         >
-          <div className="relative h-[24rem] md:static md:h-auto">
+          <div className="relative h-[24rem] md:h-[30rem] lg:static lg:h-auto">
             {/* Cover photo. Only the top-left corner rounds, so the hair on the right stays in frame. */}
-            <div className="absolute bottom-0 left-1/2 aspect-[0.835] h-[94%] -translate-x-1/2 overflow-hidden rounded-tl-[9rem] rounded-tr-2xl md:left-[44%] md:rounded-tl-[12rem]">
+            <div className="absolute bottom-0 left-1/2 aspect-[0.835] h-[94%] -translate-x-1/2 overflow-hidden rounded-tl-[9rem] rounded-tr-2xl md:rounded-tl-[12rem] lg:left-[44%]">
               <Image
                 src="/images/wish-hero.jpg"
                 alt="Wish Nakthong at a Google Student Ambassador event"
                 fill
                 priority
-                sizes="(min-width: 768px) 28vw, 70vw"
+                sizes="(min-width: 1024px) 28vw, (min-width: 768px) 50vw, 70vw"
                 className="object-cover"
               />
             </div>
@@ -109,19 +110,19 @@ export default function FolioHome() {
 
           <nav
             aria-label="Sections"
-            className="flex flex-wrap items-center justify-center gap-x-5 gap-y-6 px-5 pb-28 pt-8 md:contents"
+            className="flex flex-wrap items-center justify-center gap-x-5 gap-y-6 px-5 pb-28 pt-8 md:gap-x-8 md:gap-y-8 md:px-10 lg:contents"
           >
             {FOLIO_ENTRIES.map((entry, i) => {
               const place = PLACEMENT[entry.slug];
               return (
                 <motion.div
                   key={entry.slug}
-                  className={`relative md:absolute ${place.className}`}
+                  className={`relative lg:absolute ${place.className}`}
                   initial={reduceMotion ? false : { opacity: 0, scale: 0.6 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.55, delay: 0.6 + i * 0.08, ease: FOLIO_EASE }}
                 >
-                  <div className="md:scale-[1.1] lg:scale-[1.25]">
+                  <div className="lg:scale-[0.82] min-[1150px]:scale-100 min-[1440px]:scale-[1.2]">
                     <StickerLink entry={entry} rotate={place.rotate}>
                       <StickerFace entry={entry} count={projects.length} />
                     </StickerLink>
