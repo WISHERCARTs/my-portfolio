@@ -33,11 +33,11 @@ export default function AboutPage() {
       <aside>
         <div className="f-grid relative aspect-[4/5] w-full max-w-[15rem] overflow-hidden rounded-tr-[7rem]">
           <Image
-            src="/images/wish-cutout.png"
-            alt="Portrait of Wish Nakthong"
+            src="/images/wish-portrait.jpg"
+            alt="Wish Nakthong at a Google Cloud AI Live + Labs event"
             fill
-            sizes="320px"
-            className="object-contain object-bottom"
+            sizes="240px"
+            className="object-cover object-top"
             priority
           />
         </div>
