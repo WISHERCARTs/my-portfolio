@@ -40,10 +40,10 @@ export default function FolioHome() {
         <h1 className="f-display mt-4 text-[clamp(3.75rem,21vw,7.5rem)] md:mt-3 md:whitespace-nowrap md:text-[min(calc((100vw-5rem)/6.45),15svh,12.85rem)]">
           <span className="sr-only">Wish Nakthong, </span>
           <motion.span className="block md:inline-block" {...rise(0.05)}>
-            AI Agent
+            AI
           </motion.span>{" "}
           <motion.span className="block md:inline-block" {...rise(0.15)}>
-            Builder
+            Engineer
           </motion.span>
         </h1>
 
