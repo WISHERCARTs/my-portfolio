@@ -57,7 +57,7 @@ export const FOLIO_ENTRIES: FolioEntry[] = [
     label: "Certificates",
     title: "Certificates",
     intro:
-      "Google Student Ambassador 2026, BOTNOI Trainee 2026, Cisco and AWS courses, and the rest of the paper trail.",
+      "The BOTNOI internship, Google Student Ambassador, courses at Mahidol and Cisco networking, grouped by where they came from.",
     color: "#FF7A21",
     href: "/certificates",
   },

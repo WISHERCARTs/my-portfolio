@@ -129,92 +129,89 @@ export interface SkillConfig {
 export const skillLogos: Record<string, SkillConfig> = {
   // Languages
   "HTML/CSS": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+    logoUrl: "/icons/skills/html5-original.svg"
   },
   "JavaScript": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+    logoUrl: "/icons/skills/javascript-original.svg"
   },
   "TypeScript": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+    logoUrl: "/icons/skills/typescript-original.svg"
   },
   "SQL": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
+    logoUrl: "/icons/skills/mysql-original.svg"
   },
   "Python": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+    logoUrl: "/icons/skills/python-original.svg"
   },
   "Java": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
+    logoUrl: "/icons/skills/java-original.svg"
   },
   "R": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg"
+    logoUrl: "/icons/skills/r-original.svg"
   },
   "MATLAB": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg"
+    logoUrl: "/icons/skills/matlab-original.svg"
   },
   "Go": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg"
+    logoUrl: "/icons/skills/go-original.svg"
   },
   "Dart": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
+    logoUrl: "/icons/skills/dart-original.svg"
   },
   "C/C++": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
+    logoUrl: "/icons/skills/cplusplus-original.svg"
   },
 
   // Data & AI Libraries
   "RAG Systems": {
-    logoUrl: "https://cdn.simpleicons.org/langchain",
+    logoUrl: "/icons/skills/langchain.svg",
     fallbackIcon: <Bot className="w-7 h-7 text-cyan-500" />
   },
   "Multi-Agent Architecture": {
-    logoUrl: "https://cdn.simpleicons.org/huggingface",
+    logoUrl: "/icons/skills/huggingface.svg",
     fallbackIcon: <Bot className="w-7 h-7 text-indigo-500" />
   },
   "Agentic Design": {
-    logoUrl: "https://cdn.simpleicons.org/probot",
+    logoUrl: "/icons/skills/probot.svg",
     fallbackIcon: <Bot className="w-7 h-7 text-purple-500" />
   },
   "Tourism Chatbots ('Local Soul')": {
-    logoUrl: "https://cdn.simpleicons.org/openai",
     fallbackIcon: <Bot className="w-7 h-7 text-amber-500" />
   },
   "AI Agent Building": {
-    logoUrl: "https://cdn.simpleicons.org/openai",
     fallbackIcon: <Bot className="w-7 h-7 text-cyan-500" />
   },
   "Prompt Engineering": {
-    logoUrl: "https://cdn.simpleicons.org/openai",
     fallbackIcon: <Bot className="w-7 h-7 text-amber-500" />
   },
   "NLP (Natural Language)": {
     fallbackIcon: <Bot className="w-7 h-7 text-blue-500" />
   },
   "ASR & TTS (Speech AI)": {
-    logoUrl: "https://cdn.simpleicons.org/elevenlabs",
+    logoUrl: "/icons/skills/elevenlabs.svg",
     fallbackIcon: <Mic className="w-7 h-7 text-purple-500" />
   },
   "Pandas": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg",
+    logoUrl: "/icons/skills/pandas-original.svg",
     isDarkInverted: true
   },
   "NumPy": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg"
+    logoUrl: "/icons/skills/numpy-original.svg"
   },
   "Scikit-learn": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg"
+    logoUrl: "/icons/skills/scikitlearn-original.svg"
   },
   "Matplotlib": {
     fallbackIcon: <LineChart className="w-7 h-7 text-blue-500" />
   },
   "Streamlit": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg"
+    logoUrl: "/icons/skills/streamlit-original.svg"
   },
   "Jupyter": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg"
+    logoUrl: "/icons/skills/jupyter-original.svg"
   },
   "OpenCV": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg"
+    logoUrl: "/icons/skills/opencv-original.svg"
   },
   "Seaborn": {
     fallbackIcon: <LineChart className="w-7 h-7 text-[#3776ab]" />
@@ -228,60 +225,59 @@ export const skillLogos: Record<string, SkillConfig> = {
 
   // Automation & Integration
   "API Integration": {
-    logoUrl: "https://cdn.simpleicons.org/fastapi",
+    logoUrl: "/icons/skills/fastapi.svg",
     fallbackIcon: <Network className="w-7 h-7 text-cyan-500" />
   },
   "n8n Workflow Automation": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/n8n/n8n-original.svg",
+    logoUrl: "/icons/skills/n8n.svg",
     fallbackIcon: <Workflow className="w-7 h-7 text-red-500" />
   },
   "LINE OA Integration": {
-    logoUrl: "https://cdn.simpleicons.org/line",
+    logoUrl: "/icons/skills/line.svg",
     fallbackIcon: <Bot className="w-7 h-7 text-emerald-500" />
   },
   "Workflow Design": {
-    logoUrl: "https://cdn.simpleicons.org/n8n",
+    logoUrl: "/icons/skills/n8n.svg",
     fallbackIcon: <Cpu className="w-7 h-7 text-amber-500" />
   },
   "Automated Systems": {
-    logoUrl: "https://cdn.simpleicons.org/githubactions",
+    logoUrl: "/icons/skills/githubactions.svg",
     fallbackIcon: <Cpu className="w-7 h-7 text-indigo-500" />
   },
   "Webhooks & System Integration": {
-    logoUrl: "https://cdn.simpleicons.org/webhook",
     fallbackIcon: <Network className="w-7 h-7 text-blue-500" />
   },
 
   // Web & Mobile Frameworks
   "React": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+    logoUrl: "/icons/skills/react-original.svg"
   },
   "Next.js": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    logoUrl: "/icons/skills/nextjs-original.svg",
     isDarkInverted: true
   },
   "Node.js": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
+    logoUrl: "/icons/skills/nodejs-original.svg"
   },
   "Express.js": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+    logoUrl: "/icons/skills/express-original.svg",
     isDarkInverted: true
   },
   "Tailwind CSS": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+    logoUrl: "/icons/skills/tailwindcss-original.svg"
   },
   "Flutter": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg"
+    logoUrl: "/icons/skills/flutter-original.svg"
   },
   "REST API": {
-    logoUrl: "https://cdn.simpleicons.org/fastapi",
+    logoUrl: "/icons/skills/fastapi.svg",
     fallbackIcon: <Network className="w-7 h-7 text-cyan-500" />
   },
   "Axios": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg"
+    logoUrl: "/icons/skills/axios-plain.svg"
   },
   "Google Gemini API": {
-    logoUrl: "https://cdn.simpleicons.org/googlegemini",
+    logoUrl: "/icons/skills/googlegemini.svg",
     fallbackIcon: <Sparkles className="w-7 h-7 text-blue-500" />
   },
 
@@ -290,28 +286,28 @@ export const skillLogos: Record<string, SkillConfig> = {
     fallbackIcon: <Database className="w-7 h-7 text-slate-400" />
   },
   "MySQL": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
+    logoUrl: "/icons/skills/mysql-original.svg"
   },
   "SQLite": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
+    logoUrl: "/icons/skills/sqlite-original.svg"
   },
   "Firebase": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg"
+    logoUrl: "/icons/skills/firebase-plain.svg"
   },
   "Supabase": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"
+    logoUrl: "/icons/skills/supabase-original.svg"
   },
 
   // Security & Networking
   "Wireshark": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wireshark/wireshark-original.svg",
+    logoUrl: "/icons/skills/wireshark.svg",
     fallbackIcon: <Shield className="w-7 h-7 text-blue-500" />
   },
   "wget": {
     fallbackIcon: <Terminal className="w-7 h-7 text-[#3776ab]" />
   },
   "Snort": {
-    logoUrl: "https://cdn.simpleicons.org/snort",
+    logoUrl: "/icons/skills/snort.svg",
     fallbackIcon: <Shield className="w-7 h-7 text-red-500" />
   },
   "Suricata": {
@@ -323,52 +319,52 @@ export const skillLogos: Record<string, SkillConfig> = {
 
   // Tools & Platforms
   "Git & GitHub": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+    logoUrl: "/icons/skills/git-original.svg"
   },
   "Docker": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+    logoUrl: "/icons/skills/docker-original.svg"
   },
   "VS Code": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
+    logoUrl: "/icons/skills/vscode-original.svg"
   },
   "n8n": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/n8n/n8n-original.svg",
+    logoUrl: "/icons/skills/n8n.svg",
     fallbackIcon: <Workflow className="w-7 h-7 text-red-500" />
   },
   "Postman": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
+    logoUrl: "/icons/skills/postman-original.svg"
   },
   "Trello": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-plain.svg"
+    logoUrl: "/icons/skills/trello-plain.svg"
   },
   "Google Sheets": {
-    logoUrl: "https://cdn.simpleicons.org/googlesheets",
+    logoUrl: "/icons/skills/googlesheets.svg",
     fallbackIcon: <Terminal className="w-7 h-7 text-emerald-500" />
   },
   "Ollama": {
-    logoUrl: "https://cdn.simpleicons.org/ollama",
+    logoUrl: "/icons/skills/ollama.svg",
     isDarkInverted: true,
     fallbackIcon: <Bot className="w-7 h-7 text-slate-200" />
   },
   "Claude Code": {
-    logoUrl: "https://cdn.simpleicons.org/anthropic",
+    logoUrl: "/icons/skills/claude.svg",
     fallbackIcon: <Bot className="w-7 h-7 text-orange-500" />
   },
 
   // Design & Content Tools
   "Canva": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg",
+    logoUrl: "/icons/skills/canva-original.svg",
     fallbackIcon: <Layout className="w-7 h-7 text-cyan-500" />
   },
   "Notion": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/notion/notion-original.svg",
+    logoUrl: "/icons/skills/notion-original.svg",
     isDarkInverted: true
   },
   "Figma": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+    logoUrl: "/icons/skills/figma-original.svg"
   },
   "draw.io": {
-    logoUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/drawio/drawio-original.svg",
+    logoUrl: "/icons/skills/diagramsdotnet.svg",
     fallbackIcon: <Terminal className="w-7 h-7 text-[#f08705]" />
   },
 
@@ -382,7 +378,7 @@ export const skillLogos: Record<string, SkillConfig> = {
 
   // My Content Skills
   "YouTube": {
-    logoUrl: "https://cdn.simpleicons.org/youtube"
+    logoUrl: "/icons/skills/youtube.svg"
   },
   "Gaming content": {
     fallbackIcon: <Gamepad2 className="w-7 h-7 text-purple-500" />

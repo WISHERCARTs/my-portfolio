@@ -31,7 +31,7 @@ export default function AboutPage() {
   return (
     <div className="grid gap-14 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-20">
       <aside>
-        <div className="f-grid relative aspect-[4/5] w-full max-w-[20rem] overflow-hidden rounded-tr-[10rem]">
+        <div className="f-grid relative aspect-[4/5] w-full max-w-[15rem] overflow-hidden rounded-tr-[7rem]">
           <Image
             src="/images/wish-cutout.png"
             alt="Portrait of Wish Nakthong"
@@ -42,11 +42,11 @@ export default function AboutPage() {
           />
         </div>
 
-        <dl className="mt-8 border-t border-[var(--f-line-strong)]">
+        <dl className="mt-6 border-t border-[var(--f-line-strong)]">
           {FACTS.map((fact) => (
             <div
               key={fact.term}
-              className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 border-b border-[var(--f-line)] py-3"
+              className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3 border-b border-[var(--f-line)] py-2"
             >
               <dt className="f-mono pt-0.5 text-[0.6875rem] text-[var(--f-dim)]">{fact.term}</dt>
               <dd className="text-[0.9375rem]">{fact.value}</dd>
@@ -58,7 +58,7 @@ export default function AboutPage() {
           href="/CV_Wish_Nakthong.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="f-sticker mt-8 inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[0.9375rem] transition-transform duration-300 hover:-rotate-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)] motion-reduce:transition-none"
+          className="f-sticker mt-6 inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[0.9375rem] transition-transform duration-300 hover:-rotate-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)] motion-reduce:transition-none"
           style={{ backgroundColor: "var(--f-accent)" }}
         >
           Open my CV
@@ -67,7 +67,7 @@ export default function AboutPage() {
       </aside>
 
       <div>
-        <div className="max-w-[60ch] space-y-6 text-[1.0625rem] leading-[1.75] text-[var(--f-dim)] md:text-[1.125rem]">
+        <div className="max-w-[68ch] space-y-4 text-[0.9375rem] leading-[1.7] text-[var(--f-dim)] md:text-[1rem]">
           <p>
             I am a third-year Digital Science and Technology student at Mahidol
             University (Faculty of ICT) and a{" "}
@@ -99,17 +99,17 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <h2 className="f-mono mt-16 border-b border-[var(--f-line-strong)] pb-3 text-[0.75rem] text-[var(--f-dim)]">
+        <h2 className="f-mono mt-10 border-b border-[var(--f-line-strong)] pb-3 text-[0.75rem] text-[var(--f-dim)]">
           What I work on
         </h2>
         <ul>
           {FOCUS.map((item) => (
             <li
               key={item.mark}
-              className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 gap-y-2 border-b border-[var(--f-line)] py-7 md:grid-cols-[3.5rem_minmax(0,18rem)_minmax(0,1fr)] md:gap-8"
+              className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 gap-y-2 border-b border-[var(--f-line)] py-4 md:grid-cols-[2.5rem_minmax(0,16rem)_minmax(0,1fr)] md:gap-6"
             >
-              <span className="f-display text-[2rem] text-[var(--f-accent)]">{item.mark}</span>
-              <h3 className="f-display text-[clamp(1.75rem,3vw,2.375rem)] leading-[0.95]">{item.title}</h3>
+              <span className="f-display text-[1.5rem] text-[var(--f-accent)]">{item.mark}</span>
+              <h3 className="f-display text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[0.95]">{item.title}</h3>
               <p className="col-start-2 max-w-[48ch] text-[0.9375rem] leading-relaxed text-[var(--f-dim)] md:col-start-auto">
                 {item.body}
               </p>
