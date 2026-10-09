@@ -167,7 +167,7 @@ export const TIMELINE: TimelineYear[] = [
         kind: "build",
         when: "Jul",
         title: "LINE OA AI Chatbot",
-        body: "A Thai LINE Official Account bot on FastAPI and the Gemini API.",
+        body: "A Thai LINE Official Account bot on FastAPI and the Gemini API. In October I added tests, a Docker image and CI, and deployed it to Google Cloud Run.",
         href: "/projects",
       },
       {
