@@ -36,7 +36,7 @@ export const skillsData = [
       "Agentic Design",
       "Prompt Engineering",
       "AI Agent Building",
-      "Tourism Chatbots ('Local Soul')",
+      "Voice AI Avatar Integration",
       "NLP (Natural Language)",
       "ASR & TTS (Speech AI)",
       "Pandas",
@@ -175,7 +175,7 @@ export const skillLogos: Record<string, SkillConfig> = {
     logoUrl: "/icons/skills/probot.svg",
     fallbackIcon: <Bot className="w-7 h-7 text-purple-500" />
   },
-  "Tourism Chatbots ('Local Soul')": {
+  "Voice AI Avatar Integration": {
     fallbackIcon: <Bot className="w-7 h-7 text-amber-500" />
   },
   "AI Agent Building": {

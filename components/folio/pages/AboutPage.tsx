@@ -81,12 +81,19 @@ export default function AboutPage() {
             <strong className="font-medium text-[var(--f-cream)]">
               AI Agent Builder Intern at Botnoi Group
             </strong>{" "}
-            I built automated AI systems and a tourism chatbot called{" "}
+            (May to July 2026) I built the frontend of a travel app for finding
+            hidden places in Japan from the Figma designs, with React,
+            TypeScript, Tailwind and Leaflet, and wired it to Supabase Auth and
+            the real database. I also connected{" "}
             <strong className="font-medium text-[var(--f-cream)]">
-              &quot;Local Soul&quot;
-            </strong>
-            . The work was agentic workflows, multi-agent RAG pipelines and API
-            automation.
+              Botnoi&apos;s real-time voice avatar
+            </strong>{" "}
+            to a Next.js trip planner, so the agent can fill in forms and move
+            between pages. For{" "}
+            <strong className="font-medium text-[var(--f-cream)]">Local Soul</strong>, our
+            team&apos;s AI travel companion, I built the chatbot: a RAG endpoint
+            that finds places with vector search and has the Typhoon LLM write
+            the recommendations.
           </p>
           <p>
             I like hard problems, and I am looking to meet people in tech and
