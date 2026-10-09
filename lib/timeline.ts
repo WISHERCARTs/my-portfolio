@@ -119,6 +119,13 @@ export const TIMELINE: TimelineYear[] = [
       },
       {
         kind: "cert",
+        when: "Feb",
+        title: "Gemini Academy",
+        body: "Google for Education and The S Curve training on Gemini and Google AI tools.",
+        cert: { title: "Gemini Academy", href: "/Gemini-Academy-GSA.pdf" },
+      },
+      {
+        kind: "cert",
         when: "Mar",
         title: "C++ Essentials 1",
         body: "Cisco Networking Academy course, taken through ICT Mahidol.",
@@ -128,8 +135,12 @@ export const TIMELINE: TimelineYear[] = [
         kind: "community",
         when: "Apr",
         title: "Google Student Ambassador, Batch 1",
-        body: "Joined the first GSA batch and earned the Creator Playground certificate.",
+        body: "Graduated from the first GSA batch, one of 1,700 students selected nationwide, and earned the Creator Playground certificate.",
         href: "/certificates",
+        cert: {
+          title: "Google Student Ambassador Class of 2026",
+          href: "/GSA-Certificate-Portfolio.pdf",
+        },
         photos: Array.from({ length: 17 }, (_, i) => ({
           src: `/images/timeline/gsa-2026-${String(i + 1).padStart(2, "0")}.jpg`,
           alt: `Google Student Ambassador 2026, Batch 1, photo ${i + 1}`,
@@ -157,6 +168,16 @@ export const TIMELINE: TimelineYear[] = [
         when: "Aug",
         title: "Internship poster session",
         body: "Presented the AI Agent Builder internship work as a poster.",
+      },
+      {
+        kind: "cert",
+        when: "Oct",
+        title: "Google Cloud Fundamentals",
+        body: "Core Infrastructure course from Google Cloud on Coursera.",
+        cert: {
+          title: "Google Cloud Fundamentals: Core Infrastructure",
+          href: "/Coursera-Google-Cloud-Fundamentals.pdf",
+        },
       },
     ],
   },
