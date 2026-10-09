@@ -16,6 +16,15 @@ import { useState, useEffect, useCallback } from "react";
 
 export const projects = [
   {
+    title: "Local Soul",
+    description:
+      "Team project from the Botnoi internship: an AI travel companion that plans a day hour by hour on a map. I built its chatbot, a RAG endpoint that finds places with vector search and has the Typhoon LLM write recommendations in Thai, connected to Botnoi's chat widget.",
+    image: "/images/local-soul/home.jpg",
+    tags: ["Next.js", "RAG", "Typhoon LLM", "Botnoi"],
+    demo: "https://local-soul-gamma.vercel.app/",
+    demoImages: ["/images/local-soul/home.jpg"],
+  },
+  {
     title: "MLP Digit Recognition",
     description:
       "Handwritten digit recognition using Multi-Layer Perceptron (MLP) with Streamlit web interface",
@@ -232,15 +241,17 @@ const Projects = () => {
               </div>
 
               <div className="flex items-center gap-4 mt-auto">
-                <Link
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 py-3 -my-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
-                >
-                  <Github className="w-4 h-4" />
-                  Code
-                </Link>
+                {project.github && (
+                  <Link
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 py-3 -my-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    Code
+                  </Link>
+                )}
                 {"demo" in project && project.demo && (
                   <Link
                     href={project.demo}

@@ -32,14 +32,15 @@ export async function POST(req: Request) {
       - การศึกษาปัจจุบัน: นักศึกษาชั้นปีที่ 3 สาขา Digital Science & Technology (DST), คณะ ICT, มหาวิทยาลัยมหิดล (Mahidol University) วิทยาเขตศาลายา (2024 - ปัจจุบัน, GPA: 2.76) — กำลังศึกษาระดับปริญญาตรี B.Sc. (DST Major)
       - การศึกษามัธยม: Sukhondheerawidh School (โรงเรียนสุคนธีรวิทย์) จ.นครปฐม (2019 - 2024, GPA: 3.51)
       - บทบาทเด่น: Google Student Ambassador 2026 [BATCH 1]
-      - ประสบการณ์ฝึกงาน: Ex-AI Agent Builder Intern ที่ BOTNOI Group (18 พ.ค. 2569 - 31 ก.ค. 2569) — พัฒนาระบบ AI Agent, Multi-Agent RAG Pipelines, NLP, Speech AI (ASR/TTS), LINE OA Automation และ Tourism Chatbot "Local Soul"
+      - ประสบการณ์ฝึกงาน: Ex-AI Agent Builder Intern ที่ BOTNOI Group (18 พ.ค. 2569 - 31 ก.ค. 2569) — ทำ frontend แอปท่องเที่ยวหาสถานที่ลับในญี่ปุ่น (React, TypeScript, Tailwind, Leaflet) ตาม Figma, ต่อ Supabase Auth (Google + email/password) และฐานข้อมูลจริง, ทำแผนที่และ notification dropdown, ต่อ Botnoi real-time voice avatar เข้า trip planner (Next.js) ให้ agent กรอกฟอร์มและนำทางหน้าเว็บ, ปรับหน้าเว็บให้ AI อ่านได้ (label) และแก้ React form ให้รับค่าจาก agent แล้ว deploy บน Vercel และทำ chatbot ให้ Local Soul (AI travel companion งานทีมช่วงฝึกงาน): RAG endpoint ค้นหาสถานที่ด้วย vector search แล้วให้ Typhoon LLM เขียนคำแนะนำภาษาไทย ต่อกับ Botnoi chat widget
+      - ข้อห้ามเรื่องงานฝึกงาน: RAG, vector search และ Typhoon ใช้เฉพาะใน chatbot ของ Local Soul เท่านั้น ห้ามบอกว่าส่วนอื่นของงานฝึกงานใช้สิ่งเหล่านี้ ห้ามบอกว่างานฝึกงานเป็น multi-agent (multi-agent เป็นสิ่งที่เรียนรู้เอง) และห้ามให้ลิงก์ repo ของ Botnoi หรือ repo ของ Local Soul (เป็น private)
       - ใบรับรองการฝึกงาน: [ดูใบรับรองฝึกงาน BOTNOI](/Certificate_วิชญ์  นาคทอง.pdf)
       - ความสนใจหลัก: AI, Data, Automation
       - เป้าหมายอาชีพ: AI Engineer / Solutions Architect
       - สถานะ: เปิดรับโอกาสและเชื่อมต่อกับ Tech Professionals
 
       [ทักษะหลัก (Technical Skills)]
-      - AI & Agentic Systems: RAG Systems, Multi-Agent Architecture, Agentic Design, Prompt Engineering, AI Agent Building, Tourism Chatbots ("Local Soul"), NLP, ASR & TTS (Speech AI)
+      - AI & Agentic Systems: RAG Systems, Multi-Agent Architecture, Agentic Design, Prompt Engineering, AI Agent Building, Voice AI Avatar Integration, NLP, ASR & TTS (Speech AI)
       - Languages: Python, TypeScript, JavaScript, SQL, C/C++, Java, R, MATLAB, Go, Dart, HTML/CSS
       - Web & Mobile Frameworks: Next.js, React, Node.js, Express.js, Tailwind CSS, Flutter, REST API, Axios, Google Gemini API
       - Data & ML Libraries: Pandas, NumPy, Scikit-learn, OpenCV, Streamlit, Jupyter, Matplotlib, Seaborn, ggplot2, tidyverse
@@ -58,6 +59,7 @@ export async function POST(req: Request) {
       4. AI Chatbot Portfolio (เว็บนี้) — Portfolio Next.js + TypeScript + Gemini Streaming AI + Dark Mode | [Live Demo](https://my-portfolio-wish.vercel.app/) | [GitHub](https://github.com/WISHERCARTs/my-portfolio) | Tags: Next.js, TypeScript, Tailwind CSS, Google Gemini API
       5. CD Keys Website — เว็บขาย CD Keys, ทำ Frontend ทั้งหมด + System Integration (API/Data Binding), JWT Auth, Search, Admin Dashboard | [GitHub](https://github.com/WISHERCARTs/Ayema5kon-project) | Tags: React, Node.js, Tailwind CSS, MySQL, Express
       6. R-Data-Science-Labs — รวม Labs R วิชา ITDS125 (R basics, visualization, stats, data manipulation) | [GitHub](https://github.com/WISHERCARTs/R-Data-Science-Labs/tree/main) | Tags: R, Data Science, ggplot2, tidyverse
+      7. Local Soul — AI travel companion งานทีมช่วงฝึกงาน Botnoi วิชญ์ทำ RAG chatbot (vector search + Typhoon LLM) ต่อกับ Botnoi widget | [Live Demo](https://local-soul-gamma.vercel.app/)
 
       [ใบรับรอง & เกียรติบัตร (Certificates)]
       1. BOTNOI Trainee 2026 - AI Agent Builder (BOTNOI Group, 2026) — AI Agents, NLP, ASR/TTS, Conversational AI | [ดูใบรับรอง](/Certificate_วิชญ์  นาคทอง.pdf)

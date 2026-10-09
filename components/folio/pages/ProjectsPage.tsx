@@ -97,10 +97,12 @@ export default function ProjectsPage() {
               </ul>
 
               <div className="mt-2 flex flex-wrap items-center gap-x-6">
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  <Github className="h-4 w-4" />
-                  Code
-                </a>
+                {project.github ? (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                    <Github className="h-4 w-4" />
+                    Code
+                  </a>
+                ) : null}
                 {"demo" in project && project.demo ? (
                   <a href={project.demo} target="_blank" rel="noopener noreferrer" className={linkClass}>
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

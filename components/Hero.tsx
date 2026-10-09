@@ -46,7 +46,7 @@ const Hero = () => {
 
           <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-xl leading-relaxed">
             Passionate about <span className="font-semibold text-slate-800 dark:text-slate-200">AI, Data, and Automation</span>. 
-            Ex-AI Agent Builder Intern at Botnoi Group, creator of automated AI systems & the &quot;Local Soul&quot; tourism chatbot.
+            Ex-AI Agent Builder Intern at Botnoi Group, where I built a travel web app, connected a real-time voice AI avatar to it, and built the RAG chatbot for our team&apos;s &quot;Local Soul&quot; travel companion.
             Aspiring <span className="text-cyan-700 dark:text-cyan-300 font-semibold">AI Engineer</span> & <span className="text-cyan-700 dark:text-cyan-300 font-semibold">Solutions Architect</span>.
           </p>
 

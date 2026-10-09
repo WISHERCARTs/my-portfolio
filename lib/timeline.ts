@@ -150,11 +150,18 @@ export const TIMELINE: TimelineYear[] = [
         kind: "work",
         when: "May - Jul",
         title: "AI Agent Builder Intern, Botnoi Group",
-        body: "Built chatbot workflows, multi-agent RAG pipelines and the Local Soul tourism chatbot.",
+        body: "Built the frontend of a travel app for hidden places in Japan with Supabase Auth, maps and notifications, then connected Botnoi's real-time voice avatar to a Next.js trip planner so the agent can fill in forms and navigate.",
         cert: {
           title: "BOTNOI Trainee 2026 - AI Agent Builder",
           href: "/Certificate_วิชญ์  นาคทอง.pdf",
         },
+      },
+      {
+        kind: "build",
+        when: "Jun",
+        title: "Local Soul chatbot",
+        body: "For our internship team's AI travel companion, built a RAG chatbot: vector search over places, Typhoon writes the recommendations, Botnoi's widget on the page.",
+        href: "/projects",
       },
       {
         kind: "build",

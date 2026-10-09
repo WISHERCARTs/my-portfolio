@@ -61,7 +61,7 @@ export default function FolioHome() {
           <p className="max-w-[44ch]">
             I&apos;m <span className="text-[var(--f-cream)]">Wish Nakthong</span>,
             a third-year Digital Science &amp; Technology student at ICT
-            Mahidol, building AI agents, RAG pipelines and automations.
+            Mahidol, building AI agents, web apps and automations.
           </p>
           {/* One fact per line, key words in cream. */}
           <ul className="max-w-[46ch] space-y-1.5">
