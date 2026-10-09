@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
@@ -21,6 +22,11 @@ const PLACEMENT: Record<string, { className: string; rotate: number }> = {
   contact: { className: "lg:left-[63%] lg:bottom-[5%]", rotate: 0 },
   timeline: { className: "lg:left-[77%] lg:bottom-[7%]", rotate: -6 },
 };
+
+/* Key words in the intro, in cream so they stand out from the dim copy. */
+function Mark({ children }: { children: ReactNode }) {
+  return <span className="font-medium text-[var(--f-cream)]">{children}</span>;
+}
 
 export default function FolioHome() {
   const reduceMotion = useReducedMotion();
@@ -57,11 +63,20 @@ export default function FolioHome() {
             a third-year Digital Science &amp; Technology student at ICT
             Mahidol, building AI agents, RAG pipelines and automations.
           </p>
-          <p className="max-w-[44ch]">
-            Ex-AI Agent Builder Intern at Botnoi Group and Google Student
-            Ambassador 2026. Looking for an AI Engineer or Solutions Architect
-            internship.
-          </p>
+          {/* One fact per line, key words in cream. */}
+          <ul className="max-w-[46ch] space-y-1.5">
+            <li>
+              Ex-<Mark>AI Agent Builder Intern</Mark> at{" "}
+              <Mark>Botnoi Group</Mark>
+            </li>
+            <li>
+              <Mark>Google Student Ambassador 2026 [Batch 1]</Mark>
+            </li>
+            <li>
+              Looking for an <Mark>AI Engineer</Mark> or{" "}
+              <Mark>Solutions Architect</Mark> internship
+            </li>
+          </ul>
           <div className="flex gap-6 md:flex-col md:items-end md:gap-3">
             <Link
               href="/contact"
