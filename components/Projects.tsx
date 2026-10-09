@@ -134,9 +134,9 @@ export const projects = [
   {
     title: "LINE OA AI Chatbot",
     description:
-      "Thai-language LINE Official Account chatbot backed by FastAPI and the Google Gemini API, with webhook signature validation and hot-reloadable prompts.",
+      "Thai-language LINE Official Account chatbot on FastAPI and the Google Gemini API. It rejects requests without a valid LINE signature, reads its system prompt from a file so edits apply without a restart, and is covered by 17 pytest tests, a Docker image and GitHub Actions CI. Deployed on Google Cloud Run.",
     image: "/images/line-chatbot/cover.svg",
-    tags: ["Python", "FastAPI", "Google Gemini API", "LINE Bot SDK"],
+    tags: ["Python", "FastAPI", "Google Gemini API", "LINE Bot SDK", "Docker", "Cloud Run"],
     github: "https://github.com/WISHERCARTs/line-ai-chatbot-gemini",
     demoImages: ["/images/line-chatbot/cover.svg"],
   },

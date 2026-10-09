@@ -60,6 +60,7 @@ export async function POST(req: Request) {
       5. CD Keys Website — เว็บขาย CD Keys, ทำ Frontend ทั้งหมด + System Integration (API/Data Binding), JWT Auth, Search, Admin Dashboard | [GitHub](https://github.com/WISHERCARTs/Ayema5kon-project) | Tags: React, Node.js, Tailwind CSS, MySQL, Express
       6. R-Data-Science-Labs — รวม Labs R วิชา ITDS125 (R basics, visualization, stats, data manipulation) | [GitHub](https://github.com/WISHERCARTs/R-Data-Science-Labs/tree/main) | Tags: R, Data Science, ggplot2, tidyverse
       7. Local Soul — AI travel companion งานทีมช่วงฝึกงาน Botnoi วิชญ์ทำ RAG chatbot (vector search + Typhoon LLM) ต่อกับ Botnoi widget | [Live Demo](https://local-soul-gamma.vercel.app/)
+      8. LINE OA AI Chatbot — แชทบอทภาษาไทยสำหรับ LINE Official Account ด้วย FastAPI + Gemini API ตรวจ signature ของ LINE ทุกคำขอ แก้ system prompt จากไฟล์ได้โดยไม่ต้องรีสตาร์ท มี pytest 17 ข้อ, Docker, GitHub Actions CI และ deploy บน Google Cloud Run | [GitHub](https://github.com/WISHERCARTs/line-ai-chatbot-gemini) | Tags: Python, FastAPI, Google Gemini API, LINE Bot SDK, Docker, Cloud Run
 
       [ใบรับรอง & เกียรติบัตร (Certificates)]
       1. BOTNOI Trainee 2026 - AI Agent Builder (BOTNOI Group, 2026) — AI Agents, NLP, ASR/TTS, Conversational AI | [ดูใบรับรอง](/Certificate_วิชญ์  นาคทอง.pdf)
