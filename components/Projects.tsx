@@ -40,6 +40,7 @@ export const projects = [
     image: "/images/tournament-hub/cover.svg",
     tags: ["React", "TypeScript", "Supabase", "PostgreSQL", "Realtime", "Tailwind CSS"],
     demo: "https://tournamenthubth.vercel.app/e/eg-game",
+    caseStudy: "/projects/tournament-hub",
     demoImages: ["/images/tournament-hub/cover.svg"],
   },
   {
