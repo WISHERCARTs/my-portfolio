@@ -8,22 +8,7 @@ import { FOLIO_EASE, FOLIO_ENTRIES, getFolioEntry } from "@/lib/folio";
 import FolioNav from "./FolioNav";
 import FolioFooter from "./FolioFooter";
 
-export default function FolioShell({
-  slug,
-  children,
-  title,
-  intro,
-  back,
-}: {
-  slug: string;
-  children: ReactNode;
-  /** Replaces the section title, for a page nested under a section. */
-  title?: string;
-  /** Replaces the section intro. */
-  intro?: string;
-  /** Replaces the default "Back to index" link. */
-  back?: { href: string; label: string };
-}) {
+export default function FolioShell({ slug, children }: { slug: string; children: ReactNode }) {
   const reduceMotion = useReducedMotion();
   const found = getFolioEntry(slug);
   if (!found) return null;
@@ -63,7 +48,7 @@ export default function FolioShell({
           style={{ textWrap: "balance" }}
           {...rise(0.08)}
         >
-          {title ?? entry.title}
+          {entry.title}
         </motion.h1>
 
         <motion.div
@@ -71,17 +56,17 @@ export default function FolioShell({
           {...rise(0.2)}
         >
           <p className="max-w-[64ch] text-[0.9375rem] leading-relaxed text-[var(--f-dim)]">
-            {intro ?? entry.intro}
+            {entry.intro}
           </p>
           <Link
-            href={back?.href ?? "/"}
+            href="/"
             className="f-mono group inline-flex min-h-11 items-center gap-2 self-start text-[0.75rem] md:min-h-0 md:self-auto"
           >
             <ArrowLeft
               className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-1"
               aria-hidden="true"
             />
-            <span className="border-b border-[var(--f-cream)] pb-0.5">{back?.label ?? "Back to index"}</span>
+            <span className="border-b border-[var(--f-cream)] pb-0.5">Back to index</span>
           </Link>
         </motion.div>
 
