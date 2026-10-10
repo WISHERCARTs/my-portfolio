@@ -34,6 +34,15 @@ export const projects = [
     demoImages: ["/images/thai-rag/cover.svg"],
   },
   {
+    title: "Tournament Hub",
+    description:
+      "Tournament platform I built for the MU Esports club at Mahidol University. Organizers run brackets in five formats (single and double elimination, round robin, Swiss, free-for-all) and Valorant map pick/ban rooms, and anyone can follow results live from a public link with no account. Access rules and bracket logic live in PostgreSQL (Row Level Security and PL/pgSQL functions). It holds the real schedule of the EG faculty's upcoming Valorant and ROV tournaments. 24 merged pull requests and 14 SQL migrations. The demo opens a public bracket page; the source code is private.",
+    image: "/images/tournament-hub/cover.svg",
+    tags: ["React", "TypeScript", "Supabase", "PostgreSQL", "Realtime", "Tailwind CSS"],
+    demo: "https://tournamenthubth.vercel.app/e/eg-game",
+    demoImages: ["/images/tournament-hub/cover.svg"],
+  },
+  {
     title: "MLP Digit Recognition",
     description:
       "Handwritten digit recognition using Multi-Layer Perceptron (MLP) with Streamlit web interface",
