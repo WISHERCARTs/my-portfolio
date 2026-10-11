@@ -36,7 +36,7 @@ export const projects = [
   {
     title: "Thai RAG Agents",
     description:
-      "Multi-agent question answering over Thai Wikipedia on Google's Agent Development Kit. A coordinator splits a question into one lookup per place, a researcher searches with the hybrid retriever from Thai RAG, and a fact checker verifies the draft. On a 20-question evaluation, 17 answers were judged correct, every expected article was found, and the three unanswerable questions were refused. The README breaks down the misses: one bad reference, one real retrieval failure, and citations that are missing on short answers.",
+      "Multi-agent question answering over Thai Wikipedia on Google's Agent Development Kit. A coordinator splits a question into one lookup per place, a researcher searches with the hybrid retriever from Thai RAG, and a fact checker verifies the draft. On a 20-question evaluation, 17 answers were judged correct, every expected article was found, and the three unanswerable questions were refused. A second run, after tightening one instruction, kept accuracy at 17 of 20 but made every answer carry its citations (10 of 17 before) and ran the fact checker on every answerable question. The README breaks down the three misses: one bad reference, one real retrieval failure, and one decimal-rounding verdict.",
     image: "/images/thai-rag-agents/cover.svg",
     tags: ["Python", "Google ADK", "Multi-agent", "Google Gemini API", "Evaluation"],
     github: "https://github.com/WISHERCARTs/thai-rag-agents",
