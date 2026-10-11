@@ -1,0 +1,58 @@
+<svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg" font-family="monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0b2a2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="560" fill="url(#bg)"/>
+  <text x="40" y="52" font-size="26" font-weight="700" fill="#ecfeff">First evaluation run: 17 of 20 correct</text>
+  <text x="40" y="80" font-size="14" fill="#99f6e4">Thai RAG Agents on 20 questions, judged for correctness against reference answers</text>
+
+  <!-- bars: track 420 wide starting at x=230 -->
+  <g font-size="16" fill="#ccfbf1">
+    <text x="40" y="150">single</text>
+    <text x="40" y="200">comparison</text>
+    <text x="40" y="250">unanswerable</text>
+    <text x="40" y="300">partial</text>
+    <text x="40" y="365" font-weight="700" fill="#ecfeff">overall</text>
+  </g>
+  <g fill="#134e4a">
+    <rect x="230" y="132" width="420" height="26" rx="5"/>
+    <rect x="230" y="182" width="420" height="26" rx="5"/>
+    <rect x="230" y="232" width="420" height="26" rx="5"/>
+    <rect x="230" y="282" width="420" height="26" rx="5"/>
+    <rect x="230" y="347" width="420" height="26" rx="5"/>
+  </g>
+  <g fill="#14b8a6">
+    <rect x="230" y="132" width="367" height="26" rx="5"/>
+    <rect x="230" y="182" width="367" height="26" rx="5"/>
+    <rect x="230" y="232" width="420" height="26" rx="5"/>
+    <rect x="230" y="347" width="357" height="26" rx="5" fill="#2dd4bf"/>
+  </g>
+  <g font-size="16" fill="#ecfeff" font-weight="700">
+    <text x="662" y="151">7 / 8</text>
+    <text x="662" y="201">7 / 8</text>
+    <text x="662" y="251">3 / 3</text>
+    <text x="662" y="301">0 / 1</text>
+    <text x="662" y="366">17 / 20</text>
+  </g>
+
+  <line x1="40" y1="412" x2="760" y2="412" stroke="#134e4a" stroke-width="2"/>
+
+  <!-- other measures -->
+  <g font-size="30" font-weight="700" fill="#5eead4">
+    <text x="40" y="460">100%</text>
+    <text x="230" y="460">19 / 20</text>
+    <text x="420" y="460">15 / 20</text>
+    <text x="610" y="460">10 / 17</text>
+  </g>
+  <g font-size="13" fill="#99f6e4">
+    <text x="40" y="482">expected articles found</text>
+    <text x="230" y="482">split into sub-questions</text>
+    <text x="420" y="482">fact checker ran</text>
+    <text x="610" y="482">answers with citations</text>
+  </g>
+  <text x="40" y="520" font-size="12" fill="#5eead4">Gemini 2.5 Flash, 11 October 2026, one run, judged by Gemini.</text>
+  <text x="40" y="540" font-size="12" fill="#5eead4">117,029 tokens in total, 7.7 model calls and 19.6 s per question on average.</text>
+</svg>
