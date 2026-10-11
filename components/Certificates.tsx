@@ -10,6 +10,7 @@ import {
   ExternalLink,
   GraduationCap,
   Bot,
+  Cloud,
 } from "lucide-react";
 
 /** Display order of the certificate groups. */
@@ -104,6 +105,15 @@ export const certificateData = [
     color: "blue",
   },
   {
+    title: "AWS Academy Graduate - Cloud Foundations",
+    issuer: "Amazon Web Services Training and Certification",
+    description: "Training badge for completing the 20-hour AWS Academy Cloud Foundations course, issued through Credly.",
+    date: "2026",
+    link: "https://www.credly.com/badges/ae9ebccb-4f83-4b72-9045-890c26d69443",
+    category: "Other",
+    color: "amber",
+  },
+  {
     title: "GitHub for Developer",
     issuer: "borntodev academy",
     description: "Git command line, branching strategies, merge conflict resolution, pull requests, and collaborative code management.",
@@ -152,7 +162,7 @@ export const certificateData = [
 
 export const credlyBadges = [
   { id: "e81794ed-4901-47f8-a15a-dd3fd3a7e97e", category: "Networking & IoT" },
-  { id: "ae9ebccb-4f83-4b72-9045-890c26d69443", category: "Mahidol" },
+  { id: "ae9ebccb-4f83-4b72-9045-890c26d69443", category: "Other" },
 ];
 
 const colorVariants = {
@@ -176,6 +186,7 @@ const issuerLogos: Record<string, { logoUrl?: string; fallbackIcon?: React.React
   "Google Student Ambassador": { logoUrl: "https://cdn.simpleicons.org/google" },
   "Cisco Networking Academy": { logoUrl: "https://cdn.simpleicons.org/cisco" },
   "Cisco": { logoUrl: "https://cdn.simpleicons.org/cisco" },
+  "Amazon Web Services Training and Certification": { fallbackIcon: <Cloud className="w-5 h-5 text-amber-500" /> },
   "borntodev academy": { fallbackIcon: <Code className="w-5 h-5 text-orange-500" /> },
   "Faculty of ICT, Mahidol University": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> },
   "Faculty of ICT, Mahidol University (Cisco Networking Academy)": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> },

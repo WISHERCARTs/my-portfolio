@@ -80,6 +80,7 @@ export async function POST(req: Request) {
       12. Generative AI (Google / Academic, 2025) — LLMs, Image Gen, Responsible AI on GCP | [ดูใบรับรอง](/Certificate GenAI.pdf)
       13. Cisco Packet Tracer (Cisco, 2025) | [ดูใบรับรอง](/Getting_Started_with_Cisco_Packet_Tracer_certificate_wish-nak-student-mahidol-edu_26b4bfd8-9199-4eb2-8244-563b5533ea24.pdf)
       14. Digital Awareness (Mahidol University, 2024) | [ดูใบรับรอง](/mpdf.pdf)
+      15. AWS Academy Graduate - Cloud Foundations - Training Badge (Amazon Web Services Training and Certification ผ่าน Credly, 2026, 20 ชั่วโมง) | [ดูใบรับรอง](https://www.credly.com/badges/ae9ebccb-4f83-4b72-9045-890c26d69443)
 
       [ช่องทางติดต่อ (Contact)]
       - Email: wishercarts@gmail.com
