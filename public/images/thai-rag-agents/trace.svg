@@ -1,0 +1,34 @@
+<svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg" font-family="monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0b2a2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="560" fill="url(#bg)"/>
+  <text x="40" y="52" font-size="26" font-weight="700" fill="#ecfeff">One real run, traced</text>
+  <text x="40" y="80" font-size="14" fill="#99f6e4">python -m thai_agents ask "..." --trace   (Gemini 2.5 Flash, 11 October 2026)</text>
+
+  <rect x="40" y="104" width="720" height="62" rx="10" fill="#0b1220" stroke="#134e4a" stroke-width="2"/>
+  <text x="58" y="132" font-size="13" fill="#5eead4">QUESTION</text>
+  <text x="58" y="154" font-size="16" fill="#ecfeff">ดอกไม้ประจำจังหวัดน่านกับจังหวัดสุโขทัยต่างกันอย่างไร</text>
+
+  <rect x="40" y="180" width="720" height="256" rx="10" fill="#0b1220" stroke="#134e4a" stroke-width="2"/>
+  <g font-size="14">
+    <text x="58" y="210" fill="#ecfeff" font-weight="700">researcher  9.4 s</text>
+    <text x="88" y="236" fill="#99f6e4">search_thai_wikipedia("ดอกไม้ประจำจังหวัดน่าน")  5.5 s → 4 passages</text>
+    <text x="58" y="268" fill="#ecfeff" font-weight="700">researcher  4.6 s</text>
+    <text x="88" y="294" fill="#99f6e4">search_thai_wikipedia("ดอกไม้ประจำจังหวัดสุโขทัย")  0.5 s → 4 passages</text>
+    <text x="58" y="326" fill="#ecfeff" font-weight="700">fact_checker  4.5 s → OK</text>
+    <text x="88" y="352" fill="#99f6e4">read_sources()  → 7 sources</text>
+  </g>
+  <g font-size="13" fill="#5eead4">
+    <text x="58" y="392">coordinator 4 model calls · researcher 4 · fact_checker 2</text>
+    <text x="58" y="416">7,064 prompt tokens + 227 output tokens · 25.8 s in total</text>
+  </g>
+
+  <rect x="40" y="450" width="720" height="62" rx="10" fill="#134e4a"/>
+  <text x="58" y="476" font-size="13" fill="#5eead4">ANSWER</text>
+  <text x="58" y="498" font-size="15" fill="#ecfeff">น่านคือ เสี้ยวดอกขาว [S1] ส่วนสุโขทัยคือ ดอกบัวหลวง [S5]</text>
+  <text x="40" y="540" font-size="12" fill="#5eead4">One run, not a measurement. The coordinator split the comparison into one researcher call per province.</text>
+</svg>

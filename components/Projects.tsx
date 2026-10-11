@@ -36,11 +36,15 @@ export const projects = [
   {
     title: "Thai RAG Agents",
     description:
-      "Multi-agent question answering over Thai Wikipedia on Google's Agent Development Kit. A coordinator splits a question into one lookup per place, a researcher searches with the hybrid retriever from Thai RAG, and a fact checker verifies the draft against the passages it found. Every model and tool call is traced. The wiring is covered by 46 tests with scripted models and it has run on the real Gemini API; a 20-question evaluation set is ready, with results still to come.",
+      "Multi-agent question answering over Thai Wikipedia on Google's Agent Development Kit. A coordinator splits a question into one lookup per place, a researcher searches with the hybrid retriever from Thai RAG, and a fact checker verifies the draft. On a 20-question evaluation, 17 answers were judged correct, every expected article was found, and the three unanswerable questions were refused. The README breaks down the misses: one bad reference, one real retrieval failure, and citations that are missing on short answers.",
     image: "/images/thai-rag-agents/cover.svg",
-    tags: ["Python", "Google ADK", "Multi-agent", "Google Gemini API", "Tracing"],
+    tags: ["Python", "Google ADK", "Multi-agent", "Google Gemini API", "Evaluation"],
     github: "https://github.com/WISHERCARTs/thai-rag-agents",
-    demoImages: ["/images/thai-rag-agents/cover.svg"],
+    demoImages: [
+      "/images/thai-rag-agents/cover.svg",
+      "/images/thai-rag-agents/results.svg",
+      "/images/thai-rag-agents/trace.svg",
+    ],
   },
   {
     title: "Tournament Hub",
