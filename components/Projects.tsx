@@ -34,6 +34,15 @@ export const projects = [
     demoImages: ["/images/thai-rag/cover.svg"],
   },
   {
+    title: "Thai RAG Agents",
+    description:
+      "Multi-agent question answering over Thai Wikipedia on Google's Agent Development Kit. A coordinator splits a question into one lookup per place, a researcher searches with the hybrid retriever from Thai RAG, and a fact checker verifies the draft against the passages it found. Every model and tool call is traced. The wiring is covered by 46 tests with scripted models and it has run on the real Gemini API; a 20-question evaluation set is ready, with results still to come.",
+    image: "/images/thai-rag-agents/cover.svg",
+    tags: ["Python", "Google ADK", "Multi-agent", "Google Gemini API", "Tracing"],
+    github: "https://github.com/WISHERCARTs/thai-rag-agents",
+    demoImages: ["/images/thai-rag-agents/cover.svg"],
+  },
+  {
     title: "Tournament Hub",
     description:
       "Tournament platform I built for the MU Esports club at Mahidol University. Organizers run brackets in five formats (single and double elimination, round robin, Swiss, free-for-all) and Valorant map pick/ban rooms, and anyone can follow results live from a public link with no account. Access rules and bracket logic live in PostgreSQL (Row Level Security and PL/pgSQL functions). It holds the real schedule of the EG faculty's upcoming Valorant and ROV tournaments. 24 merged pull requests and 14 SQL migrations. The demo opens a public bracket page; the source code is private.",
