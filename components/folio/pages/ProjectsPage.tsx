@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -15,6 +15,49 @@ const linkClass =
 
 const iconButton =
   "inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--f-line-strong)] bg-[var(--f-bg)] transition-colors duration-200 hover:bg-[var(--f-cream)] hover:text-[var(--f-panel-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--f-cream)]";
+
+/** Description that stays three lines long until the reader asks for the rest. */
+function ProjectDescription({ text }: { text: string }) {
+  const id = useId();
+  const ref = useRef<HTMLParagraphElement>(null);
+  const [expanded, setExpanded] = useState(false);
+  const [clamped, setClamped] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || expanded) return;
+    const measure = () => setClamped(el.scrollHeight > el.clientHeight + 1);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [text, expanded]);
+
+  return (
+    <>
+      <p
+        ref={ref}
+        id={id}
+        className={`mt-2 max-w-[70ch] text-[0.8125rem] leading-relaxed text-[var(--f-dim)] ${
+          expanded ? "" : "line-clamp-3"
+        }`}
+      >
+        {text}
+      </p>
+      {clamped || expanded ? (
+        <button
+          type="button"
+          onClick={() => setExpanded((value) => !value)}
+          aria-expanded={expanded}
+          aria-controls={id}
+          className={linkClass}
+        >
+          {expanded ? "Show less" : "Read more"}
+        </button>
+      ) : null}
+    </>
+  );
+}
 
 export default function ProjectsPage() {
   const reduceMotion = useReducedMotion();
@@ -78,9 +121,7 @@ export default function ProjectsPage() {
 
             <div className="min-w-0">
               <h2 className="f-display text-[clamp(1.375rem,2vw,1.75rem)] leading-[0.95]">{project.title}</h2>
-              <p className="mt-2 line-clamp-3 max-w-[70ch] text-[0.8125rem] leading-relaxed text-[var(--f-dim)]">
-                {project.description}
-              </p>
+              <ProjectDescription text={project.description} />
 
               <ul className="mt-3 flex flex-wrap gap-1.5">
                 {project.tags.map((tag, t) => (
