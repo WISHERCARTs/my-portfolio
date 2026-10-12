@@ -49,10 +49,10 @@ export const projects = [
   {
     title: "Tournament Hub",
     description:
-      "Tournament platform I built for the MU Esports club at Mahidol University. Organizers run brackets in five formats (single and double elimination, round robin, Swiss, free-for-all) and Valorant map pick/ban rooms, and anyone can follow results live from a public link with no account. Access rules and bracket logic live in PostgreSQL (Row Level Security and PL/pgSQL functions). It holds the real schedule of the EG faculty's upcoming Valorant and ROV tournaments. 24 merged pull requests and 14 SQL migrations. The demo opens a public bracket page; the source code is private.",
+      "Tournament platform I built for the MU Esports club at Mahidol University. Organizers run brackets in five formats (single and double elimination, round robin, Swiss, free-for-all) and Valorant map pick/ban rooms, and anyone can follow results live from a public link with no account. Access rules and bracket logic live in PostgreSQL (Row Level Security and PL/pgSQL functions). It holds the real schedule of the EG faculty's upcoming Valorant and ROV tournaments. 24 merged pull requests and 14 SQL migrations. The demo is the finished archive of the MU Game 2026 (March) inter-faculty Valorant tournament, 13 to 25 March 2026: three round-robin groups, a double-elimination play-off and the map pick/ban records. The source code is private.",
     image: "/images/tournament-hub/cover.svg",
     tags: ["React", "TypeScript", "Supabase", "PostgreSQL", "Realtime", "Tailwind CSS"],
-    demo: "https://tournamenthubth.vercel.app/e/eg-game",
+    demo: "https://tournamenthubth.vercel.app/e/mu-game-2026-march",
     demoImages: ["/images/tournament-hub/cover.svg"],
   },
   {
