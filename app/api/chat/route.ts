@@ -84,6 +84,10 @@ export async function POST(req: Request) {
       13. Cisco Packet Tracer (Cisco, 2025) | [ดูใบรับรอง](/Getting_Started_with_Cisco_Packet_Tracer_certificate_wish-nak-student-mahidol-edu_26b4bfd8-9199-4eb2-8244-563b5533ea24.pdf)
       14. Digital Awareness (Mahidol University, 2024) | [ดูใบรับรอง](/mpdf.pdf)
       15. AWS Academy Graduate - Cloud Foundations - Training Badge (Amazon Web Services Training and Certification ผ่าน Credly, 2026, 20 ชั่วโมง) | [ดูใบรับรอง](https://www.credly.com/badges/ae9ebccb-4f83-4b72-9045-890c26d69443)
+      16. Preparation for Internship and Co-op Education (Faculty of ICT, Mahidol University, 8 ต.ค. 2026) — Certificate of Achievement หลักสูตรเตรียมความพร้อมสำหรับการฝึกงานและสหกิจศึกษา | [ดูใบรับรอง](/ICT-Internship-Coop-Preparation.pdf)
+      17. AI for All (CBTU ศูนย์อบรมด้าน AI และ Data Science มหาวิทยาลัยมหิดล, 3 มิ.ย. 2026) | [ดูใบรับรอง](/CBTU-AI-for-All.pdf)
+      18. Introduction to Internet of Things (Cisco Networking Academy, 16 มี.ค. 2026) — IoT กับ digital transformation, automation และ AI, Intent Based Networking, ความปลอดภัย | [ดูใบรับรอง](/Cisco-Introduction-to-IoT.pdf)
+      19. English A2 (Speexx, ก.ย. - พ.ย. 2024) — คอร์สภาษาอังกฤษระดับ CEFR A2 ได้ 99/100 | [ดูใบรับรอง](/Speexx-English-A2.pdf)
 
       [ช่องทางติดต่อ (Contact)]
       - Email: wishercarts@gmail.com
