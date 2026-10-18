@@ -147,6 +147,17 @@ export const TIMELINE: TimelineYear[] = [
         })),
       },
       {
+        kind: "community",
+        when: "May",
+        title: "Technical Facilitator, Google Cloud AI Live + Labs Bangkok",
+        body: "Helped more than 160 attendees through the hands-on labs: building a multi-agent system with the Agent Development Kit, deploying it to Agent Runtime and setting up the A2A protocol.",
+        photos: [
+          { src: "/images/timeline/ai-live-labs-01.jpg", alt: "The Google Cloud AI Live + Labs Bangkok photo wall" },
+          { src: "/images/timeline/ai-live-labs-02.jpg", alt: "Google Student Ambassadors at Google Cloud AI Live + Labs Bangkok" },
+          { src: "/images/timeline/ai-live-labs-03.jpg", alt: "Helping attendees during the hands-on labs at Google Cloud AI Live + Labs Bangkok" },
+        ],
+      },
+      {
         kind: "work",
         when: "May - Jul",
         title: "AI Agent Builder Intern, Botnoi Group",
