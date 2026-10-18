@@ -63,6 +63,13 @@ export const TIMELINE: TimelineYear[] = [
         body: "Mahidol University course on digital literacy, cybersecurity and privacy.",
         href: "/certificates",
       },
+      {
+        kind: "cert",
+        when: "Sep - Nov",
+        title: "English A2 on Speexx",
+        body: "Online English course at CEFR level A2, finished with 99 out of 100.",
+        cert: { title: "English A2", href: "/Speexx-English-A2.pdf" },
+      },
     ],
   },
   {
@@ -132,6 +139,16 @@ export const TIMELINE: TimelineYear[] = [
         href: "/certificates",
       },
       {
+        kind: "cert",
+        when: "Mar",
+        title: "Introduction to IoT",
+        body: "Cisco Networking Academy course on how IoT, automation and AI change businesses, plus Intent Based Networking and security.",
+        cert: {
+          title: "Introduction to Internet of Things",
+          href: "/Cisco-Introduction-to-IoT.pdf",
+        },
+      },
+      {
         kind: "community",
         when: "Apr",
         title: "Google Student Ambassador, Batch 1",
@@ -168,6 +185,13 @@ export const TIMELINE: TimelineYear[] = [
         },
       },
       {
+        kind: "cert",
+        when: "Jun",
+        title: "AI for All",
+        body: "Course from Mahidol's AI and Data Science training centre (CBTU), completed with a passing grade.",
+        cert: { title: "AI for All", href: "/CBTU-AI-for-All.pdf" },
+      },
+      {
         kind: "build",
         when: "Jun",
         title: "Local Soul chatbot",
@@ -202,6 +226,16 @@ export const TIMELINE: TimelineYear[] = [
         cert: {
           title: "Google Cloud Fundamentals: Core Infrastructure",
           href: "/Coursera-Google-Cloud-Fundamentals.pdf",
+        },
+      },
+      {
+        kind: "cert",
+        when: "Oct",
+        title: "Internship and co-op preparation",
+        body: "The faculty's course on getting ready for internships and co-operative education, with a Certificate of Achievement.",
+        cert: {
+          title: "Preparation for Internship and Co-op Education",
+          href: "/ICT-Internship-Coop-Preparation.pdf",
         },
       },
       {
