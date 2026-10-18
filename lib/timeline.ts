@@ -118,6 +118,21 @@ export const TIMELINE: TimelineYear[] = [
         href: "/certificates",
       },
       {
+        kind: "community",
+        when: "Feb - Jul",
+        title: "Google Student Ambassador, Batch 1",
+        body: "Five months as one of 1,700 students selected nationwide: Gemini training, the Creator Playground, and a facilitator role at Google Cloud AI Live + Labs. Graduated in July with the Class of 2026 certificate.",
+        href: "/certificates",
+        cert: {
+          title: "Google Student Ambassador Class of 2026",
+          href: "/GSA-Certificate-Portfolio.pdf",
+        },
+        photos: Array.from({ length: 24 }, (_, i) => ({
+          src: `/images/timeline/gsa-2026-${String(i + 1).padStart(2, "0")}.jpg`,
+          alt: `Google Student Ambassador 2026, Batch 1, photo ${i + 1}`,
+        })),
+      },
+      {
         kind: "build",
         when: "Feb",
         title: "Face recognition, MLP digits, Fuwari Time",
@@ -150,24 +165,9 @@ export const TIMELINE: TimelineYear[] = [
       },
       {
         kind: "community",
-        when: "Apr",
-        title: "Google Student Ambassador, Batch 1",
-        body: "Graduated from the first GSA batch, one of 1,700 students selected nationwide, and earned the Creator Playground certificate.",
-        href: "/certificates",
-        cert: {
-          title: "Google Student Ambassador Class of 2026",
-          href: "/GSA-Certificate-Portfolio.pdf",
-        },
-        photos: Array.from({ length: 24 }, (_, i) => ({
-          src: `/images/timeline/gsa-2026-${String(i + 1).padStart(2, "0")}.jpg`,
-          alt: `Google Student Ambassador 2026, Batch 1, photo ${i + 1}`,
-        })),
-      },
-      {
-        kind: "community",
         when: "May",
         title: "Technical Facilitator, Google Cloud AI Live + Labs Bangkok",
-        body: "Helped more than 160 attendees through the hands-on labs: building a multi-agent system with the Agent Development Kit, deploying it to Agent Runtime and setting up the A2A protocol.",
+        body: "Part of the ambassador programme: helped more than 160 attendees through the hands-on labs: building a multi-agent system with the Agent Development Kit, deploying it to Agent Runtime and setting up the A2A protocol.",
         photos: [
           { src: "/images/timeline/ai-live-labs-01.jpg", alt: "The Google Cloud AI Live + Labs Bangkok photo wall" },
           { src: "/images/timeline/ai-live-labs-02.jpg", alt: "Google Student Ambassadors at Google Cloud AI Live + Labs Bangkok" },
