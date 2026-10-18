@@ -193,6 +193,17 @@ export const TIMELINE: TimelineYear[] = [
         body: "Question answering over Thai Wikipedia that compares keyword, embedding and hybrid search on 80 questions and checks the answers cite their sources.",
         href: "/projects",
       },
+      {
+        kind: "build",
+        when: "Oct",
+        title: "Honorable Mention, MUICT x The Mall Group Hackathon 2026",
+        body: "With Team Superstang I built SmartSeat AI, which reads a mall's existing CCTV to show free food court tables and queue lengths in real time, counting people without face recognition. We pitched it to The Mall Group's judges in the Grand Auditorium on 14 October.",
+        photos: [
+          { src: "/images/timeline/hackathon-2026-01.jpg", alt: "Team Superstang receiving the Honorable Mention on stage at the MUICT x The Mall Group Hackathon 2026" },
+          { src: "/images/timeline/hackathon-2026-02.jpg", alt: "Team Superstang holding the Honorable Mention board" },
+          { src: "/images/timeline/hackathon-2026-03.jpg", alt: "All the award-winning teams and judges at the MUICT x The Mall Group Hackathon 2026" },
+        ],
+      },
     ],
   },
 ];
