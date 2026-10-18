@@ -189,6 +189,13 @@ export const TIMELINE: TimelineYear[] = [
       },
       {
         kind: "cert",
+        when: "Sep",
+        title: "AWS Academy Cloud Foundations",
+        body: "The 20-hour AWS Academy course on core cloud concepts, with the training badge issued through Credly.",
+        href: "/certificates",
+      },
+      {
+        kind: "cert",
         when: "Oct",
         title: "Google Cloud Fundamentals",
         body: "Core Infrastructure course from Google Cloud on Coursera.",
