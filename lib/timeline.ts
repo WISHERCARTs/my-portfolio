@@ -63,6 +63,13 @@ export const TIMELINE: TimelineYear[] = [
         body: "Mahidol University course on digital literacy, cybersecurity and privacy.",
         href: "/certificates",
       },
+      {
+        kind: "cert",
+        when: "Sep - Nov",
+        title: "English A2 on Speexx",
+        body: "Online English course at CEFR level A2, finished with 99 out of 100.",
+        cert: { title: "English A2", href: "/Speexx-English-A2.pdf" },
+      },
     ],
   },
   {
@@ -111,6 +118,21 @@ export const TIMELINE: TimelineYear[] = [
         href: "/certificates",
       },
       {
+        kind: "community",
+        when: "Feb - Jul",
+        title: "Google Student Ambassador, Batch 1",
+        body: "Five months as one of 1,700 students selected nationwide: Gemini training, the Creator Playground, and a facilitator role at Google Cloud AI Live + Labs. Graduated in July with the Class of 2026 certificate.",
+        href: "/certificates",
+        cert: {
+          title: "Google Student Ambassador Class of 2026",
+          href: "/GSA-Certificate-Portfolio.pdf",
+        },
+        photos: Array.from({ length: 24 }, (_, i) => ({
+          src: `/images/timeline/gsa-2026-${String(i + 1).padStart(2, "0")}.jpg`,
+          alt: `Google Student Ambassador 2026, Batch 1, photo ${i + 1}`,
+        })),
+      },
+      {
         kind: "build",
         when: "Feb",
         title: "Face recognition, MLP digits, Fuwari Time",
@@ -132,19 +154,25 @@ export const TIMELINE: TimelineYear[] = [
         href: "/certificates",
       },
       {
-        kind: "community",
-        when: "Apr",
-        title: "Google Student Ambassador, Batch 1",
-        body: "Graduated from the first GSA batch, one of 1,700 students selected nationwide, and earned the Creator Playground certificate.",
-        href: "/certificates",
+        kind: "cert",
+        when: "Mar",
+        title: "Introduction to IoT",
+        body: "Cisco Networking Academy course on how IoT, automation and AI change businesses, plus Intent Based Networking and security.",
         cert: {
-          title: "Google Student Ambassador Class of 2026",
-          href: "/GSA-Certificate-Portfolio.pdf",
+          title: "Introduction to Internet of Things",
+          href: "/Cisco-Introduction-to-IoT.pdf",
         },
-        photos: Array.from({ length: 24 }, (_, i) => ({
-          src: `/images/timeline/gsa-2026-${String(i + 1).padStart(2, "0")}.jpg`,
-          alt: `Google Student Ambassador 2026, Batch 1, photo ${i + 1}`,
-        })),
+      },
+      {
+        kind: "community",
+        when: "May",
+        title: "Technical Facilitator, Google Cloud AI Live + Labs Bangkok",
+        body: "Part of the ambassador programme: helped more than 160 attendees through the hands-on labs: building a multi-agent system with the Agent Development Kit, deploying it to Agent Runtime and setting up the A2A protocol.",
+        photos: [
+          { src: "/images/timeline/ai-live-labs-01.jpg", alt: "The Google Cloud AI Live + Labs Bangkok photo wall" },
+          { src: "/images/timeline/ai-live-labs-02.jpg", alt: "Google Student Ambassadors at Google Cloud AI Live + Labs Bangkok" },
+          { src: "/images/timeline/ai-live-labs-03.jpg", alt: "Helping attendees during the hands-on labs at Google Cloud AI Live + Labs Bangkok" },
+        ],
       },
       {
         kind: "work",
@@ -155,6 +183,13 @@ export const TIMELINE: TimelineYear[] = [
           title: "BOTNOI Trainee 2026 - AI Agent Builder",
           href: "/Certificate_วิชญ์  นาคทอง.pdf",
         },
+      },
+      {
+        kind: "cert",
+        when: "Jun",
+        title: "AI for All",
+        body: "Course from Mahidol's AI and Data Science training centre (CBTU), completed with a passing grade.",
+        cert: { title: "AI for All", href: "/CBTU-AI-for-All.pdf" },
       },
       {
         kind: "build",
@@ -178,12 +213,29 @@ export const TIMELINE: TimelineYear[] = [
       },
       {
         kind: "cert",
+        when: "Sep",
+        title: "AWS Academy Cloud Foundations",
+        body: "The 20-hour AWS Academy course on core cloud concepts, with the training badge issued through Credly.",
+        href: "/certificates",
+      },
+      {
+        kind: "cert",
         when: "Oct",
         title: "Google Cloud Fundamentals",
         body: "Core Infrastructure course from Google Cloud on Coursera.",
         cert: {
           title: "Google Cloud Fundamentals: Core Infrastructure",
           href: "/Coursera-Google-Cloud-Fundamentals.pdf",
+        },
+      },
+      {
+        kind: "cert",
+        when: "Oct",
+        title: "Internship and co-op preparation",
+        body: "The faculty's course on getting ready for internships and co-operative education, with a Certificate of Achievement.",
+        cert: {
+          title: "Preparation for Internship and Co-op Education",
+          href: "/ICT-Internship-Coop-Preparation.pdf",
         },
       },
       {

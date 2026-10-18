@@ -33,6 +33,15 @@ export const certificateData = [
     color: "emerald",
   },
   {
+    title: "Preparation for Internship and Co-op Education",
+    issuer: "Faculty of ICT, Mahidol University",
+    description: "Certificate of Achievement for the faculty's course on getting ready for internships and co-operative education, completed on 8 October 2026.",
+    date: "2026",
+    link: "/ICT-Internship-Coop-Preparation.pdf",
+    category: "Internship",
+    color: "emerald",
+  },
+  {
     title: "Google Student Ambassador Class of 2026",
     issuer: "Google Student Ambassador",
     description: "Graduation certificate for the GSA programme, selected from 1,700 students nationwide, for leading the use of Google AI in the university community.",
@@ -69,6 +78,15 @@ export const certificateData = [
     color: "emerald",
   },
   {
+    title: "AI for All",
+    issuer: "CBTU, Mahidol University",
+    description: "Course from Mahidol's AI and Data Science training centre, completed with a passing grade on 3 June 2026.",
+    date: "2026",
+    link: "/CBTU-AI-for-All.pdf",
+    category: "Mahidol",
+    color: "blue",
+  },
+  {
     title: "Solana Certificate",
     issuer: "Faculty of ICT, Mahidol University",
     description: "Web3 development fundamentals, Solana blockchain architecture, smart contracts (Rust), and decentralized applications.",
@@ -85,6 +103,15 @@ export const certificateData = [
     link: "/C--_Essentials_1_certificate_wish-nak-student-mahidol-edu_26db587d-2a99-4974-b3f7-29b87c0abd12.pdf",
     category: "Mahidol",
     color: "emerald",
+  },
+  {
+    title: "Introduction to Internet of Things",
+    issuer: "Cisco Networking Academy",
+    description: "How IoT and digital transformation change businesses, the role of software, data, automation and AI, Intent Based Networking, and security in a digitised world.",
+    date: "2026",
+    link: "/Cisco-Introduction-to-IoT.pdf",
+    category: "Networking & IoT",
+    color: "cyan",
   },
   {
     title: "CCNA: Introduction to Networks",
@@ -158,6 +185,15 @@ export const certificateData = [
     category: "Mahidol",
     color: "rose",
   },
+  {
+    title: "English A2",
+    issuer: "Speexx",
+    description: "Online English course at CEFR level A2, finished with a result of 99/100 between 25 September and 8 November 2024.",
+    date: "2024",
+    link: "/Speexx-English-A2.pdf",
+    category: "Other",
+    color: "emerald",
+  },
 ];
 
 export const credlyBadges = [
@@ -190,7 +226,8 @@ const issuerLogos: Record<string, { logoUrl?: string; fallbackIcon?: React.React
   "borntodev academy": { fallbackIcon: <Code className="w-5 h-5 text-orange-500" /> },
   "Faculty of ICT, Mahidol University": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> },
   "Faculty of ICT, Mahidol University (Cisco Networking Academy)": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> },
-  "Mahidol University (MUx)": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> }
+  "Mahidol University (MUx)": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> },
+  "CBTU, Mahidol University": { fallbackIcon: <GraduationCap className="w-5 h-5 text-blue-500" /> }
 };
 
 const Certificates = () => {
