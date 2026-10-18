@@ -200,8 +200,10 @@ export const TIMELINE: TimelineYear[] = [
         body: "With Team Superstang I built SmartSeat AI, which reads a mall's existing CCTV to show free food court tables and queue lengths in real time, counting people without face recognition. We pitched it to The Mall Group's judges in the Grand Auditorium on 14 October.",
         photos: [
           { src: "/images/timeline/hackathon-2026-01.jpg", alt: "Team Superstang receiving the Honorable Mention on stage at the MUICT x The Mall Group Hackathon 2026" },
-          { src: "/images/timeline/hackathon-2026-02.jpg", alt: "Team Superstang holding the Honorable Mention board" },
-          { src: "/images/timeline/hackathon-2026-03.jpg", alt: "All the award-winning teams and judges at the MUICT x The Mall Group Hackathon 2026" },
+          { src: "/images/timeline/hackathon-2026-02.jpg", alt: "Team Superstang pitching SmartSeat AI on stage" },
+          { src: "/images/timeline/hackathon-2026-03.jpg", alt: "Team Superstang holding the Honorable Mention board" },
+          { src: "/images/timeline/hackathon-2026-04.jpg", alt: "Judges from ICT Mahidol and The Mall Group at the judging table, with the students behind them" },
+          { src: "/images/timeline/hackathon-2026-05.jpg", alt: "All the award-winning teams and judges at the MUICT x The Mall Group Hackathon 2026" },
         ],
       },
     ],
