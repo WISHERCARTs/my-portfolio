@@ -27,6 +27,7 @@ export const projects = [
   },
   {
     title: "Thai RAG with Evaluation",
+    caseStudy: "thai-rag-eval",
     highlight: "The source passage landed in the top 3 for all 80 questions, and all 10 unanswerable ones were refused.",
     description:
       "Thai question answering over 40 Thai Wikipedia articles, with an evaluation harness that measures it. On 80 questions, Gemini embedding search put the source passage in the top 3 every time, while BM25 over PyThaiNLP word segmentation missed 4. Answers cite their sources and refused all 10 questions the articles could not answer.",
@@ -37,6 +38,7 @@ export const projects = [
   },
   {
     title: "Thai RAG Agents",
+    caseStudy: "thai-rag-agents",
     highlight: "Three agents on Google ADK. 17 of 20 answers correct, and after one instruction fix every answer carries citations.",
     description:
       "Multi-agent question answering over Thai Wikipedia on Google's Agent Development Kit. A coordinator splits a question into one lookup per place, a researcher searches with the hybrid retriever from Thai RAG, and a fact checker verifies the draft. On a 20-question evaluation, 17 answers were judged correct, every expected article was found, and the three unanswerable questions were refused. A second run, after tightening one instruction, kept accuracy at 17 of 20 but made every answer carry its citations (10 of 17 before) and ran the fact checker on every answerable question. The README breaks down the three misses: one bad reference, one real retrieval failure, and one decimal-rounding verdict.",
