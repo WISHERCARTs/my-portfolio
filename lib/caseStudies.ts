@@ -16,7 +16,9 @@ export interface CaseStudy {
   /** Matches the project card's title on /projects. */
   title: string;
   intro: string;
-  github: string;
+  /** Left out when the source code is private. */
+  github?: string;
+  demo?: string;
   stats: { value: string; label: string }[];
   sections: CaseStudySection[];
 }
@@ -150,6 +152,62 @@ export const CASE_STUDIES: CaseStudy[] = [
           "Fix the Nong Khai miss in retrieval or in how the researcher words its queries, not in the coordinator.",
           "One run per setup, so a one-question difference is within noise.",
           "The same model family answers and judges, and Wikipedia text can contradict itself between sections.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "tournament-hub",
+    title: "Tournament Hub",
+    intro:
+      "A tournament platform I built for the MU Esports club at Mahidol University: organizers run brackets and Valorant map pick/ban rooms, and everyone else follows the results live from a public link.",
+    demo: "https://tournamenthubth.vercel.app/e/mu-game-2026-march",
+    stats: [
+      { value: "5", label: "bracket formats: single and double elimination, round robin, Swiss and free-for-all" },
+      { value: "71", label: "merged pull requests, counted on 19 October 2026" },
+      { value: "25", label: "SQL migrations that build the tables, access rules and functions" },
+    ],
+    sections: [
+      {
+        heading: "The problem",
+        paragraphs: [
+          "An inter-faculty tournament needs brackets, match times and Valorant map pick/ban to stay consistent, while players and fans need to follow the results without making an account. I built this for the MU Esports club at Mahidol University.",
+        ],
+      },
+      {
+        heading: "What I built",
+        bullets: [
+          "An organizer app: sign in, create an organization and events, and switch features on per event (pick/ban, brackets, more than one game).",
+          "Brackets in five formats, group stages dealt by seeded or random draw, and a scheduler that plans match times.",
+          "Valorant map pick/ban rooms for Best of 1, 3 or 5. Each captain gets their own team link, organization owners and admins act as host, and everyone else spectates.",
+          "A public event page that anyone can open from a link, with no account, and that updates live as results change.",
+          "Pick'em, where viewers predict match winners, with a leaderboard and a results image they can share.",
+          "A Thai and English interface.",
+        ],
+      },
+      {
+        heading: "How I kept it correct",
+        bullets: [
+          "Turn order in pick/ban rooms is enforced inside the database by a function, not only in the browser.",
+          "Access rules are Row Level Security policies in PostgreSQL. Owners, admins and viewers have different rights, and only events marked public can be read by anyone with the link.",
+          "Rules that the screen also shows, such as when a Pick'em prediction locks and how many points a correct pick earns, are defined in the database and mirrored in the client code.",
+          "Bracket logic lives in PL/pgSQL functions, and every migration can be run twice safely.",
+        ],
+      },
+      {
+        heading: "What happened",
+        bullets: [
+          "The demo is the finished archive of the MU Game 2026 (March) inter-faculty Valorant tournament, 13 to 25 March 2026: three round-robin groups, a double-elimination play-off and the map pick/ban records.",
+          "It also holds the real schedule of the EG faculty's upcoming Valorant and ROV tournaments.",
+          "It began as the MU Game 2026 Valorant pick/ban portal and has grown into a platform that several organizations can use.",
+        ],
+      },
+      {
+        heading: "Next steps and limits",
+        bullets: [
+          "The project's own notes describe the direction: from one tournament's portal to a platform where other organizations run their own events.",
+          "Supabase's built-in email sender is heavily rate limited, so real use needs custom email setup or the staff access codes that let people join without an account.",
+          "The source code is private, so the live demo is the way to see it.",
         ],
       },
     ],
