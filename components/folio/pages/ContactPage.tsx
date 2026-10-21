@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Briefcase, Mail } from "lucide-react";
 import { Github, Instagram, Linkedin, Youtube } from "@/components/BrandIcons";
 
 const CONTACTS = [
@@ -37,6 +37,13 @@ const CONTACTS = [
     value: "@wishercarts",
     href: "https://www.youtube.com/@wishercarts",
     icon: Youtube,
+    external: true,
+  },
+  {
+    label: "Fastwork",
+    value: "@wish",
+    href: "https://fastwork.com/user/wish",
+    icon: Briefcase,
     external: true,
   },
 ];

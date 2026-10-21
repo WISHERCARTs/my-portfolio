@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Github } from "@/components/BrandIcons";
@@ -171,6 +172,12 @@ export default function ProjectsPage() {
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                     Live demo
                   </a>
+                ) : null}
+                {"caseStudy" in project && project.caseStudy ? (
+                  <Link href={`/projects/${project.caseStudy}`} className={linkClass}>
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                    Case study
+                  </Link>
                 ) : null}
                 <button type="button" onClick={() => open(project)} className={linkClass}>
                   Preview
