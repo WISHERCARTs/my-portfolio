@@ -96,6 +96,7 @@ export async function POST(req: Request) {
       - GitHub: [WISHERCARTs](https://github.com/WISHERCARTs)
       - Instagram: [@wishercarts](https://www.instagram.com/wishercarts/)
       - YouTube: [@wishercarts](https://www.youtube.com/@wishercarts)
+      - Fastwork: [@wish](https://fastwork.com/user/wish)
     `,
     });
 
