@@ -17,6 +17,7 @@ import { useState, useEffect, useCallback } from "react";
 export const projects = [
   {
     title: "Local Soul",
+    highlight: "I built its chatbot: vector search finds the places and Typhoon writes the answer in Thai.",
     description:
       "Team project from the Botnoi internship: an AI travel companion that plans a day hour by hour on a map. I built its chatbot, a RAG endpoint that finds places with vector search and has the Typhoon LLM write recommendations in Thai, connected to Botnoi's chat widget.",
     image: "/images/local-soul/home.jpg",
@@ -26,6 +27,7 @@ export const projects = [
   },
   {
     title: "Thai RAG with Evaluation",
+    highlight: "The source passage landed in the top 3 for all 80 questions, and all 10 unanswerable ones were refused.",
     description:
       "Thai question answering over 40 Thai Wikipedia articles, with an evaluation harness that measures it. On 80 questions, Gemini embedding search put the source passage in the top 3 every time, while BM25 over PyThaiNLP word segmentation missed 4. Answers cite their sources and refused all 10 questions the articles could not answer.",
     image: "/images/thai-rag/cover.svg",
@@ -35,6 +37,7 @@ export const projects = [
   },
   {
     title: "Thai RAG Agents",
+    highlight: "Three agents on Google ADK. 17 of 20 answers correct, and after one instruction fix every answer carries citations.",
     description:
       "Multi-agent question answering over Thai Wikipedia on Google's Agent Development Kit. A coordinator splits a question into one lookup per place, a researcher searches with the hybrid retriever from Thai RAG, and a fact checker verifies the draft. On a 20-question evaluation, 17 answers were judged correct, every expected article was found, and the three unanswerable questions were refused. A second run, after tightening one instruction, kept accuracy at 17 of 20 but made every answer carry its citations (10 of 17 before) and ran the fact checker on every answerable question. The README breaks down the three misses: one bad reference, one real retrieval failure, and one decimal-rounding verdict.",
     image: "/images/thai-rag-agents/cover.svg",
@@ -48,6 +51,7 @@ export const projects = [
   },
   {
     title: "Tournament Hub",
+    highlight: "Built for the MU Esports club: five bracket formats, live public results, 24 merged pull requests.",
     description:
       "Tournament platform I built for the MU Esports club at Mahidol University. Organizers run brackets in five formats (single and double elimination, round robin, Swiss, free-for-all) and Valorant map pick/ban rooms, and anyone can follow results live from a public link with no account. Access rules and bracket logic live in PostgreSQL (Row Level Security and PL/pgSQL functions). It holds the real schedule of the EG faculty's upcoming Valorant and ROV tournaments. 24 merged pull requests and 14 SQL migrations. The demo is the finished archive of the MU Game 2026 (March) inter-faculty Valorant tournament, 13 to 25 March 2026: three round-robin groups, a double-elimination play-off and the map pick/ban records. The source code is private.",
     image: "/images/tournament-hub/cover.svg",
@@ -101,7 +105,7 @@ export const projects = [
   {
     title: "AI chatbot in my portfolio",
     description:
-      "A modern portfolio website built with Next.js 14, featuring an AI-powered chatbot using Google Gemini API. Includes dark mode, responsive design, and real-time streaming chat responses.",
+      "A modern portfolio website built with Next.js 16, featuring an AI-powered chatbot using Google Gemini API. Includes dark mode, responsive design, and real-time streaming chat responses.",
     image: "/images/AI_chatbot/MyWebHome2.png",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Google Gemini API"],
     github: "https://github.com/WISHERCARTs/my-portfolio",
