@@ -177,9 +177,9 @@ export const certificateData = [
     color: "cyan",
   },
   {
-    title: "Digital Awareness",
+    title: "Personal Data Protection Principles",
     issuer: "Mahidol University (MUx)",
-    description: "Understanding digital literacy, cybersecurity awareness, privacy laws, and academic digital tools.",
+    description: "MUx Honor Code course on the principles of personal data protection for Mahidol students and staff, completed with a passing grade in June 2024.",
     date: "2024",
     link: "/mpdf.pdf",
     category: "Mahidol",
