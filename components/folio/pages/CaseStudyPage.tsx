@@ -93,10 +93,18 @@ export default function CaseStudyPage({ study }: { study: CaseStudy }) {
       ))}
 
       <div className="flex flex-wrap items-center gap-x-6 border-t border-[var(--f-line-strong)] pt-4">
-        <a href={study.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
-          <Github className="h-4 w-4" />
-          Code and full README
-        </a>
+        {study.github ? (
+          <a href={study.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
+            <Github className="h-4 w-4" />
+            Code and full README
+          </a>
+        ) : null}
+        {study.demo ? (
+          <a href={study.demo} target="_blank" rel="noopener noreferrer" className={linkClass}>
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            Live demo
+          </a>
+        ) : null}
         <Link href="/projects" className={linkClass}>
           <ArrowUpRight className="h-4 w-4 rotate-[225deg]" aria-hidden="true" />
           All projects
