@@ -59,9 +59,9 @@ export const TIMELINE: TimelineYear[] = [
       {
         kind: "cert",
         when: "Jun",
-        title: "Digital Awareness",
-        body: "Mahidol University course on digital literacy, cybersecurity and privacy.",
-        href: "/certificates",
+        title: "Personal data protection",
+        body: "Mahidol MUx course on the principles of personal data protection for students and staff.",
+        cert: { title: "Personal Data Protection Principles", href: "/mpdf.pdf" },
       },
       {
         kind: "cert",

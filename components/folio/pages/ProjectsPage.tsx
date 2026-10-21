@@ -16,8 +16,8 @@ const linkClass =
 const iconButton =
   "inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--f-line-strong)] bg-[var(--f-bg)] transition-colors duration-200 hover:bg-[var(--f-cream)] hover:text-[var(--f-panel-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--f-cream)]";
 
-/** Description that stays three lines long until the reader asks for the rest. */
-function ProjectDescription({ text }: { text: string }) {
+/** Description that stays two or three lines long until the reader asks for the rest. */
+function ProjectDescription({ text, compact }: { text: string; compact?: boolean }) {
   const id = useId();
   const ref = useRef<HTMLParagraphElement>(null);
   const [expanded, setExpanded] = useState(false);
@@ -39,7 +39,7 @@ function ProjectDescription({ text }: { text: string }) {
         ref={ref}
         id={id}
         className={`mt-2 max-w-[70ch] text-[0.8125rem] leading-relaxed text-[var(--f-dim)] ${
-          expanded ? "" : "line-clamp-3"
+          expanded ? "" : compact ? "line-clamp-2" : "line-clamp-3"
         }`}
       >
         {text}
@@ -120,8 +120,30 @@ export default function ProjectsPage() {
             </button>
 
             <div className="min-w-0">
-              <h2 className="f-display text-[clamp(1.375rem,2vw,1.75rem)] leading-[0.95]">{project.title}</h2>
-              <ProjectDescription text={project.description} />
+              {(() => {
+                const highlight = "highlight" in project ? project.highlight : undefined;
+                return (
+                  <>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <h2 className="f-display text-[clamp(1.375rem,2vw,1.75rem)] leading-[0.95]">{project.title}</h2>
+                      {highlight ? (
+                        <span
+                          className="f-sticker rounded-full px-2.5 py-1 text-[0.625rem] tracking-[0.02em]"
+                          style={{ backgroundColor: "var(--f-accent)" }}
+                        >
+                          Featured
+                        </span>
+                      ) : null}
+                    </div>
+                    {highlight ? (
+                      <p className="mt-2 max-w-[60ch] text-[0.9375rem] font-medium leading-snug text-[var(--f-cream)]">
+                        {highlight}
+                      </p>
+                    ) : null}
+                    <ProjectDescription text={project.description} compact={Boolean(highlight)} />
+                  </>
+                );
+              })()}
 
               <ul className="mt-3 flex flex-wrap gap-1.5">
                 {project.tags.map((tag, t) => (

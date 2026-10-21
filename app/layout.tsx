@@ -30,9 +30,25 @@ const body = Archivo({
   display: "swap",
 });
 
+const SITE_TITLE = "Wish Nakthong | AI Engineer Portfolio";
+const SITE_DESCRIPTION =
+  "Third-year DST student at ICT Mahidol, ex-AI Agent Builder intern at Botnoi Group. RAG chatbots, multi-agent systems and automations. Open to AI Engineer and Solutions Architect internships.";
+
 export const metadata: Metadata = {
-  title: "Wish N. | Data & AI Portfolio",
-  description: "Portfolio of Wish Nakthong, an ICT DST Student specializing in Data Science and Tech.",
+  metadataBase: new URL("https://my-portfolio-wish.vercel.app"),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Wish Nakthong",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({

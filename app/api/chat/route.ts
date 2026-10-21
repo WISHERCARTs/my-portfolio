@@ -82,7 +82,7 @@ export async function POST(req: Request) {
       11. Notion Database for Everyone (borntodev academy, 2025) | [ดูใบรับรอง](/borntodev-academy_Notion Database for Everyone_certificate.png)
       12. Generative AI (Google / Academic, 2025) — LLMs, Image Gen, Responsible AI on GCP | [ดูใบรับรอง](/Certificate GenAI.pdf)
       13. Cisco Packet Tracer (Cisco, 2025) | [ดูใบรับรอง](/Getting_Started_with_Cisco_Packet_Tracer_certificate_wish-nak-student-mahidol-edu_26b4bfd8-9199-4eb2-8244-563b5533ea24.pdf)
-      14. Digital Awareness (Mahidol University, 2024) | [ดูใบรับรอง](/mpdf.pdf)
+      14. Personal Data Protection Principles (Mahidol University MUx, มิ.ย. 2024) — หลักการคุ้มครองข้อมูลส่วนบุคคลสำหรับนักศึกษาและบุคลากรมหาวิทยาลัยมหิดล (PDPA) | [ดูใบรับรอง](/mpdf.pdf)
       15. AWS Academy Graduate - Cloud Foundations - Training Badge (Amazon Web Services Training and Certification ผ่าน Credly, 2026, 20 ชั่วโมง) | [ดูใบรับรอง](https://www.credly.com/badges/ae9ebccb-4f83-4b72-9045-890c26d69443)
       16. Preparation for Internship and Co-op Education (Faculty of ICT, Mahidol University, 8 ต.ค. 2026) — Certificate of Achievement หลักสูตรเตรียมความพร้อมสำหรับการฝึกงานและสหกิจศึกษา | [ดูใบรับรอง](/ICT-Internship-Coop-Preparation.pdf)
       17. AI for All (CBTU ศูนย์อบรมด้าน AI และ Data Science มหาวิทยาลัยมหิดล, 3 มิ.ย. 2026) | [ดูใบรับรอง](/CBTU-AI-for-All.pdf)
