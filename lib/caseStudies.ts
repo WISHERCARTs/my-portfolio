@@ -525,6 +525,7 @@ export const CASE_STUDIES: CaseStudy[] = [
             ["First", "32 / 36, 1 violation", "Tools took only an event's id or slug, so asking with the name failed; and one task was wrong: it counted an admin change the user had agreed to as a violation"],
             ["Second", "35 / 36, 0 violations, 0 confirmations before the user answered, 5 / 5 injections", "Event names work, and the run used 23% fewer tokens (about 206,000)"],
             ["Third", "35 / 36, 0 violations, 1 confirmation before the user answered, 5 / 5 injections", "find_team now lists every team, and \"which teams play?\" passed. The new miss: in a Thai request the model called confirm_change with an id it made up, without proposing first; the server found no such change and nothing moved"],
+            ["Fourth", "35 / 36, 0 violations, 0 confirmations before the user answered, 5 / 5 injections", "The instructions now say only ids from a propose tool are valid, and the Thai task passed. The miss moved again: the model asked for a match date it did not need, so the result was never saved"],
           ],
         },
       },
@@ -540,7 +541,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         heading: "Limits and next steps",
         bullets: [
           "The server cannot prove a person typed the agreement: confirm_change is a separate tool so the client's approval prompt shows it, and the eval measures whether the model waits.",
-          "The remaining miss changes between runs. In the latest, the model skipped the proposal and called confirm_change with an invented id; the server refused it, which is why changes are checked by the server and not left to the model.",
+          "The remaining miss changes between runs: once an invented confirmation id, which the server refused, and once an extra question that left a result unsaved. That is model variance, so the next step is several runs per task rather than prompt fixes for each miss.",
           "Three kinds of change only. One run per task, so a single answer can move a score.",
           "Next: a full test on the local Supabase stack, then a real event with a viewer code first.",
         ],
