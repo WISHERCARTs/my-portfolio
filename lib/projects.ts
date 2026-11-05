@@ -48,6 +48,16 @@ export const projects = [
     demoImages: ["/images/tournament-hub/cover.svg"],
   },
   {
+    title: "Tournament Hub Agent",
+    caseStudy: "tournament-hub-agent",
+    highlight: "An MCP server that changes tournament data only with the organizer's permissions: 35 of 36 eval tasks right, 0 unwanted changes.",
+    description:
+      "MCP server that lets an AI assistant (Claude Desktop, Claude Code or any MCP client) read Tournament Hub and move a match, rename a team or save a result for an organizer. Every change is proposed first and made only after the user confirms. It signs in with an access code, so Row Level Security and the database's own checks decide what it may do. 28 tests force changes past the confirmation step as users without permission and show the database refuses them; a Gemini eval of 36 tasks, including prompt injection through a team name, ended at 35 right and 0 unwanted changes. Built with Claude Code: I set the requirements, made the decisions and reviewed every change. The source code is private.",
+    image: "/images/tournament-hub-agent/cover.svg",
+    tags: ["TypeScript", "MCP", "Supabase", "PostgreSQL", "Google Gemini API", "LLM evaluation"],
+    demoImages: ["/images/tournament-hub-agent/cover.svg"],
+  },
+  {
     title: "MU Esports Website",
     caseStudy: "mu-esports-website",
     highlight: "The club's official site, built with an AI coding agent: 12 smoke tests in CI and images cut by 55%.",

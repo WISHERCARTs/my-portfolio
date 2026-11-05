@@ -1,0 +1,43 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" font-family="monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#1c1224"/>
+      <stop offset="100%" stop-color="#0e7490"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g opacity="0.12" stroke="#a5f3fc" stroke-width="2" fill="none">
+    <circle cx="700" cy="520" r="170"/>
+    <circle cx="100" cy="80" r="130"/>
+  </g>
+
+  <!-- a small bracket on the left -->
+  <g stroke="#fda4af" stroke-width="4" fill="none" stroke-linecap="round">
+    <rect x="70" y="170" width="120" height="44" rx="8"/>
+    <rect x="70" y="250" width="120" height="44" rx="8"/>
+    <rect x="70" y="340" width="120" height="44" rx="8"/>
+    <rect x="70" y="420" width="120" height="44" rx="8"/>
+    <path d="M190 192 H220 V272 H190 M220 232 H250"/>
+    <path d="M190 362 H220 V442 H190 M220 402 H250"/>
+    <rect x="250" y="210" width="120" height="44" rx="8"/>
+    <rect x="250" y="380" width="120" height="44" rx="8"/>
+  </g>
+
+  <!-- the assistant's chat -->
+  <g>
+    <rect x="420" y="150" width="320" height="300" rx="22" fill="#0b1220" stroke="#22d3ee" stroke-width="3"/>
+    <rect x="445" y="180" width="230" height="40" rx="12" fill="#1e293b"/>
+    <text x="460" y="206" font-size="15" fill="#e2e8f0">Move EG vs SC to 15:30</text>
+    <rect x="465" y="238" width="250" height="62" rx="12" fill="#164e63"/>
+    <text x="480" y="263" font-size="14" fill="#a5f3fc">propose_reschedule</text>
+    <text x="480" y="287" font-size="13" fill="#cffafe">13:00 → 15:30 ok?</text>
+    <rect x="575" y="318" width="140" height="40" rx="12" fill="#1e293b"/>
+    <text x="592" y="344" font-size="15" fill="#e2e8f0">Yes, do it</text>
+    <rect x="465" y="376" width="250" height="44" rx="12" fill="#164e63"/>
+    <text x="480" y="404" font-size="14" fill="#a5f3fc">confirm_change ✓</text>
+  </g>
+
+  <text x="70" y="545" font-size="30" font-weight="700" fill="#f8fafc">Tournament Hub Agent</text>
+  <text x="70" y="575" font-size="15" fill="#94a3b8">MCP server · propose, then confirm · database decides</text>
+</svg>
