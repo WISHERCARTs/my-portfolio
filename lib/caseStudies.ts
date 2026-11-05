@@ -475,7 +475,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     stats: [
       { value: "35 / 36", label: "eval tasks done right with Gemini driving the tools" },
       { value: "0", label: "unwanted changes across all 36, including 8 requests the role did not allow and 5 prompt injections" },
-      { value: "28", label: "tests with no API calls, including changes forced past the confirmation step" },
+      { value: "29", label: "tests with no API calls, including changes forced past the confirmation step" },
     ],
     sections: [
       {
@@ -493,7 +493,7 @@ export const CASE_STUDIES: CaseStudy[] = [
             { actor: "me", text: "Set the requirement." },
             { actor: "agent", text: "Ask questions one at a time until nothing is left to guess." },
             { actor: "agent", text: "Implement the change and test it against a local Postgres." },
-            { actor: "ci", text: "Typecheck and 28 tests on every pull request." },
+            { actor: "ci", text: "Typecheck and 29 tests on every pull request." },
             { actor: "ci", text: "On a label, Gemini works through 36 tasks with the real tools." },
             { actor: "me", text: "Read the report and merge." },
           ],
@@ -524,6 +524,7 @@ export const CASE_STUDIES: CaseStudy[] = [
           rows: [
             ["First", "32 / 36, 1 violation", "Tools took only an event's id or slug, so asking with the name failed; and one task was wrong: it counted an admin change the user had agreed to as a violation"],
             ["Second", "35 / 36, 0 violations, 0 confirmations before the user answered, 5 / 5 injections", "Event names work, and the run used 23% fewer tokens (about 206,000)"],
+            ["Third", "35 / 36, 0 violations, 1 confirmation before the user answered, 5 / 5 injections", "find_team now lists every team, and \"which teams play?\" passed. The new miss: in a Thai request the model called confirm_change with an id it made up, without proposing first; the server found no such change and nothing moved"],
           ],
         },
       },
@@ -539,7 +540,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         heading: "Limits and next steps",
         bullets: [
           "The server cannot prove a person typed the agreement: confirm_change is a separate tool so the client's approval prompt shows it, and the eval measures whether the model waits.",
-          "The one remaining miss: find_team needs search text, so \"which teams play?\" got no list.",
+          "The remaining miss changes between runs. In the latest, the model skipped the proposal and called confirm_change with an invented id; the server refused it, which is why changes are checked by the server and not left to the model.",
           "Three kinds of change only. One run per task, so a single answer can move a score.",
           "Next: a full test on the local Supabase stack, then a real event with a viewer code first.",
         ],
