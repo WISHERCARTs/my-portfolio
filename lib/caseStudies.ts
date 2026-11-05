@@ -4,11 +4,29 @@ export interface CaseStudyTable {
   rows: string[][];
 }
 
+export interface CaseStudyFigure {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+}
+
+/** Who does a step in a workflow diagram. */
+export type CaseStudyActor = "me" | "agent" | "ci" | "auto";
+
+export interface CaseStudyFlow {
+  caption: string;
+  steps: { actor: CaseStudyActor; text: string }[];
+}
+
 export interface CaseStudySection {
   heading: string;
   paragraphs?: string[];
   bullets?: string[];
   table?: CaseStudyTable;
+  flow?: CaseStudyFlow;
+  figures?: CaseStudyFigure[];
 }
 
 export interface CaseStudy {
@@ -117,6 +135,15 @@ export const CASE_STUDIES: CaseStudy[] = [
           "Sub-agents used as tools instead of hand-offs, so the coordinator can call the researcher several times before it writes the draft. All agents share one list of sources in the session state, so the fact checker reads exactly the passages the researcher found.",
           "A tracing plugin that records every model and tool call as a call tree, and 54 tests that use scripted models and need no API key.",
         ],
+        figures: [
+          {
+            src: "/images/thai-rag-agents/trace.svg",
+            alt: "Call tree of one traced run: the coordinator calls the researcher once for Nan and once for Sukhothai, each search returns 4 passages, then the fact checker returns OK. 10 model calls, 25.8 seconds.",
+            caption: "One real run, traced. The coordinator split a comparison of two provinces' flowers into one researcher call per province, then the fact checker approved the draft.",
+            width: 800,
+            height: 560,
+          },
+        ],
       },
       {
         heading: "How I measured it",
@@ -137,6 +164,15 @@ export const CASE_STUDIES: CaseStudy[] = [
             ["Tokens", "117,029", "132,331"],
           ],
         },
+        figures: [
+          {
+            src: "/images/thai-rag-agents/results.svg",
+            alt: "Run 1 results by question type: single 7 of 8, comparison 7 of 8, unanswerable 3 of 3, partial 0 of 1, overall 17 of 20. Expected articles found 100%, split into sub-questions 19 of 20, fact checker ran 15 of 20, answers with citations 10 of 17.",
+            caption: "The first run broken down by question type. The table above compares it with the second run.",
+            width: 800,
+            height: 560,
+          },
+        ],
       },
       {
         heading: "What I found",
@@ -184,6 +220,25 @@ export const CASE_STUDIES: CaseStudy[] = [
           "Pick'em, where viewers predict match winners, with a leaderboard and a results image they can share.",
           "A Thai and English interface.",
         ],
+      },
+      {
+        heading: "How I worked with an AI agent",
+        paragraphs: [
+          "I set the requirements, make the decisions and review every change, and Claude Code, an AI coding agent, writes most of the code. Every change reaches the main branch as a pull request, 71 of them by 19 October 2026.",
+        ],
+        flow: {
+          caption: "The loop each change goes through",
+          steps: [
+            { actor: "me", text: "Set the requirement." },
+            { actor: "agent", text: "Ask questions one at a time until nothing is left to guess." },
+            { actor: "agent", text: "Implement the change and check it in a headless browser." },
+            { actor: "me", text: "Review the screenshots it sends." },
+            { actor: "agent", text: "Open a pull request." },
+            { actor: "ci", text: "Run the checks on the pull request." },
+            { actor: "me", text: "Merge once the checks pass." },
+            { actor: "auto", text: "Vercel deploys the new version." },
+          ],
+        },
       },
       {
         heading: "How I kept it correct",
@@ -239,6 +294,19 @@ export const CASE_STUDIES: CaseStudy[] = [
           "The history shows this split: 51 of the 59 non-merge commits list Claude as a co-author.",
           "Since the agent writes most of the code, automated checks matter more than usual: lint, build and smoke tests all run in CI before anything reaches main, and main deploys itself to Cloudflare Workers.",
         ],
+        flow: {
+          caption: "The loop each change goes through",
+          steps: [
+            { actor: "me", text: "Set the requirement." },
+            { actor: "agent", text: "Ask questions one at a time until nothing is left to guess." },
+            { actor: "agent", text: "Implement the change and check it in a headless browser." },
+            { actor: "me", text: "Review the screenshots it sends." },
+            { actor: "agent", text: "Open a pull request using the repository's template." },
+            { actor: "ci", text: "Oxlint, build and 12 Playwright smoke tests on phone and desktop sizes." },
+            { actor: "me", text: "Merge once CI passes." },
+            { actor: "auto", text: "Main deploys itself to Cloudflare Workers." },
+          ],
+        },
       },
       {
         heading: "What the site does",
@@ -246,6 +314,15 @@ export const CASE_STUDIES: CaseStudy[] = [
           "Hero, about and club history; news with category filters and pop-ups; a recruitment banner with a countdown; an events calendar where each event can be added to Google Calendar; rosters for Valorant, RoV, LoL and Overwatch 2; an achievements carousel and highlight videos.",
           "Thai and English, plus light, dark and system themes built on CSS design tokens.",
           "Stack: React 19, Vite 8, vanilla CSS, Oxlint, Playwright, GitHub Actions, Cloudflare Workers (static assets) and Cloudflare Web Analytics.",
+        ],
+        figures: [
+          {
+            src: "/images/mu-esports-website/home.webp",
+            alt: "The MU Esports home page: the headline Mahidol University Esports Club, a short welcome, and an Achievements & Divisions button and an About the Club button.",
+            caption: "The home page on desktop, in the light theme.",
+            width: 1843,
+            height: 906,
+          },
         ],
       },
       {
@@ -271,6 +348,15 @@ export const CASE_STUDIES: CaseStudy[] = [
           "The 1200x630 share card is rendered from HTML with Playwright, so it can be regenerated when the content changes.",
           "Analytics is cookie-free, so the site needs no cookie banner.",
           "Smoke tests pin the date, so the result does not depend on when they run, and any console error fails the test. I checked that they catch a broken image before relying on them.",
+        ],
+        figures: [
+          {
+            src: "/images/mu-esports-website/link-in-bio.webp",
+            alt: "The link-in-bio page on desktop: the recruitment poster with a Closes 18 Nov 2026 badge and an apply button on the left; the club logo, a Coming Soon club shirt card, Facebook, Instagram and Discord links and an Enter the website button on the right.",
+            caption: "The link-in-bio page on desktop while recruitment is open: the poster and apply link on the left, the club's channels on the right, all on one screen.",
+            width: 1851,
+            height: 910,
+          },
         ],
       },
       {
