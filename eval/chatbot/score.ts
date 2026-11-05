@@ -15,7 +15,7 @@ export type Verdict = "pass" | "contradiction" | "missing" | "error";
  * "3." at the start of a line, and years.
  */
 export function statedNumbers(answer: string): string[] {
-  const text = answer
+  const text = thaiDigitsToAscii(answer)
     .replace(/\]\([^)]*\)/g, "]")
     .replace(/https?:\/\/\S+/g, " ")
     .replace(/^\s*\d+[.)]\s/gm, " ");
@@ -23,6 +23,38 @@ export function statedNumbers(answer: string): string[] {
   return found
     .map((n) => n.replace(/,/g, ""))
     .filter((n) => !/^(19|20)\d\d$/.test(n));
+}
+
+function thaiDigitsToAscii(text: string): string {
+  return text.replace(/[๐-๙]/g, (d) => String(d.charCodeAt(0) - 0x0e50));
+}
+
+const UNITS = [
+  "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+  "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen",
+];
+const TENS = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+
+/**
+ * Numbers from 0 to 99 written as English words ("five", "twenty-one").
+ * They only count towards a pass: words such as "one" are too common in
+ * ordinary sentences ("one of his projects") to count as a contradiction.
+ * Thai number words are left out for the same reason ("สาม" is inside "สามารถ").
+ */
+export function numberWords(answer: string): string[] {
+  const words = answer.toLowerCase().match(/[a-z]+(?:-[a-z]+)?/g) ?? [];
+  const found: string[] = [];
+  for (const word of words) {
+    const [first, second] = word.split("-");
+    const tens = TENS.indexOf(first);
+    if (tens >= 2) {
+      const unit = second === undefined ? 0 : UNITS.indexOf(second);
+      if (unit >= 0 && unit <= 9 && (second === undefined || unit > 0)) found.push(String(tens * 10 + unit));
+    } else if (second === undefined && UNITS.includes(first)) {
+      found.push(String(UNITS.indexOf(first)));
+    }
+  }
+  return found;
 }
 
 export function hasThai(text: string): boolean {
@@ -34,7 +66,8 @@ export function scoreAnswer(check: Check, answer: string): Verdict {
     return answer.toLowerCase().includes(check.text.toLowerCase()) ? "pass" : "missing";
   }
   const stated = statedNumbers(answer);
-  if (check.numbers.every((n) => stated.includes(n))) return "pass";
+  const inWords = numberWords(answer);
+  if (check.numbers.every((n) => stated.includes(n) || inWords.includes(n))) return "pass";
   return stated.some((n) => !check.numbers.includes(n)) ? "contradiction" : "missing";
 }
 

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { numbersIn, type Question } from "../eval/chatbot/questions";
-import { fails, isRateLimited, runStatus, scoreAnswer, statedNumbers, summarize, warns } from "../eval/chatbot/score";
+import { fails, isRateLimited, numberWords, runStatus, scoreAnswer, statedNumbers, summarize, warns } from "../eval/chatbot/score";
 import { MARKER, renderReport } from "../eval/chatbot/report";
 
 const prs: Question = {
@@ -126,4 +126,22 @@ test("a used-up quota skips the run instead of failing it", () => {
   assert.ok(renderReport({ results, model: "test-model", runs: 1, tokens: 0 }).includes("skipped, the Gemini quota is used up"));
   const badKey = [summarize({ question: prsEn, answers: ["API key not valid."], verdicts: ["error"] })];
   assert.equal(runStatus(badKey), "broken");
+});
+
+test("a number written as a word passes", () => {
+  const formats = { kind: "numbers" as const, numbers: ["5"] };
+  assert.equal(scoreAnswer(formats, "Tournament Hub supports five bracket formats:"), "pass");
+  assert.equal(scoreAnswer(formats, "Five formats."), "pass");
+  assert.equal(scoreAnswer(prs.check, "It has seventy-one merged pull requests."), "pass");
+  assert.deepEqual(numberWords("twenty, thirty-two, one-off, someone, often"), ["20", "32"]);
+});
+
+test("number words never count as a contradiction", () => {
+  assert.equal(scoreAnswer(prs.check, "It is one of his projects; see the case study."), "missing");
+  assert.equal(scoreAnswer(prs.check, "It has 71 merged pull requests, one of his biggest projects."), "pass");
+});
+
+test("Thai digits count as numbers", () => {
+  assert.equal(scoreAnswer(prs.check, "มี ๗๑ PR ที่ merge แล้ว"), "pass");
+  assert.equal(scoreAnswer(prs.check, "มี ๒๔ PR ที่ merge แล้ว"), "contradiction");
 });
