@@ -14,19 +14,41 @@ import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
 import { CHAT_MODEL, buildSystemPrompt } from "../../lib/chatPrompt";
 import { buildQuestions, type Question } from "./questions";
-import { fails, scoreAnswer, summarize, warns, type QuestionResult, type Verdict } from "./score";
+import { fails, isRateLimited, scoreAnswer, summarize, warns, type QuestionResult, type Verdict } from "./score";
 import { MARKER, renderReport, renderSkipped } from "./report";
 
 const RUNS = 2;
-const PARALLEL = 4;
+/**
+ * Gemini's free tier allows only a few requests a minute, so calls go one at a
+ * time with a gap between them, and a rate-limited call waits and tries again.
+ * The first real run sent four at a time and lost 13 of 24 calls to the quota.
+ */
+const GAP_MS = 7_000;
+const RATE_LIMIT_WAIT_MS = 30_000;
+const RATE_LIMIT_RETRIES = 3;
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function generate(system: string, prompt: string) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await generateText({ model: google(CHAT_MODEL), system, prompt, maxRetries: 0 });
+    } catch (error) {
+      if (!isRateLimited(error) || attempt >= RATE_LIMIT_RETRIES) throw error;
+      console.error(`Rate limited, waiting ${RATE_LIMIT_WAIT_MS / 1000} s before trying again`);
+      await sleep(RATE_LIMIT_WAIT_MS);
+    }
+  }
+}
 
 async function ask(system: string, question: Question) {
   const answers: string[] = [];
   const verdicts: Verdict[] = [];
   let tokens = 0;
   for (let run = 0; run < RUNS; run++) {
+    if (run > 0) await sleep(GAP_MS);
     try {
-      const result = await generateText({ model: google(CHAT_MODEL), system, prompt: question.question });
+      const result = await generate(system, question.question);
       answers.push(result.text);
       verdicts.push(scoreAnswer(question.check, result.text));
       tokens += result.usage.totalTokens ?? 0;
@@ -55,12 +77,11 @@ async function main() {
   const questions = buildQuestions();
   const results: QuestionResult[] = [];
   let tokens = 0;
-  for (let i = 0; i < questions.length; i += PARALLEL) {
-    const batch = await Promise.all(questions.slice(i, i + PARALLEL).map((q) => ask(system, q)));
-    for (const item of batch) {
-      results.push(item.result);
-      tokens += item.tokens;
-    }
+  for (const [i, question] of questions.entries()) {
+    if (i > 0) await sleep(GAP_MS);
+    const item = await ask(system, question);
+    results.push(item.result);
+    tokens += item.tokens;
   }
 
   write(renderReport({ results, model: CHAT_MODEL, runs: RUNS, tokens }));

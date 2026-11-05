@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { numbersIn, type Question } from "../eval/chatbot/questions";
-import { fails, scoreAnswer, statedNumbers, summarize, warns } from "../eval/chatbot/score";
+import { fails, isRateLimited, scoreAnswer, statedNumbers, summarize, warns } from "../eval/chatbot/score";
 import { MARKER, renderReport } from "../eval/chatbot/report";
 
 const prs: Question = {
@@ -84,4 +84,16 @@ test("a run where every call failed says so in the headline", () => {
   const errors = summarize({ question: prs, answers: ["API key not valid", "API key not valid"], verdicts: ["error", "error"] });
   const report = renderReport({ results: [errors], model: "test-model", runs: 2, tokens: 0 });
   assert.ok(report.includes("could not run, every model call failed"));
+});
+
+test("a per-minute quota error is worth retrying, a daily one is not", () => {
+  const perMinute = new Error(
+    "You exceeded your current quota, please check your plan and billing details. Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, quotaId: GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+  );
+  const perDay = new Error(
+    "You exceeded your current quota. quotaId: GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+  );
+  assert.equal(isRateLimited(perMinute), true);
+  assert.equal(isRateLimited(perDay), false);
+  assert.equal(isRateLimited(new Error("API key not valid. Please pass a valid API key.")), false);
 });

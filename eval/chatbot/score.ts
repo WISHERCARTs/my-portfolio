@@ -61,3 +61,13 @@ export function fails(result: QuestionResult): boolean {
 export function warns(result: QuestionResult): boolean {
   return !fails(result) && (result.wrongLanguage || result.verdicts.some((v) => v !== "pass"));
 }
+
+/**
+ * A per-minute rate limit, worth waiting out. A daily quota is not: waiting
+ * 30 seconds will not bring it back, so those calls fail at once.
+ */
+export function isRateLimited(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error);
+  if (/per.?day/i.test(message)) return false;
+  return /quota|rate.?limit|resource.?exhausted|\b429\b/i.test(message);
+}
