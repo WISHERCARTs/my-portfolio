@@ -379,6 +379,82 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
+  {
+    slug: "portfolio-chatbot",
+    title: "Portfolio AI Chatbot",
+    intro:
+      "The chat assistant on this site, now checked in CI against the site's own data: a pull request fails if the assistant states a number the site contradicts. I set the requirements, made the decisions and reviewed every change; Claude Code wrote the code.",
+    github: "https://github.com/WISHERCARTs/my-portfolio",
+    demo: "https://my-portfolio-wish.vercel.app/",
+    stats: [
+      { value: "12 / 12", label: "eval questions passed against the real model" },
+      { value: "8 / 8", label: "English questions answered in English after the fix, where a prompt rule alone had left 2 of 2 in Thai" },
+      { value: "22", label: "tests that run on every pull request with no API calls" },
+    ],
+    sections: [
+      {
+        heading: "The problem",
+        paragraphs: [
+          "The assistant's prompt listed projects and certificates by hand, separately from the pages that show them, so the two drifted. It said Tournament Hub had 24 merged pull requests while the card said 71, and it did not know 2 of the 13 projects.",
+          "A demo can't catch this: the answer sounds right unless you know the number.",
+        ],
+      },
+      {
+        heading: "How I worked",
+        flow: {
+          caption: "The loop each change goes through",
+          steps: [
+            { actor: "me", text: "Set the requirement." },
+            { actor: "agent", text: "Ask questions one at a time until nothing is left to guess." },
+            { actor: "agent", text: "Implement the change and run the checks locally." },
+            { actor: "ci", text: "Lint, 22 tests and build." },
+            { actor: "ci", text: "Ask the real chatbot 12 questions and compare the answers with the site." },
+            { actor: "me", text: "Read the report and merge once it passes." },
+            { actor: "auto", text: "Vercel deploys the new version." },
+          ],
+        },
+      },
+      {
+        heading: "What I built",
+        bullets: [
+          "One source of truth: project and certificate data moved to lib/, and the prompt's projects and certificates sections are built from it, with each case study's headline numbers.",
+          "Layer 1, on every pull request with no API calls: tests check that the prompt holds every project, link, case study number and certificate.",
+          "Layer 2, with real Gemini calls: 12 hand-written questions, 4 in Thai. Expected answers are read from the site's data, so they follow the data when it changes. The report is posted as a comment on the pull request.",
+          "It runs only on pull requests that touch the data, the prompt or the eval, at about 66,000 tokens per run.",
+        ],
+      },
+      {
+        heading: "What the eval found",
+        table: {
+          caption: "Runs against the real model, in order",
+          head: ["Run", "Change", "Result"],
+          rows: [
+            ["First runs", "Prompt built from site data", "Every answer that came back matched the site; many calls hit the free-tier quota"],
+            ["After a prompt rule", "Language rule moved to the top of the prompt", "Numbers right, but 2 of 2 English answers still in Thai"],
+            ["After a server fix", "Server adds the answer language last", "12 / 12 passed, all 8 English questions answered in English"],
+          ],
+        },
+      },
+      {
+        heading: "Decisions I made",
+        bullets: [
+          "Fail only on contradiction. An answer that gives a different number fails the pull request; one that doesn't say, or answers in the wrong language, only warns. Model output varies between runs, and a check that fails at random gets ignored.",
+          "Don't count what isn't a claim. Link targets, list markers and years are not compared, because certificate file names and numbered lists contain digits.",
+          "Fix the language at the server, not in the prompt. A rule inside a mostly Thai prompt was not enough, and the eval showed it. The server now detects the language of the user's latest message and adds an explicit instruction at the end.",
+          "Fit the quota. The free tier allowed about 20 requests a day for the project, and two runs per question (24 calls) used it up. Each question is now asked once, a run where every call hits the quota reports \"skipped\" instead of failing, and CI uses its own project paid from prepaid credits, so it never takes quota from the live chatbot.",
+        ],
+      },
+      {
+        heading: "Limits and next steps",
+        bullets: [
+          "One run per question, so a single unusual answer can pass or fail a question.",
+          "It checks numbers, names and links, not tone or how good an answer is.",
+          "The language check looks for Thai characters, so an English answer that quotes a Thai name would warn.",
+          "12 questions cover the headline facts, not everything the prompt says. Next: compare each run with the last one on master.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getCaseStudy(slug: string) {

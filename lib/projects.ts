@@ -105,11 +105,13 @@ export const projects = [
     ],
   },
   {
-    title: "AI chatbot in my portfolio",
+    title: "Portfolio AI Chatbot",
+    caseStudy: "portfolio-chatbot",
+    highlight: "Fact-checked in CI against the site's own data: 12 of 12 eval questions pass on the real model.",
     description:
-      "A modern portfolio website built with Next.js 16, featuring an AI-powered chatbot using Google Gemini API. Includes dark mode, responsive design, and real-time streaming chat responses.",
+      "The Gemini chat assistant on this site, which answers in Thai or English about my projects, certificates and background. Its prompt is built from the same data the pages show, and every pull request that touches that data asks the real assistant 12 questions and fails if it contradicts the site. The eval caught it answering English questions in Thai; a prompt rule did not fix that, a server-side fix did. Built with Claude Code: I set the requirements, made the decisions and reviewed every change.",
     image: "/images/AI_chatbot/MyWebHome2.png",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Google Gemini API"],
+    tags: ["Next.js", "TypeScript", "Google Gemini API", "AI SDK", "LLM evaluation", "GitHub Actions"],
     github: "https://github.com/WISHERCARTs/my-portfolio",
     demo: "https://my-portfolio-wish.vercel.app/",
     demoImages: [
