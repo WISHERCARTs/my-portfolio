@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "tsx --test tests/*.test.ts",
+    "eval:chatbot": "tsx eval/chatbot/run.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.41",
@@ -28,6 +30,7 @@
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.0",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   }
 }

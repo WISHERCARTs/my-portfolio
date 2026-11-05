@@ -1,0 +1,73 @@
+name: Chatbot fact check
+
+# Asks the real chat assistant questions whose answers come from the site's
+# data, and fails when it contradicts the site. It costs Gemini calls, so it
+# runs only when the data, the prompt or the eval changes, or by hand.
+on:
+  pull_request:
+    paths:
+      - "lib/**"
+      - "app/api/chat/**"
+      - "eval/chatbot/**"
+      - "package-lock.json"
+      - ".github/workflows/chatbot-eval.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: chatbot-eval-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  eval:
+    name: Ask the chatbot
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      # Skips with exit 0 when the secret is not set.
+      - name: Run the eval
+        id: eval
+        continue-on-error: true
+        env:
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
+        run: npm run -s eval:chatbot -- --out eval-report.md
+
+      - name: Add the report to the run summary
+        if: always()
+        run: cat eval-report.md >> "$GITHUB_STEP_SUMMARY" || echo "The eval wrote no report; see the step log." >> "$GITHUB_STEP_SUMMARY"
+
+      # One comment per pull request, edited on each run. Fork PRs get no
+      # write token, so they only get the run summary.
+      - name: Comment on the pull request
+        if: always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            if (!fs.existsSync("eval-report.md")) return;
+            const body = fs.readFileSync("eval-report.md", "utf8");
+            const marker = "<!-- chatbot-eval -->";
+            const { owner, repo } = context.repo;
+            const issue_number = context.payload.pull_request.number;
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number });
+            const mine = comments.find((c) => c.user.type === "Bot" && c.body.startsWith(marker));
+            if (mine) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: mine.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }
+
+      - name: Fail when the chatbot contradicts the site
+        if: steps.eval.outcome == 'failure'
+        run: |
+          echo "The chatbot contradicted the site, or every model call failed. See the report above."
+          exit 1
