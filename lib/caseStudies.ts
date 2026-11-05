@@ -212,6 +212,87 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
+  {
+    slug: "mu-esports-website",
+    title: "MU Esports Website",
+    intro:
+      "The official website of the Mahidol University esports club. I own the project: I set the requirements, make the decisions and review every change, and Claude Code, an AI coding agent, writes most of the code.",
+    demo: "https://mu-esports-website.muesport2567.workers.dev",
+    stats: [
+      { value: "55%", label: "smaller images: public/ went from 6.0 MB to 2.7 MB" },
+      { value: "12", label: "Playwright smoke tests in CI, on phone and desktop sizes" },
+      { value: "5", label: "pull requests merged in November 2026, each after CI passed" },
+    ],
+    sections: [
+      {
+        heading: "The problem",
+        paragraphs: [
+          "The club needed one official place for news, recruitment, events, team rosters and results, in Thai and English. Its Facebook and Instagram bios pointed to a Linktree page instead of the club's own site.",
+          "I build and look after the club's web tools, this site and Tournament Hub, so the site also had to be something the club can keep running: simple to host, easy to update, and checked automatically before each release.",
+        ],
+      },
+      {
+        heading: "How I worked with an AI agent",
+        bullets: [
+          "I set the requirements and Claude Code writes the code. Before it starts, the agent asks me questions one at a time until nothing is left to guess.",
+          "It implements the change, checks it in a headless browser and sends me screenshots. After my review it opens a pull request using the repository's template, and I merge once CI passes.",
+          "The history shows this split: 51 of the 59 non-merge commits list Claude as a co-author.",
+          "Since the agent writes most of the code, automated checks matter more than usual: lint, build and smoke tests all run in CI before anything reaches main, and main deploys itself to Cloudflare Workers.",
+        ],
+      },
+      {
+        heading: "What the site does",
+        bullets: [
+          "Hero, about and club history; news with category filters and pop-ups; a recruitment banner with a countdown; an events calendar where each event can be added to Google Calendar; rosters for Valorant, RoV, LoL and Overwatch 2; an achievements carousel and highlight videos.",
+          "Thai and English, plus light, dark and system themes built on CSS design tokens.",
+          "Stack: React 19, Vite 8, vanilla CSS, Oxlint, Playwright, GitHub Actions, Cloudflare Workers (static assets) and Cloudflare Web Analytics.",
+        ],
+      },
+      {
+        heading: "What changed in November 2026",
+        table: {
+          caption: "Five pull requests, each merged after CI passed",
+          head: ["Pull request", "Change", "Result"],
+          rows: [
+            ["#24", "Link-in-bio landing page", "Replaces Linktree in the club's bios"],
+            ["#25", "Share cards and WebP images", "Images 6.0 MB to 2.7 MB, logo 15 KB"],
+            ["#26", "Two-column desktop layout", "Fits one screen at 1440x900, 1280x720 and 1024x768"],
+            ["#27", "Cloudflare Web Analytics", "No cookies"],
+            ["#28", "Smoke tests, robots.txt, sitemap, new README", "12 tests, about 33 seconds added to CI"],
+          ],
+        },
+      },
+      {
+        heading: "Decisions I made",
+        bullets: [
+          "The landing page lives on the club's own site instead of Linktree. It shows the Facebook, Instagram and Discord links, the recruitment poster and a \"Coming Soon\" club shirt card. Links that point to a section, such as /#news, skip it.",
+          "The apply link hides itself after the closing date, so nobody has to remember to take it down.",
+          "On desktop the page fits one screen at the three common sizes above. The poster scales with screen height, and the page goes back to one column once recruitment closes.",
+          "The 1200x630 share card is rendered from HTML with Playwright, so it can be regenerated when the content changes.",
+          "Analytics is cookie-free, so the site needs no cookie banner.",
+          "Smoke tests pin the date, so the result does not depend on when they run, and any console error fails the test. I checked that they catch a broken image before relying on them.",
+        ],
+      },
+      {
+        heading: "Results",
+        bullets: [
+          "The site is live, and the club's bios link to it instead of Linktree.",
+          "Images in public/ are 55% smaller, favicons are sized properly and unused files are gone.",
+          "Every pull request is checked by 12 smoke tests on phone and desktop sizes, at a cost of about 33 seconds of CI time.",
+          "The README now matches the live site and includes a guide to editing content.",
+        ],
+      },
+      {
+        heading: "Credits, next steps and limits",
+        bullets: [
+          "Thanks to Theerawat Puvekit, who suggested ideas that gave the site more to explore and contributed commits.",
+          "Visitor numbers are not included yet; analytics was only added in November 2026.",
+          "The screenshots were taken while recruitment was open, which closes on 18 November 2026. After that the live page looks different.",
+          "The source is private to the club's GitHub organization, so the live site is the way to see it.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getCaseStudy(slug: string) {

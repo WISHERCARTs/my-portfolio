@@ -63,6 +63,20 @@ export const projects = [
     demoImages: ["/images/tournament-hub/cover.svg"],
   },
   {
+    title: "MU Esports Website",
+    caseStudy: "mu-esports-website",
+    highlight: "The club's official site, built with an AI coding agent: 12 smoke tests in CI and images cut by 55%.",
+    description:
+      "Official website of the Mahidol University esports club, in Thai and English with light and dark themes. I own the project and direct Claude Code, an AI coding agent, which writes most of the code: I set the requirements, make the decisions and review every change before merging. In November 2026 it gained a link-in-bio landing page that replaced Linktree in the club's bios, share cards and WebP images (public/ went from 6.0 MB to 2.7 MB), a one-screen desktop layout, cookie-free analytics and 12 Playwright smoke tests in CI. Deployed on Cloudflare Workers. The source code is private.",
+    image: "/images/mu-esports-website/link-in-bio.webp",
+    tags: ["React", "Vite", "Playwright", "GitHub Actions", "Cloudflare Workers", "AI-assisted"],
+    demo: "https://mu-esports-website.muesport2567.workers.dev",
+    demoImages: [
+      "/images/mu-esports-website/link-in-bio.webp",
+      "/images/mu-esports-website/home.webp",
+    ],
+  },
+  {
     title: "MLP Digit Recognition",
     description:
       "Handwritten digit recognition using Multi-Layer Perceptron (MLP) with Streamlit web interface",
