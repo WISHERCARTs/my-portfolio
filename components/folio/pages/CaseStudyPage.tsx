@@ -1,10 +1,64 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Github } from "@/components/BrandIcons";
-import type { CaseStudy } from "@/lib/caseStudies";
+import type { CaseStudy, CaseStudyActor, CaseStudyFlow } from "@/lib/caseStudies";
 
 const linkClass =
   "f-mono inline-flex min-h-11 items-center gap-2 border-b border-transparent text-[0.75rem] transition-colors duration-200 hover:border-[var(--f-cream)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--f-cream)]";
+
+const ACTORS: Record<CaseStudyActor, { label: string; className: string }> = {
+  me: {
+    label: "Me",
+    className: "bg-[var(--f-accent)] text-[var(--f-panel-ink)]",
+  },
+  agent: {
+    label: "Claude Code",
+    className: "bg-[var(--f-cream)] text-[var(--f-panel-ink)]",
+  },
+  ci: {
+    label: "CI",
+    className: "border border-[var(--f-line-strong)] text-[var(--f-cream)]",
+  },
+  auto: {
+    label: "Automatic",
+    className: "border border-dashed border-[var(--f-line-strong)] text-[var(--f-dim)]",
+  },
+};
+
+function Flow({ flow }: { flow: CaseStudyFlow }) {
+  return (
+    <figure className="pt-2">
+      <figcaption className="f-mono pb-3 text-[0.6875rem] text-[var(--f-dim)]">{flow.caption}</figcaption>
+      <ol>
+        {flow.steps.map((step, i) => {
+          const actor = ACTORS[step.actor];
+          return (
+            <li key={i} className="relative grid grid-cols-[1.375rem_minmax(0,1fr)] gap-3 py-2">
+              {i < flow.steps.length - 1 ? (
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-[-0.5rem] left-[0.6875rem] top-[1.875rem] w-px bg-[var(--f-line-strong)]"
+                />
+              ) : null}
+              <span className="f-mono flex h-[1.375rem] w-[1.375rem] items-center justify-center rounded-full border border-[var(--f-line-strong)] text-[0.625rem] text-[var(--f-dim)]">
+                {i + 1}
+              </span>
+              <p className="flex flex-col items-start gap-1 sm:grid sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:items-baseline sm:gap-3">
+                <span
+                  className={`f-mono inline-block w-fit rounded-full px-2 py-0.5 text-[0.625rem] ${actor.className}`}
+                >
+                  {actor.label}
+                </span>
+                <span>{step.text}</span>
+              </p>
+            </li>
+          );
+        })}
+      </ol>
+    </figure>
+  );
+}
 
 export default function CaseStudyPage({ study }: { study: CaseStudy }) {
   return (
@@ -88,6 +142,24 @@ export default function CaseStudyPage({ study }: { study: CaseStudy }) {
                 </table>
               </div>
             ) : null}
+
+            {section.flow ? <Flow flow={section.flow} /> : null}
+
+            {section.figures?.map((figure) => (
+              <figure key={figure.src} className="pt-2">
+                <Image
+                  src={figure.src}
+                  alt={figure.alt}
+                  width={figure.width}
+                  height={figure.height}
+                  sizes="(min-width: 768px) 70ch, 100vw"
+                  className="h-auto w-full rounded-tr-[2rem] border border-[var(--f-line)]"
+                />
+                <figcaption className="mt-2 text-[0.8125rem] leading-relaxed text-[var(--f-dim)]">
+                  {figure.caption}
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </section>
       ))}
