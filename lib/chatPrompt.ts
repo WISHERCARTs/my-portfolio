@@ -101,6 +101,20 @@ export function certificatesSection(): string {
   ].join("\n");
 }
 
-export function buildSystemPrompt(): string {
-  return [PROFILE, projectsSection(), certificatesSection(), CONTACT].join("\n\n");
+/**
+ * A rule in a mostly Thai prompt was not enough: the first eval runs showed
+ * English questions answered in Thai even with the rule marked highest
+ * priority. So the server looks at the user's latest message itself and puts
+ * an explicit instruction last, where the model weighs it most.
+ */
+export function languageInstruction(latestUserMessage: string): string {
+  return /[\u0E00-\u0E7F]/.test(latestUserMessage)
+    ? "[ภาษาของคำตอบ]\nผู้ใช้เขียนเป็นภาษาไทย ให้ตอบเป็นภาษาไทย"
+    : "[Answer language]\nThe user wrote in English. Write the whole answer in English. Do not use any Thai words, even though the information above is in Thai.";
+}
+
+export function buildSystemPrompt(latestUserMessage?: string): string {
+  const parts = [PROFILE, projectsSection(), certificatesSection(), CONTACT];
+  if (latestUserMessage?.trim()) parts.push(languageInstruction(latestUserMessage));
+  return parts.join("\n\n");
 }

@@ -59,3 +59,12 @@ test("every eval question resolves its expected answer from the site's data", ()
     else assert.ok(q.check.text.length > 0, `no text expected: ${q.id}`);
   }
 });
+
+test("the prompt ends with the answer language of the latest message", () => {
+  const english = buildSystemPrompt("How many merged pull requests does Tournament Hub have?");
+  assert.ok(english.trimEnd().endsWith("even though the information above is in Thai."));
+  assert.ok(english.includes("The user wrote in English"));
+  const thai = buildSystemPrompt("Tournament Hub มี PR กี่อัน");
+  assert.ok(thai.trimEnd().endsWith("ให้ตอบเป็นภาษาไทย"));
+  assert.ok(!buildSystemPrompt().includes("[Answer language]"));
+});

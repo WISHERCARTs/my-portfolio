@@ -42,7 +42,9 @@ async function generate(system: string, prompt: string) {
   }
 }
 
-async function ask(system: string, question: Question) {
+async function ask(question: Question) {
+  // Built per question, as the site builds it per message.
+  const system = buildSystemPrompt(question.question);
   const answers: string[] = [];
   const verdicts: Verdict[] = [];
   let tokens = 0;
@@ -74,13 +76,12 @@ async function main() {
     return;
   }
 
-  const system = buildSystemPrompt();
   const questions = buildQuestions();
   const results: QuestionResult[] = [];
   let tokens = 0;
   for (const [i, question] of questions.entries()) {
     if (i > 0) await sleep(GAP_MS);
-    const item = await ask(system, question);
+    const item = await ask(question);
     results.push(item.result);
     tokens += item.tokens;
   }
