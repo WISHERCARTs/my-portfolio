@@ -1,4 +1,4 @@
-import { fails, warns, type QuestionResult, type Verdict } from "./score";
+import { fails, runStatus, warns, type QuestionResult, type Verdict } from "./score";
 
 /** Marks the bot's comment so a later run edits it instead of adding another. */
 export const MARKER = "<!-- chatbot-eval -->";
@@ -27,18 +27,21 @@ export function renderReport(input: { results: QuestionResult[]; model: string; 
   const failed = results.filter(fails).length;
   const warned = results.filter(warns).length;
   const passed = results.length - failed - warned;
-  const allErrored = results.length > 0 && results.every((r) => r.verdicts.every((v) => v === "error"));
-  const headline = allErrored
-    ? "❌ could not run, every model call failed"
-    : failed > 0
-      ? "❌ contradicts the site"
-      : warned > 0
-        ? "⚠️ passed with warnings"
-        : "✅ passed";
+  const status = runStatus(results);
+  const headline =
+    status === "quota"
+      ? "⏭️ skipped, the Gemini quota is used up"
+      : status === "broken"
+        ? "❌ could not run, every model call failed"
+        : failed > 0
+          ? "❌ contradicts the site"
+          : warned > 0
+            ? "⚠️ passed with warnings"
+            : "✅ passed";
 
   const rows = results.map((r, i) => {
     const result = fails(r) ? "❌ fail" : warns(r) ? "⚠️ warn" : "✅ pass";
-    const runs = r.verdicts.map((v) => ICONS[v]).join(", ") + (r.wrongLanguage ? ", not in Thai" : "");
+    const runs = r.verdicts.map((v) => ICONS[v]).join(", ") + (r.wrongLanguage ? ", wrong language" : "");
     return `| ${i + 1} | ${cell(r.question.question)} | ${cell(r.question.expected)} | ${runs} | ${result} |`;
   });
 
@@ -53,9 +56,9 @@ export function renderReport(input: { results: QuestionResult[]; model: string; 
     MARKER,
     `### Chatbot fact check: ${headline}`,
     "",
-    `${passed} passed, ${warned} warned, ${failed} failed out of ${results.length} questions. Each question was asked ${runs} times with \`${model}\` and the site's system prompt; ${tokens.toLocaleString("en-US")} tokens in total.`,
+    `${passed} passed, ${warned} warned, ${failed} failed out of ${results.length} questions. Each question was asked ${runs === 1 ? "once" : `${runs} times`} with \`${model}\` and the site's system prompt; ${tokens.toLocaleString("en-US")} tokens in total.`,
     "",
-    "A question fails only when every run gives a number that contradicts the site. An answer that does not state it, or a Thai question answered in another language, only warns.",
+    "A question fails when the answer gives a number that contradicts the site. An answer that does not state it, or one in a different language from the question, only warns. A used-up Gemini quota skips the check without failing.",
     "",
     "| # | Question | Expected | Runs | Result |",
     "|---|---|---|---|---|",

@@ -3,7 +3,7 @@ import type { Check, Question } from "./questions";
 /**
  * - pass: the answer contains what the site says.
  * - contradiction: the question asks for a number and the answer gives a
- *   different one. Two contradictions in a row fail the check.
+ *   different one, which fails the check.
  * - missing: the answer does not say, which only warns.
  * - error: the model call failed.
  */
@@ -42,14 +42,14 @@ export interface QuestionResult {
   question: Question;
   answers: string[];
   verdicts: Verdict[];
-  /** Thai questions answered in another language. */
+  /** A Thai question answered without Thai, or an English one answered with Thai. */
   wrongLanguage: boolean;
 }
 
 export function summarize(result: Omit<QuestionResult, "wrongLanguage">): QuestionResult {
-  const wrongLanguage =
-    result.question.lang === "th" &&
-    result.answers.some((answer, i) => result.verdicts[i] !== "error" && !hasThai(answer));
+  const wrongLanguage = result.answers.some(
+    (answer, i) => result.verdicts[i] !== "error" && hasThai(answer) !== (result.question.lang === "th"),
+  );
   return { ...result, wrongLanguage };
 }
 
@@ -70,4 +70,24 @@ export function isRateLimited(error: unknown): boolean {
   const message = error instanceof Error ? error.message : String(error);
   if (/per.?day/i.test(message)) return false;
   return /quota|rate.?limit|resource.?exhausted|\b429\b/i.test(message);
+}
+
+/** Any quota or rate-limit error, per minute or per day. */
+export function isQuotaError(message: string): boolean {
+  return /quota|rate.?limit|resource.?exhausted|\b429\b/i.test(message);
+}
+
+/**
+ * - failed: an answer contradicts the site.
+ * - broken: every call failed for another reason, such as a bad key.
+ * - quota: every call failed on the Gemini quota, so nothing was checked.
+ * - ok: otherwise, possibly with warnings.
+ */
+export type RunStatus = "ok" | "failed" | "broken" | "quota";
+
+export function runStatus(results: QuestionResult[]): RunStatus {
+  if (results.some(fails)) return "failed";
+  const allErrored = results.length > 0 && results.every((r) => r.verdicts.every((v) => v === "error"));
+  if (!allErrored) return "ok";
+  return results.every((r) => r.answers.every(isQuotaError)) ? "quota" : "broken";
 }

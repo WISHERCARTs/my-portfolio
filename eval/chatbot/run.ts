@@ -1,28 +1,29 @@
 /**
- * Asks the chat assistant every question in questions.ts twice, with the same
+ * Asks the chat assistant every question in questions.ts once, with the same
  * model and system prompt as the site, and checks the answers against the
  * site's data.
  *
  *   npm run eval:chatbot -- [--out report.md]
  *
  * Needs GOOGLE_GENERATIVE_AI_API_KEY. Without it the run is skipped and exits 0.
- * Exits 1 when a question contradicts the site in both runs, or when every
- * model call failed.
+ * Exits 1 when an answer contradicts the site, or when every model call failed
+ * for a reason other than the Gemini quota. A used-up quota skips the run.
  */
 import { writeFileSync } from "node:fs";
 import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
 import { CHAT_MODEL, buildSystemPrompt } from "../../lib/chatPrompt";
 import { buildQuestions, type Question } from "./questions";
-import { fails, isRateLimited, scoreAnswer, summarize, warns, type QuestionResult, type Verdict } from "./score";
+import { fails, isRateLimited, runStatus, scoreAnswer, summarize, warns, type QuestionResult, type Verdict } from "./score";
 import { MARKER, renderReport, renderSkipped } from "./report";
 
-const RUNS = 2;
 /**
- * Gemini's free tier allows only a few requests a minute, so calls go one at a
- * time with a gap between them, and a rate-limited call waits and tries again.
- * The first real run sent four at a time and lost 13 of 24 calls to the quota.
+ * One run per question. The free tier of gemini-2.5-flash allowed only about
+ * 20 requests a day for this project when this was written, and two runs per
+ * question (24 calls) used it up. Calls go one at a time with a gap, and a
+ * per-minute limit waits and tries again.
  */
+const RUNS = 1;
 const GAP_MS = 7_000;
 const RATE_LIMIT_WAIT_MS = 30_000;
 const RATE_LIMIT_RETRIES = 3;
@@ -86,12 +87,10 @@ async function main() {
 
   write(renderReport({ results, model: CHAT_MODEL, runs: RUNS, tokens }));
 
-  const allErrored = results.every((r) => r.verdicts.every((v) => v === "error"));
+  const status = runStatus(results);
   const failed = results.filter(fails).length;
-  console.error(
-    `${MARKER} ${failed} failed, ${results.filter(warns).length} warned, ${results.length} questions${allErrored ? ", every model call failed" : ""}`,
-  );
-  if (failed > 0 || allErrored) process.exitCode = 1;
+  console.error(`${MARKER} ${status}: ${failed} failed, ${results.filter(warns).length} warned, ${results.length} questions`);
+  if (status === "failed" || status === "broken") process.exitCode = 1;
 }
 
 main().catch((error) => {

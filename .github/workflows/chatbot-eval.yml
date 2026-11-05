@@ -25,7 +25,7 @@ jobs:
   eval:
     name: Ask the chatbot
     runs-on: ubuntu-latest
-    # 24 calls about 7 s apart take about 3 minutes; rate-limit waits add more.
+    # 12 calls about 7 s apart take under 2 minutes; rate-limit waits add more.
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4

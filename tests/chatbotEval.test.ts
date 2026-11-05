@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { numbersIn, type Question } from "../eval/chatbot/questions";
-import { fails, isRateLimited, scoreAnswer, statedNumbers, summarize, warns } from "../eval/chatbot/score";
+import { fails, isRateLimited, runStatus, scoreAnswer, statedNumbers, summarize, warns } from "../eval/chatbot/score";
 import { MARKER, renderReport } from "../eval/chatbot/report";
 
 const prs: Question = {
@@ -96,4 +96,34 @@ test("a per-minute quota error is worth retrying, a daily one is not", () => {
   assert.equal(isRateLimited(perMinute), true);
   assert.equal(isRateLimited(perDay), false);
   assert.equal(isRateLimited(new Error("API key not valid. Please pass a valid API key.")), false);
+});
+
+const prsEn: Question = { ...prs, id: "prs-en", lang: "en", question: "How many merged pull requests does Tournament Hub have?" };
+
+test("an English question answered in Thai warns", () => {
+  // The answer the real assistant gave on the first eval run.
+  const result = summarize({ question: prsEn, answers: ["Tournament Hub มี 71 merged pull requests ครับ"], verdicts: ["pass"] });
+  assert.equal(result.wrongLanguage, true);
+  assert.equal(warns(result), true);
+  const english = summarize({ question: prsEn, answers: ["Tournament Hub has 71 merged pull requests."], verdicts: ["pass"] });
+  assert.equal(english.wrongLanguage, false);
+  assert.equal(warns(english), false);
+});
+
+test("with one run, a single contradiction fails", () => {
+  const result = summarize({ question: prsEn, answers: ["It has 24."], verdicts: ["contradiction"] });
+  assert.equal(fails(result), true);
+  assert.equal(runStatus([result]), "failed");
+});
+
+test("a used-up quota skips the run instead of failing it", () => {
+  const quota = "You exceeded your current quota, please check your plan and billing details. limit: 20, model: gemini-2.5-flash";
+  const results = [
+    summarize({ question: prsEn, answers: [quota], verdicts: ["error"] }),
+    summarize({ question: prs, answers: [quota], verdicts: ["error"] }),
+  ];
+  assert.equal(runStatus(results), "quota");
+  assert.ok(renderReport({ results, model: "test-model", runs: 1, tokens: 0 }).includes("skipped, the Gemini quota is used up"));
+  const badKey = [summarize({ question: prsEn, answers: ["API key not valid."], verdicts: ["error"] })];
+  assert.equal(runStatus(badKey), "broken");
 });
