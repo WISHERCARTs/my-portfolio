@@ -6,7 +6,7 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Github } from "@/components/BrandIcons";
-import { projects } from "@/components/Projects";
+import { projects } from "@/lib/projects";
 import { FOLIO_EASE } from "@/lib/folio";
 
 type Project = (typeof projects)[number];

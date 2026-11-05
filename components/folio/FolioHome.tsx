@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { FOLIO_EASE, FOLIO_ENTRIES } from "@/lib/folio";
-import { projects } from "@/components/Projects";
+import { projects } from "@/lib/projects";
 import FolioNav from "./FolioNav";
 import FolioFooter from "./FolioFooter";
 import { StickerFace, StickerLink } from "./Stickers";

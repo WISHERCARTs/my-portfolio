@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Script from "next/script";
 import { ArrowUpRight } from "lucide-react";
-import { CERT_CATEGORIES, certificateData, credlyBadges } from "@/components/Certificates";
+import { CERT_CATEGORIES, certificateData, credlyBadges } from "@/lib/certificates";
 import { certPreviewSrc } from "@/lib/certPreview";
 
 const CATEGORIES = ["All", ...CERT_CATEGORIES];
