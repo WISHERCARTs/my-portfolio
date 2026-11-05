@@ -145,6 +145,15 @@ export default function CaseStudyPage({ study }: { study: CaseStudy }) {
 
             {section.flow ? <Flow flow={section.flow} /> : null}
 
+            {section.code?.map((block) => (
+              <figure key={block.caption} className="pt-2">
+                <figcaption className="f-mono pb-2 text-[0.6875rem] text-[var(--f-dim)]">{block.caption}</figcaption>
+                <pre className="whitespace-pre-wrap break-words rounded-tr-[1.5rem] border border-[var(--f-line)] bg-black/40 p-4 text-[0.75rem] leading-relaxed text-[var(--f-cream)]/90">
+                  <code>{block.text}</code>
+                </pre>
+              </figure>
+            ))}
+
             {section.figures?.map((figure) => (
               <figure key={figure.src} className="pt-2">
                 <Image
@@ -177,6 +186,12 @@ export default function CaseStudyPage({ study }: { study: CaseStudy }) {
             Live demo
           </a>
         ) : null}
+        {study.related?.map((item) => (
+          <Link key={item.slug} href={`/projects/${item.slug}`} className={linkClass}>
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            {item.label}
+          </Link>
+        ))}
         <Link href="/projects" className={linkClass}>
           <ArrowUpRight className="h-4 w-4 rotate-[225deg]" aria-hidden="true" />
           All projects
