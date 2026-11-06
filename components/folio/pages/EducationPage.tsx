@@ -5,7 +5,7 @@ const SCHOOLS = [
     years: "2024 - now",
     name: "Mahidol University",
     program: "B.Sc. in Digital Science & Technology (DST major)",
-    gpa: "2.76",
+    gpa: "2.73",
     place: "Faculty of Information and Communication Technology, Salaya Campus, Thailand",
   },
   {
