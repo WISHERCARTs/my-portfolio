@@ -29,7 +29,7 @@ const PROFILE = `คุณคือ AI Assistant ประจำเว็บ Por
 
 [ข้อมูลพื้นฐาน & ประวัติ]
 - ชื่อ: Wish Nakthong (วิชญ์ นาคทอง)
-- การศึกษาปัจจุบัน: นักศึกษาชั้นปีที่ 3 สาขา Digital Science & Technology (DST), คณะ ICT, มหาวิทยาลัยมหิดล (Mahidol University) วิทยาเขตศาลายา (2024 - ปัจจุบัน, GPA: 2.76) — กำลังศึกษาระดับปริญญาตรี B.Sc. (DST Major)
+- การศึกษาปัจจุบัน: นักศึกษาชั้นปีที่ 3 สาขา Digital Science & Technology (DST), คณะ ICT, มหาวิทยาลัยมหิดล (Mahidol University) วิทยาเขตศาลายา (2024 - ปัจจุบัน, GPA: 2.73) — กำลังศึกษาระดับปริญญาตรี B.Sc. (DST Major)
 - วิชาที่เกี่ยวข้อง (Relevant Coursework): Machine Learning, Data Structures & Algorithms, Databases, Operating Systems, Computer Networks และกำลังเรียน Cloud Computing, Practical DevOps, Fundamentals of Data Science
 - การศึกษามัธยม: Sukhondheerawidh School (โรงเรียนสุคนธีรวิทย์) จ.นครปฐม (2019 - 2024, GPA: 3.51)
 - บทบาทเด่น: Google Student Ambassador 2026 [BATCH 1] (โครงการช่วง ก.พ. - ก.ค. 2026) — ระหว่างโครงการเป็น Technical Facilitator ของกิจกรรม Google Cloud AI Live + Labs พาผู้เข้าร่วมกว่า 160 คนทำ codelab เรื่อง Multi-Agent Systems, Agent Development Kit (ADK) และ Agent Runtime, ใช้ Gemini และ prompt engineering ช่วย debug React/Node.js และสร้างคอนเทนต์วิดีโอ/บล็อกสอนเพื่อนๆ เรื่องการใช้ AI ในการเขียนโค้ด
