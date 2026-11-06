@@ -45,7 +45,15 @@ export default function FolioHome() {
         <FolioNav />
 
         <h1 className="f-display mt-4 text-[clamp(3.75rem,21vw,7.5rem)] md:mt-3 md:whitespace-nowrap md:text-[min(calc((100vw-5rem)/6.45),15svh,12.85rem)]">
-          <span className="sr-only">Wish Nakthong, </span>
+          <span className="sr-only">Wish Nakthong, looking for </span>
+          <motion.span
+            aria-hidden="true"
+            className="f-mono mb-1 flex items-center gap-2.5 text-[0.8125rem] leading-none tracking-[0.14em] text-[var(--f-dim)] md:mb-0 md:text-[0.9375rem]"
+            {...rise(0)}
+          >
+            <span className="h-2.5 w-2.5 rounded-full bg-[#FF4D7D]" />
+            Looking for
+          </motion.span>
           <motion.span className="block md:inline-block" {...rise(0.05)}>
             AI
           </motion.span>{" "}
