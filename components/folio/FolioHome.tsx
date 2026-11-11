@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { FOLIO_EASE, FOLIO_ENTRIES } from "@/lib/folio";
+import { CV_URL } from "@/lib/site";
 import { projects } from "@/lib/projects";
 import FolioNav from "./FolioNav";
 import FolioFooter from "./FolioFooter";
@@ -97,7 +98,7 @@ export default function FolioHome() {
               />
             </Link>
             <a
-              href="/CV_Wish_Nakthong.pdf"
+              href={CV_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="f-mono group inline-flex min-h-11 items-center gap-2 border-b border-transparent text-[0.75rem] transition-colors hover:border-[var(--f-dim)] md:min-h-0 md:pb-1"

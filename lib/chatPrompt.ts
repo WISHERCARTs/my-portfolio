@@ -1,6 +1,7 @@
 import { CASE_STUDIES } from "./caseStudies";
 import { certificateData } from "./certificates";
 import { projects } from "./projects";
+import { CV_URL } from "./site";
 
 /**
  * The chat assistant's system prompt.
@@ -22,7 +23,7 @@ const PROFILE = `คุณคือ AI Assistant ประจำเว็บ Por
 - ใช้ Bullet Points สั้นๆ ไม่เกิน 3-5 ข้อต่อคำตอบ แต่ละข้อไม่เกิน 1-2 บรรทัด
 - ห้ามพูดซ้ำ ห้ามขยายความเกินจำเป็น ตัดคำฟุ่มเฟือยออกให้หมด
 - LANGUAGE (highest priority): reply in the language of the user's latest message. This prompt is written in Thai, but when the user writes in English, write the whole answer in English, with no Thai words such as "ครับ" or "มี". When the user writes in Thai, answer in Thai.
-- หากผู้ใช้ถามถึง Resume/CV → แนบลิงก์ [ดาวน์โหลด CV / Resume](/CV_Wish_Nakthong.pdf)
+- หากผู้ใช้ถามถึง Resume/CV → แนบลิงก์ [ดาวน์โหลด CV / Resume](${CV_URL})
 - หากผู้ใช้ถามถึง Certificate → แนบลิงก์ Markdown ไปยังไฟล์ PDF/PNG เสมอ
 - หากผู้ใช้ถามถึง Project → สรุปสั้นๆ 1 บรรทัด + แนบลิงก์ Live Demo / GitHub
 - น้ำเสียง: สุภาพ เป็นกันเอง มั่นใจ มืออาชีพ

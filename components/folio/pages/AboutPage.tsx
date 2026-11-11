@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { CV_URL } from "@/lib/site";
 
 const FACTS = [
   { term: "Now", value: "3rd-year DST, ICT Mahidol" },
@@ -55,7 +56,7 @@ export default function AboutPage() {
         </dl>
 
         <a
-          href="/CV_Wish_Nakthong.pdf"
+          href={CV_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="f-sticker mt-6 inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-[0.9375rem] transition-transform duration-300 hover:-rotate-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--f-cream)] motion-reduce:transition-none"
