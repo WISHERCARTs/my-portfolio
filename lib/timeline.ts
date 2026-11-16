@@ -250,6 +250,10 @@ export const TIMELINE: TimelineYear[] = [
         when: "Oct",
         title: "Honorable Mention, MUICT x The Mall Group Hackathon 2026",
         body: "With Team Superstang I built SmartSeat AI, which reads a mall's existing CCTV to show free food court tables and queue lengths in real time, counting people without face recognition. We pitched it to The Mall Group's judges in the Grand Auditorium on 14 October.",
+        cert: {
+          title: "MUICT & THE MALL Hackathon 2026 - Honorable Mention",
+          href: "/MUICT-Mall-Hackathon-2026-Honorable-Mention.pdf",
+        },
         photos: [
           { src: "/images/timeline/hackathon-2026-01.jpg", alt: "Team Superstang receiving the Honorable Mention on stage at the MUICT x The Mall Group Hackathon 2026" },
           { src: "/images/timeline/hackathon-2026-02.jpg", alt: "Team Superstang pitching SmartSeat AI on stage" },

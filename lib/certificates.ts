@@ -10,6 +10,15 @@ export const CERT_CATEGORIES = [
 
 export const certificateData = [
   {
+    title: "MUICT & THE MALL Hackathon 2026 - Honorable Mention",
+    issuer: "Faculty of ICT, Mahidol University & The Mall Group",
+    description: "Certificate of Achievement (Honorable Mention) for Team Superstang at the MUICT & THE MALL Hackathon 2026, theme Smart Retail Solutions for a Sustainable Future, on 14 October 2026.",
+    date: "2026",
+    link: "/MUICT-Mall-Hackathon-2026-Honorable-Mention.pdf",
+    category: "Other",
+    color: "amber",
+  },
+  {
     title: "BOTNOI Trainee 2026 - AI Agent Builder",
     issuer: "BOTNOI Group",
     description: "Completed BOTNOI Trainee Program with team as AI Agent Builder. Focused on AI Agents, NLP, ASR/TTS speech tech, and conversational AI workflows.",
