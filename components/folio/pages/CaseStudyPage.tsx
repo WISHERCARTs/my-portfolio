@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Github } from "@/components/BrandIcons";
+import AgentReplay from "@/components/folio/AgentReplay";
 import type { CaseStudy, CaseStudyActor, CaseStudyFlow } from "@/lib/caseStudies";
 
 const linkClass =
@@ -144,6 +145,8 @@ export default function CaseStudyPage({ study }: { study: CaseStudy }) {
             ) : null}
 
             {section.flow ? <Flow flow={section.flow} /> : null}
+
+            {section.demo === "agent-replay" ? <AgentReplay /> : null}
 
             {section.code?.map((block) => (
               <figure key={block.caption} className="pt-2">
