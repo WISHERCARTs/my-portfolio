@@ -26,8 +26,12 @@ export interface CaseStudyCode {
   text: string;
 }
 
+/** An interactive block a section can show, rendered by CaseStudyPage. */
+export type CaseStudyDemo = "agent-replay";
+
 export interface CaseStudySection {
   heading: string;
+  demo?: CaseStudyDemo;
   paragraphs?: string[];
   bullets?: string[];
   table?: CaseStudyTable;
@@ -125,7 +129,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     github: "https://github.com/WISHERCARTs/thai-rag-agents",
     stats: [
       { value: "17 / 20", label: "answers judged correct, in both runs" },
-      { value: "10 to 17", label: "answerable questions carrying citations after one instruction change" },
+      { value: "17 / 17", label: "answerable questions carrying citations after one instruction change, up from 10" },
       { value: "3 / 3", label: "unanswerable questions refused" },
     ],
     sections: [
@@ -134,6 +138,13 @@ export const CASE_STUDIES: CaseStudy[] = [
         paragraphs: [
           "Some questions need more than one lookup, such as which of two provinces is closer to Bangkok. A single retrieve-then-answer pass handles these badly, and when it fails I want to see which step went wrong.",
         ],
+      },
+      {
+        heading: "Replay a real run",
+        paragraphs: [
+          "Five questions from the second evaluation run, played back step by step from the saved results: the questions the agents wrote for search, the passages they collected, the answer with its citations, and the judge's verdict. Two of the five are misses, because those are the runs that show the most.",
+        ],
+        demo: "agent-replay",
       },
       {
         heading: "What I built",
@@ -184,10 +195,54 @@ export const CASE_STUDIES: CaseStudy[] = [
         ],
       },
       {
+        heading: "Results by question type",
+        paragraphs: [
+          "Run 2, the current instruction. Every expected article was retrieved for all 17 answerable questions, so the misses are not about finding the right article.",
+        ],
+        table: {
+          caption: "Second run, by question type",
+          head: ["Type", "Questions", "Judged correct", "Fact checker ran", "Model calls", "Seconds"],
+          rows: [
+            ["Single fact", "8", "7", "8 of 8", "7.1", "19.8"],
+            ["Comparison", "8", "7", "8 of 8", "10.1", "27.4"],
+            ["Not in the corpus", "3", "3 (refused)", "0 of 3, nothing to check", "3.7", "7.2"],
+            ["Half answerable", "1", "0", "1 of 1", "13.0", "40.3"],
+            ["All", "20", "17", "17 of 20", "8.1", "22.0"],
+          ],
+        },
+      },
+      {
+        heading: "Where it fails",
+        paragraphs: [
+          "The same three questions were missed in both runs. I read each one instead of tuning until the number went up.",
+        ],
+        table: {
+          caption: "The three misses, in both runs",
+          head: ["Question", "What the agent answered", "Cause"],
+          rows: [
+            [
+              "Nakhon Ratchasima to Bangkok (reference 259 km)",
+              "256 km by road, 264 km by rail, both from the passages",
+              "Reference problem: the article gives 259 km in one section and about 256 km in another",
+            ],
+            [
+              "Udon Thani or Nong Khai, which is farther",
+              "Udon Thani 564 km, Nong Khai not found",
+              "Real retrieval failure: the article says 615 km, but none of the 3 queries reached that passage",
+            ],
+            [
+              "Nan or Yala, which is larger (Yala is not in the corpus)",
+              "Nan 11,472.07 km², Yala not found",
+              "Borderline: the intended behaviour, likely failed on the judge's exact-number rule (article: 11,472.076)",
+            ],
+          ],
+        },
+      },
+      {
         heading: "What I found",
         bullets: [
           "Run 1 showed two process problems: only 10 of 17 answers cited a source, and the fact checker was skipped on two answerable questions. I tightened one coordinator instruction and ran again. Citations and fact-check use became complete at the cost of about 13% more tokens, and accuracy did not move, so I am not claiming the change made answers more correct.",
-          "All three misses are explained. One is a reference problem: the article gives the distance to Nakhon Ratchasima as 259 km in one place and about 256 km in another. One is a real retrieval failure: the agent reported that Nong Khai's distance was not in the documents, although the article says 615 km, and the saved queries show the wording the researcher chose does not reach that passage. One is borderline: the judge probably counted a decimal rounding as wrong.",
+          "Only one of the three misses is a real error of the system, and it is in retrieval: keyword search ranks the 615 km passage 2nd for a query worded \"ห่างจากกรุงเทพมหานครกี่กิโลเมตร\" but 27th, or not at all, for the \"ระยะทาง...\" wordings the researcher chose.",
           "Faithfulness is left out of the headline. Run 1's 0.70 included a bug of mine, a citation parser that read only single references. Run 2 scored 15 of 17 judged answers, but the two numbers are not comparable.",
         ],
       },
