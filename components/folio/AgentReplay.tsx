@@ -1,7 +1,8 @@
 "use client";
 
-import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { ChevronsRight, Pause, Play, SkipBack, SkipForward } from "lucide-react";
+import { EXAMPLE_QUESTIONS, MAX_QUESTION_CHARS, askAgents } from "@/lib/agentLive";
 import {
   AGENT_REPLAYS,
   REPLAY_META,
@@ -90,7 +91,7 @@ function StepBody({
           <p lang="th" className="text-[1rem] leading-relaxed">
             {run.question}
           </p>
-          <p className="mt-1 text-[0.8125rem] text-[var(--f-dim)]">{notes.questionEn}</p>
+          {notes.questionEn ? <p className="mt-1 text-[0.8125rem] text-[var(--f-dim)]">{notes.questionEn}</p> : null}
         </div>
       );
     case "plan":
@@ -174,7 +175,9 @@ function StepBody({
       return (
         <div>
           <CitedAnswer text={run.answer} onCite={onCite} active={activeRef} />
-          <p className="mt-1 text-[0.8125rem] text-[var(--f-dim)]">{replay.notes.answerEn}</p>
+          {replay.notes.answerEn ? (
+            <p className="mt-1 text-[0.8125rem] text-[var(--f-dim)]">{replay.notes.answerEn}</p>
+          ) : null}
           {activeSource ? (
             <blockquote className="mt-3 border-l-2 border-[var(--f-accent)] pl-3 text-[0.8125rem]">
               <p className="f-mono text-[0.625rem] text-[var(--f-dim)]">
@@ -213,15 +216,24 @@ function StepBody({
   }
 }
 
+const LIVE = -1;
+
 export default function AgentReplay() {
   const [selected, setSelected] = useState(0);
   const [shown, setShown] = useState(1);
   const [playing, setPlaying] = useState(false);
   const [activeRef, setActiveRef] = useState<string | null>(null);
+  const [liveReplay, setLiveReplay] = useState<Replay | null>(null);
+  const [question, setQuestion] = useState("");
+  const [asking, setAsking] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  const [askError, setAskError] = useState<string | null>(null);
   const listRef = useRef<HTMLOListElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
-  const replay = AGENT_REPLAYS[selected];
-  const steps = useMemo(() => buildReplaySteps(replay.run), [replay]);
+  const isLive = selected === LIVE;
+  const replay = isLive ? liveReplay : AGENT_REPLAYS[selected];
+  const steps = useMemo(() => (replay ? buildReplaySteps(replay.run) : []), [replay]);
   const done = shown >= steps.length;
 
   const running = playing && !done;
@@ -239,15 +251,47 @@ export default function AgentReplay() {
     list.scrollTo({ top: list.scrollHeight, behavior: "smooth" });
   }, [shown, playing]);
 
+  useEffect(() => {
+    if (!asking) return;
+    const started = Date.now();
+    const timer = window.setInterval(() => setElapsed(Math.floor((Date.now() - started) / 1000)), 1000);
+    return () => window.clearInterval(timer);
+  }, [asking]);
+
+  useEffect(() => () => abortRef.current?.abort(), []);
+
   function choose(i: number) {
     setSelected(i);
     setShown(1);
     setActiveRef(null);
-    setPlaying(true);
+    setPlaying(i !== LIVE || liveReplay !== null);
   }
 
   function cite(ref: string) {
     setActiveRef((current) => (current === ref ? null : ref));
+  }
+
+  async function ask(event: FormEvent) {
+    event.preventDefault();
+    const text = question.trim();
+    if (text.length < 3 || asking) return;
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+    setAsking(true);
+    setElapsed(0);
+    setAskError(null);
+    const result = await askAgents(text, controller.signal);
+    if (controller.signal.aborted) return;
+    setAsking(false);
+    if (!result.ok) {
+      setAskError(result.message);
+      return;
+    }
+    setLiveReplay(result.replay);
+    setShown(1);
+    setActiveRef(null);
+    setPlaying(true);
   }
 
   const current = steps[shown - 1];
@@ -275,16 +319,72 @@ export default function AgentReplay() {
             <span className="sr-only">{item.run.correct ? ", judged correct" : ", judged wrong"}</span>
           </button>
         ))}
+        <button
+          type="button"
+          onClick={() => choose(LIVE)}
+          aria-pressed={isLive}
+          className={`f-mono inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-[0.6875rem] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--f-cream)] ${
+            isLive
+              ? "bg-[var(--f-accent)] text-[var(--f-panel-ink)]"
+              : "border border-dashed border-[var(--f-accent)] hover:border-solid"
+          }`}
+        >
+          Ask it yourself
+        </button>
       </div>
       <p className="f-mono mt-2 text-[0.625rem] text-[var(--f-dim)]" aria-hidden="true">
         <span className="mr-1 inline-block h-2 w-2 rounded-full bg-[var(--f-accent)]" /> judged correct
         <span className="ml-4 mr-1 inline-block h-2 w-2 rounded-full border border-current" /> judged wrong
       </p>
 
+      {isLive ? (
+        <form onSubmit={ask} className="mt-4 rounded-tr-[2rem] border border-[var(--f-line-strong)] bg-black/30 p-4 sm:p-5">
+          <label htmlFor="agent-question" className="f-mono text-[0.6875rem] text-[var(--f-dim)]">
+            Ask in Thai about the provinces, temples and parks in the 40 articles
+          </label>
+          <div className="mt-2 flex flex-wrap gap-2">
+            <input
+              id="agent-question"
+              lang="th"
+              value={question}
+              maxLength={MAX_QUESTION_CHARS}
+              onChange={(e) => setQuestion(e.target.value)}
+              placeholder="ดอยอินทนนท์สูงกี่เมตร"
+              disabled={asking}
+              className="min-h-11 min-w-0 flex-1 rounded-full border border-[var(--f-line-strong)] bg-black/40 px-4 text-[0.9375rem] text-[var(--f-cream)] placeholder:text-[var(--f-dim)] focus-visible:border-[var(--f-cream)] focus-visible:outline-none disabled:opacity-60"
+            />
+            <button type="submit" className={btn} disabled={asking || question.trim().length < 3}>
+              {asking ? `Working… ${elapsed} s` : "Ask"}
+            </button>
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Example questions">
+            {EXAMPLE_QUESTIONS.map((example) => (
+              <button
+                key={example}
+                type="button"
+                lang="th"
+                disabled={asking}
+                onClick={() => setQuestion(example)}
+                className="min-h-11 rounded-full border border-[var(--f-line)] px-3 text-[0.8125rem] text-[var(--f-dim)] transition-colors duration-200 hover:border-[var(--f-cream)] hover:text-[var(--f-cream)] disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--f-cream)]"
+              >
+                {example}
+              </button>
+            ))}
+          </div>
+          <p className="mt-3 text-[0.8125rem] leading-relaxed text-[var(--f-dim)]" aria-live="polite">
+            {askError ??
+              (asking
+                ? "The coordinator, researcher and fact checker are working. A question takes about 20 seconds and 8 Gemini calls."
+                : "This one is live: about 20 seconds and 8 Gemini calls, each through my LLM gateway (rate limits, PII redaction, injection checks, cost log). 5 questions an hour per visitor.")}
+          </p>
+        </form>
+      ) : null}
+
+      {replay ? (
       <div className="mt-4 rounded-tr-[2rem] border border-[var(--f-line-strong)] bg-black/30">
         <ol
           ref={listRef}
-          aria-label={`Replay of ${replay.notes.questionEn}`}
+          aria-label={`Replay of ${replay.notes.questionEn || replay.run.question}`}
           className="max-h-[34rem] space-y-1 overflow-y-auto p-4 sm:p-5"
         >
           {steps.slice(0, shown).map((step, i) => {
@@ -368,11 +468,18 @@ export default function AgentReplay() {
         </div>
       </div>
 
-      <p className="mt-2 text-[0.8125rem] leading-relaxed text-[var(--f-dim)]">
-        {replay.run.modelCalls} model calls, {replay.run.tokens.toLocaleString("en-US")} tokens,{" "}
-        {replay.run.seconds.toFixed(1)} s on this run. {REPLAY_META.label}, played back from the saved results: nothing
-        here calls a model. Passages are from Thai Wikipedia (CC BY-SA 4.0).
-      </p>
+      ) : null}
+
+      {replay ? (
+        <p className="mt-2 text-[0.8125rem] leading-relaxed text-[var(--f-dim)]">
+          {replay.run.modelCalls} model calls, {replay.run.tokens.toLocaleString("en-US")} tokens,{" "}
+          {replay.run.seconds.toFixed(1)} s on this run.{" "}
+          {isLive
+            ? "Answered live with Gemini 2.5 Flash through thai-llm-gateway, then played back step by step. There is no reference answer, so no verdict."
+            : `${REPLAY_META.label}, played back from the saved results: nothing here calls a model.`}{" "}
+          Passages are from Thai Wikipedia (CC BY-SA 4.0).
+        </p>
+      ) : null}
     </div>
   );
 }

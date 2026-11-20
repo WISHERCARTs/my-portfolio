@@ -143,6 +143,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         heading: "Replay a real run",
         paragraphs: [
           "Five questions from the second evaluation run, played back step by step from the saved results: the questions the agents wrote for search, the passages they collected, the answer with its citations, and the judge's verdict. Two of the five are misses, because those are the runs that show the most.",
+          "Or ask your own question: \"Ask it yourself\" runs the agents live on Cloud Run, with every Gemini call going through my LLM gateway (rate limits, PII redaction, prompt-injection checks, cost log, traces), and plays the run back the same way. A live run has no reference answer, so it has no verdict.",
         ],
         demo: "agent-replay",
       },
