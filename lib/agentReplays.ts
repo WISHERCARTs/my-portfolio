@@ -6,8 +6,9 @@ import data from "./agentReplays.data.json";
  * scripts/build-agent-replays.mjs copies from the evaluation's saved results.
  * The English text below is mine: translations and notes, not model output.
  *
- * A live "ask it yourself" backend can return the same RecordedRun shape and
- * reuse buildReplaySteps and the AgentReplay component.
+ * The live "ask it yourself" backend (thai-rag-agents POST /ask) returns the
+ * same RecordedRun shape, so buildReplaySteps and the AgentReplay component
+ * play both. A live run has no reference answer and no verdict.
  */
 
 export interface RecordedSource {
@@ -22,9 +23,11 @@ export interface RecordedRun {
   id: string;
   type: string;
   question: string;
+  /** Empty for a live run. */
   reference: string;
   answer: string;
-  correct: boolean;
+  /** The eval judge's verdict; null for a live run, which has no judge. */
+  correct: boolean | null;
   abstained: boolean;
   researcherCalls: number;
   usedFactChecker: boolean;
@@ -134,6 +137,7 @@ export function buildReplaySteps(run: RecordedRun): ReplayStep[] {
   );
   if (run.sources.length > 0) steps.push({ kind: "sources", count: run.sources.length });
   steps.push({ kind: "factCheck", ran: run.usedFactChecker, count: run.sources.length });
-  steps.push({ kind: "answer" }, { kind: "score" });
+  steps.push({ kind: "answer" });
+  if (run.correct !== null) steps.push({ kind: "score" });
   return steps;
 }
