@@ -1,30 +1,13 @@
 /** Project cards on /projects and the home page. The chat assistant's prompt is built from this list too. */
 export const projects = [
   {
-    title: "Face Recognition System",
+    title: "Sakura Soul: Apartment Management System",
+    highlight: "I was tech lead for a team of 7: CI/CD from GitHub Actions to Kubernetes, plus logs, tracing and metrics.",
     description:
-      "An end-to-end face identification system using PCA for dimensionality reduction and SVM for classification. Features a user-friendly Streamlit web interface for real-time face recognition.",
-    image: "/images/Face/wishercarts-face-recognition_1.jpeg",
-    tags: ["Python", "Scikit-learn", "OpenCV", "Streamlit", "PCA", "SVM"],
-    github: "https://github.com/WISHERCARTs/face-recognition-system",
-    demo: "https://wishercarts-face-recognition-system-app-vti7zr.streamlit.app/",
-    demoImages: [
-      "/images/Face/face_2.png",
-      "/images/Face/face_3.jpeg",
-      "/images/Face/face_4.jpeg",
-      "/images/Face/face_5.jpeg",
-    ],
-  },
-  {
-    title: "Thai RAG with Evaluation",
-    caseStudy: "thai-rag-eval",
-    highlight: "The source passage landed in the top 3 for all 80 questions, and all 10 unanswerable ones were refused.",
-    description:
-      "Thai question answering over 40 Thai Wikipedia articles, with an evaluation harness that measures it. On 80 questions, Gemini embedding search put the source passage in the top 3 every time, while BM25 over PyThaiNLP word segmentation missed 4. Answers cite their sources and refused all 10 questions the articles could not answer.",
-    image: "/images/thai-rag/cover.svg",
-    tags: ["Python", "RAG", "Google Gemini API", "PyThaiNLP", "BM25", "Evaluation"],
-    github: "https://github.com/WISHERCARTs/thai-rag-eval",
-    demoImages: ["/images/thai-rag/cover.svg"],
+      "Rent, billing and maintenance platform for apartments, built by a team of 7 with React, Spring Boot and PostgreSQL. I was the tech lead. I set up CI/CD with GitHub Actions that builds Docker images, pushes them to ghcr.io and deploys to Kubernetes, an observability stack (JSON logs, distributed tracing, business metrics and a health dashboard) and JaCoCo test coverage.",
+    image: "/images/sakura-soul/logo.jpg",
+    tags: ["React", "Spring Boot", "PostgreSQL", "GitHub Actions", "Docker", "Kubernetes", "Observability"],
+    demoImages: ["/images/sakura-soul/logo.jpg"],
   },
   {
     title: "Thai RAG Agents",
@@ -42,6 +25,17 @@ export const projects = [
     ],
   },
   {
+    title: "Thai RAG with Evaluation",
+    caseStudy: "thai-rag-eval",
+    highlight: "The source passage landed in the top 3 for all 80 questions, and all 10 unanswerable ones were refused.",
+    description:
+      "Thai question answering over 40 Thai Wikipedia articles, with an evaluation harness that measures it. On 80 questions, Gemini embedding search put the source passage in the top 3 every time, while BM25 over PyThaiNLP word segmentation missed 4. Answers cite their sources and refused all 10 questions the articles could not answer.",
+    image: "/images/thai-rag/cover.svg",
+    tags: ["Python", "RAG", "Google Gemini API", "PyThaiNLP", "BM25", "Evaluation"],
+    github: "https://github.com/WISHERCARTs/thai-rag-eval",
+    demoImages: ["/images/thai-rag/cover.svg"],
+  },
+  {
     title: "Local Soul",
     highlight: "I built its chatbot: vector search finds the places and Typhoon writes the answer in Thai.",
     description:
@@ -52,13 +46,19 @@ export const projects = [
     demoImages: ["/images/local-soul/home.jpg"],
   },
   {
-    title: "Sakura Soul: Apartment Management System",
-    highlight: "I was tech lead for a team of 7: CI/CD from GitHub Actions to Kubernetes, plus logs, tracing and metrics.",
+    title: "Face Recognition System",
     description:
-      "Rent, billing and maintenance platform for apartments, built by a team of 7 with React, Spring Boot and PostgreSQL. I was the tech lead. I set up CI/CD with GitHub Actions that builds Docker images, pushes them to ghcr.io and deploys to Kubernetes, an observability stack (JSON logs, distributed tracing, business metrics and a health dashboard) and JaCoCo test coverage.",
-    image: "/images/sakura-soul/cover.svg",
-    tags: ["React", "Spring Boot", "PostgreSQL", "GitHub Actions", "Docker", "Kubernetes", "Observability"],
-    demoImages: ["/images/sakura-soul/cover.svg"],
+      "An end-to-end face identification system using PCA for dimensionality reduction and SVM for classification. Features a user-friendly Streamlit web interface for real-time face recognition.",
+    image: "/images/Face/wishercarts-face-recognition_1.jpeg",
+    tags: ["Python", "Scikit-learn", "OpenCV", "Streamlit", "PCA", "SVM"],
+    github: "https://github.com/WISHERCARTs/face-recognition-system",
+    demo: "https://wishercarts-face-recognition-system-app-vti7zr.streamlit.app/",
+    demoImages: [
+      "/images/Face/face_2.png",
+      "/images/Face/face_3.jpeg",
+      "/images/Face/face_4.jpeg",
+      "/images/Face/face_5.jpeg",
+    ],
   },
   {
     title: "Tournament Hub",
@@ -96,6 +96,30 @@ export const projects = [
     ],
   },
   {
+    title: "Portfolio AI Chatbot",
+    caseStudy: "portfolio-chatbot",
+    highlight: "Fact-checked in CI against the site's own data: 12 of 12 eval questions pass on the real model.",
+    description:
+      "The Gemini chat assistant on this site, which answers in Thai or English about my projects, certificates and background. Its prompt is built from the same data the pages show, and every pull request that touches that data asks the real assistant 12 questions and fails if it contradicts the site. The eval caught it answering English questions in Thai; a prompt rule did not fix that, a server-side fix did. Built with Claude Code: I set the requirements, made the decisions and reviewed every change.",
+    image: "/images/AI_chatbot/MyWebHome2.png",
+    tags: ["Next.js", "TypeScript", "Google Gemini API", "AI SDK", "LLM evaluation", "GitHub Actions"],
+    github: "https://github.com/WISHERCARTs/my-portfolio",
+    demo: "https://my-portfolio-wish.vercel.app/",
+    demoImages: [
+      "/images/AI_chatbot/MyWebHome.png",
+      "/images/AI_chatbot/MyWebHome2.png",
+    ],
+  },
+  {
+    title: "LINE OA AI Chatbot",
+    description:
+      "Thai-language LINE Official Account chatbot on FastAPI and the Google Gemini API. It rejects requests without a valid LINE signature, reads its system prompt from a file so edits apply without a restart, and is covered by 17 pytest tests, a Docker image and GitHub Actions CI. Deployed on Google Cloud Run.",
+    image: "/images/line-chatbot/cover.svg",
+    tags: ["Python", "FastAPI", "Google Gemini API", "LINE Bot SDK", "Docker", "Cloud Run"],
+    github: "https://github.com/WISHERCARTs/line-ai-chatbot-gemini",
+    demoImages: ["/images/line-chatbot/cover.svg"],
+  },
+  {
     title: "MLP Digit Recognition",
     description:
       "Handwritten digit recognition using Multi-Layer Perceptron (MLP) with Streamlit web interface",
@@ -111,31 +135,16 @@ export const projects = [
     ],
   },
   {
-    title: "AI Automation Bot",
+    title: "Fuwari Time",
     description:
-      "A serverless bot that monitors tech news 24/7, uses AI to summarize content, and automatically updates the database without human intervention.",
-    image: "/images/n8n_tech_news/n8n1.png",
-    tags: ["n8n", "Google Gemini", "Google Sheets"],
-    github: "https://github.com/WISHERCARTs/n8n-automation-Tech-News-summerize",
+      "Gamified Pomodoro & study companion mobile app with a virtual companion, Lo-fi music shop, and weather-synced ambience. Built as ITDS283 Mobile Application Development group project.",
+    image: "/images/FuwariTime/day.jpg",
+    tags: ["Flutter", "Dart", "Supabase", "Provider", "OpenWeatherMap API"],
+    github: "https://github.com/WISHERCARTs/ITDS283-FuwariTime-6787003-6787074",
     demoImages: [
-      "/images/n8n_tech_news/n8n1.png",
-      "/images/n8n_tech_news/n8n2.png",
-      "/images/n8n_tech_news/n8n_sheet.png",
-    ],
-  },
-  {
-    title: "Portfolio AI Chatbot",
-    caseStudy: "portfolio-chatbot",
-    highlight: "Fact-checked in CI against the site's own data: 12 of 12 eval questions pass on the real model.",
-    description:
-      "The Gemini chat assistant on this site, which answers in Thai or English about my projects, certificates and background. Its prompt is built from the same data the pages show, and every pull request that touches that data asks the real assistant 12 questions and fails if it contradicts the site. The eval caught it answering English questions in Thai; a prompt rule did not fix that, a server-side fix did. Built with Claude Code: I set the requirements, made the decisions and reviewed every change.",
-    image: "/images/AI_chatbot/MyWebHome2.png",
-    tags: ["Next.js", "TypeScript", "Google Gemini API", "AI SDK", "LLM evaluation", "GitHub Actions"],
-    github: "https://github.com/WISHERCARTs/my-portfolio",
-    demo: "https://my-portfolio-wish.vercel.app/",
-    demoImages: [
-      "/images/AI_chatbot/MyWebHome.png",
-      "/images/AI_chatbot/MyWebHome2.png",
+      "/images/FuwariTime/day.jpg",
+      "/images/FuwariTime/night.jpg",
+      "/images/FuwariTime/shop.jpg",
     ],
   },
   {
@@ -177,26 +186,17 @@ export const projects = [
     ],
   },
   {
-    title: "Fuwari Time",
+    title: "AI Automation Bot",
     description:
-      "Gamified Pomodoro & study companion mobile app with a virtual companion, Lo-fi music shop, and weather-synced ambience. Built as ITDS283 Mobile Application Development group project.",
-    image: "/images/FuwariTime/day.jpg",
-    tags: ["Flutter", "Dart", "Supabase", "Provider", "OpenWeatherMap API"],
-    github: "https://github.com/WISHERCARTs/ITDS283-FuwariTime-6787003-6787074",
+      "A serverless bot that monitors tech news 24/7, uses AI to summarize content, and automatically updates the database without human intervention.",
+    image: "/images/n8n_tech_news/n8n1.png",
+    tags: ["n8n", "Google Gemini", "Google Sheets"],
+    github: "https://github.com/WISHERCARTs/n8n-automation-Tech-News-summerize",
     demoImages: [
-      "/images/FuwariTime/day.jpg",
-      "/images/FuwariTime/night.jpg",
-      "/images/FuwariTime/shop.jpg",
+      "/images/n8n_tech_news/n8n1.png",
+      "/images/n8n_tech_news/n8n2.png",
+      "/images/n8n_tech_news/n8n_sheet.png",
     ],
-  },
-  {
-    title: "LINE OA AI Chatbot",
-    description:
-      "Thai-language LINE Official Account chatbot on FastAPI and the Google Gemini API. It rejects requests without a valid LINE signature, reads its system prompt from a file so edits apply without a restart, and is covered by 17 pytest tests, a Docker image and GitHub Actions CI. Deployed on Google Cloud Run.",
-    image: "/images/line-chatbot/cover.svg",
-    tags: ["Python", "FastAPI", "Google Gemini API", "LINE Bot SDK", "Docker", "Cloud Run"],
-    github: "https://github.com/WISHERCARTs/line-ai-chatbot-gemini",
-    demoImages: ["/images/line-chatbot/cover.svg"],
   },
 ];
 
