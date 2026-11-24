@@ -10,6 +10,16 @@ export const projects = [
     demoImages: ["/images/sakura-soul/logo.jpg"],
   },
   {
+    title: "Thai LLM Gateway",
+    highlight: "Every model call passes rate limits, a daily budget, Thai-aware PII redaction and a prompt-injection check, and leaves a cost record.",
+    description:
+      "An OpenAI-compatible gateway that sits between apps and the model providers (Gemini and Ollama), so an app only changes its base URL. Each request goes through per-client and per-user rate limits and a daily USD budget, then input checks that swap Thai and English personal data for placeholders and block prompt injection, then output checks for system-prompt leaks, and the caller's own values are restored in the answer. Every call leaves a trace and a cost row in Postgres. 71 tests run with fake providers and a real Postgres in CI. On a hand-written set it blocked 26 of 28 attacks and none of 24 normal questions, and found 19 of 21 personal-data values with no false redactions; I wrote that set while building the rules, so it shows what they were designed to catch, not real traffic. It is not yet called with a real Gemini key.",
+    image: "/images/thai-llm-gateway/cover.svg",
+    tags: ["Python", "FastAPI", "PostgreSQL", "Redis", "OpenTelemetry", "Docker", "LLM guardrails"],
+    github: "https://github.com/WISHERCARTs/thai-llm-gateway",
+    demoImages: ["/images/thai-llm-gateway/cover.svg"],
+  },
+  {
     title: "Thai RAG Agents",
     caseStudy: "thai-rag-agents",
     highlight: "Three agents on Google ADK. 17 of 20 answers correct, and after one instruction fix every answer carries citations.",
