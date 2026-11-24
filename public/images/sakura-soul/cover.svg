@@ -1,0 +1,50 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" font-family="monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f1020"/>
+      <stop offset="55%" stop-color="#3b1233"/>
+      <stop offset="100%" stop-color="#9d174d"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g opacity="0.14" stroke="#fbcfe8" stroke-width="2" fill="none">
+    <circle cx="700" cy="520" r="170"/>
+    <circle cx="100" cy="80" r="130"/>
+  </g>
+
+  <!-- the delivery pipeline -->
+  <g stroke="#fbcfe8" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="60" y="150" width="190" height="64" rx="12" fill="#2a0f27"/>
+    <rect x="305" y="150" width="190" height="64" rx="12" fill="#2a0f27"/>
+    <rect x="550" y="150" width="190" height="64" rx="12" fill="#2a0f27"/>
+    <path d="M250 182 H305 M495 182 H550"/>
+    <path d="M290 172 L305 182 L290 192 M535 172 L550 182 L535 192"/>
+  </g>
+  <g font-size="16" fill="#fce7f3" text-anchor="middle">
+    <text x="155" y="188">GitHub Actions</text>
+    <text x="400" y="188">ghcr.io image</text>
+    <text x="645" y="188">Kubernetes</text>
+  </g>
+
+  <!-- the observability panel -->
+  <g>
+    <rect x="60" y="260" width="680" height="200" rx="22" fill="#1a0b19" stroke="#f472b6" stroke-width="3"/>
+    <g font-size="15" fill="#fbcfe8">
+      <text x="90" y="300">JSON logs</text>
+      <text x="260" y="300">distributed tracing</text>
+      <text x="470" y="300">business metrics</text>
+      <text x="650" y="300">health</text>
+    </g>
+    <g fill="#f472b6" opacity="0.85">
+      <rect x="90" y="400" width="28" height="40" rx="4"/>
+      <rect x="130" y="370" width="28" height="70" rx="4"/>
+      <rect x="170" y="385" width="28" height="55" rx="4"/>
+      <rect x="210" y="340" width="28" height="100" rx="4"/>
+      <rect x="250" y="360" width="28" height="80" rx="4"/>
+    </g>
+    <path d="M330 420 L400 380 L460 400 L530 335 L600 360 L700 320" stroke="#fda4af" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text x="60" y="545" font-size="30" font-weight="700" fill="#fdf2f8">Sakura Soul</text>
+  <text x="60" y="575" font-size="15" fill="#f9a8d4">Apartment management · React + Spring Boot · CI/CD to Kubernetes</text>
+</svg>

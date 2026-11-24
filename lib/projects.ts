@@ -11,6 +11,15 @@ export const projects = [
     demoImages: ["/images/local-soul/home.jpg"],
   },
   {
+    title: "Sakura Soul: Apartment Management System",
+    highlight: "I was tech lead for a team of 7: CI/CD from GitHub Actions to Kubernetes, plus logs, tracing and metrics.",
+    description:
+      "Rent, billing and maintenance platform for apartments, built by a team of 7 with React, Spring Boot and PostgreSQL. I was the tech lead. I set up CI/CD with GitHub Actions that builds Docker images, pushes them to ghcr.io and deploys to Kubernetes, an observability stack (JSON logs, distributed tracing, business metrics and a health dashboard) and JaCoCo test coverage.",
+    image: "/images/sakura-soul/cover.svg",
+    tags: ["React", "Spring Boot", "PostgreSQL", "GitHub Actions", "Docker", "Kubernetes", "Observability"],
+    demoImages: ["/images/sakura-soul/cover.svg"],
+  },
+  {
     title: "Thai RAG with Evaluation",
     caseStudy: "thai-rag-eval",
     highlight: "The source passage landed in the top 3 for all 80 questions, and all 10 unanswerable ones were refused.",
