@@ -7,6 +7,7 @@ export const projects = [
       "Rent, billing and maintenance platform for apartments, built by a team of 7 with React, Spring Boot and PostgreSQL. I was the tech lead. I set up CI/CD with GitHub Actions that builds Docker images, pushes them to ghcr.io and deploys to Kubernetes, an observability stack (JSON logs, distributed tracing, business metrics and a health dashboard) and JaCoCo test coverage.",
     image: "/images/sakura-soul/logo.jpg",
     tags: ["React", "Spring Boot", "PostgreSQL", "GitHub Actions", "Docker", "Kubernetes", "Observability"],
+    github: "https://github.com/MUDST-2026-SakuraSoul-DevOps/MUDST-2026-SakuraSoul",
     demoImages: ["/images/sakura-soul/logo.jpg"],
   },
   {
