@@ -1,23 +1,19 @@
 /** Project cards on /projects and the home page. The chat assistant's prompt is built from this list too. */
 export const projects = [
   {
-    title: "Local Soul",
-    highlight: "I built its chatbot: vector search finds the places and Typhoon writes the answer in Thai.",
+    title: "Face Recognition System",
     description:
-      "Team project from the Botnoi internship: an AI travel companion that plans a day hour by hour on a map. I built its chatbot, a RAG endpoint that finds places with vector search and has the Typhoon LLM write recommendations in Thai, connected to Botnoi's chat widget.",
-    image: "/images/local-soul/home.jpg",
-    tags: ["Next.js", "RAG", "Typhoon LLM", "Botnoi"],
-    demo: "https://local-soul-gamma.vercel.app/",
-    demoImages: ["/images/local-soul/home.jpg"],
-  },
-  {
-    title: "Sakura Soul: Apartment Management System",
-    highlight: "I was tech lead for a team of 7: CI/CD from GitHub Actions to Kubernetes, plus logs, tracing and metrics.",
-    description:
-      "Rent, billing and maintenance platform for apartments, built by a team of 7 with React, Spring Boot and PostgreSQL. I was the tech lead. I set up CI/CD with GitHub Actions that builds Docker images, pushes them to ghcr.io and deploys to Kubernetes, an observability stack (JSON logs, distributed tracing, business metrics and a health dashboard) and JaCoCo test coverage.",
-    image: "/images/sakura-soul/cover.svg",
-    tags: ["React", "Spring Boot", "PostgreSQL", "GitHub Actions", "Docker", "Kubernetes", "Observability"],
-    demoImages: ["/images/sakura-soul/cover.svg"],
+      "An end-to-end face identification system using PCA for dimensionality reduction and SVM for classification. Features a user-friendly Streamlit web interface for real-time face recognition.",
+    image: "/images/Face/wishercarts-face-recognition_1.jpeg",
+    tags: ["Python", "Scikit-learn", "OpenCV", "Streamlit", "PCA", "SVM"],
+    github: "https://github.com/WISHERCARTs/face-recognition-system",
+    demo: "https://wishercarts-face-recognition-system-app-vti7zr.streamlit.app/",
+    demoImages: [
+      "/images/Face/face_2.png",
+      "/images/Face/face_3.jpeg",
+      "/images/Face/face_4.jpeg",
+      "/images/Face/face_5.jpeg",
+    ],
   },
   {
     title: "Thai RAG with Evaluation",
@@ -44,6 +40,25 @@ export const projects = [
       "/images/thai-rag-agents/results.svg",
       "/images/thai-rag-agents/trace.svg",
     ],
+  },
+  {
+    title: "Local Soul",
+    highlight: "I built its chatbot: vector search finds the places and Typhoon writes the answer in Thai.",
+    description:
+      "Team project from the Botnoi internship: an AI travel companion that plans a day hour by hour on a map. I built its chatbot, a RAG endpoint that finds places with vector search and has the Typhoon LLM write recommendations in Thai, connected to Botnoi's chat widget.",
+    image: "/images/local-soul/home.jpg",
+    tags: ["Next.js", "RAG", "Typhoon LLM", "Botnoi"],
+    demo: "https://local-soul-gamma.vercel.app/",
+    demoImages: ["/images/local-soul/home.jpg"],
+  },
+  {
+    title: "Sakura Soul: Apartment Management System",
+    highlight: "I was tech lead for a team of 7: CI/CD from GitHub Actions to Kubernetes, plus logs, tracing and metrics.",
+    description:
+      "Rent, billing and maintenance platform for apartments, built by a team of 7 with React, Spring Boot and PostgreSQL. I was the tech lead. I set up CI/CD with GitHub Actions that builds Docker images, pushes them to ghcr.io and deploys to Kubernetes, an observability stack (JSON logs, distributed tracing, business metrics and a health dashboard) and JaCoCo test coverage.",
+    image: "/images/sakura-soul/cover.svg",
+    tags: ["React", "Spring Boot", "PostgreSQL", "GitHub Actions", "Docker", "Kubernetes", "Observability"],
+    demoImages: ["/images/sakura-soul/cover.svg"],
   },
   {
     title: "Tournament Hub",
@@ -93,21 +108,6 @@ export const projects = [
       "/images/MLP/MLP_2.jpeg",
       "/images/MLP/MLP_3.jpeg",
       "/images/MLP/MLP_4.jpeg",
-    ],
-  },
-  {
-    title: "Face Recognition System",
-    description:
-      "An end-to-end face identification system using PCA for dimensionality reduction and SVM for classification. Features a user-friendly Streamlit web interface for real-time face recognition.",
-    image: "/images/Face/wishercarts-face-recognition_1.jpeg",
-    tags: ["Python", "Scikit-learn", "OpenCV", "Streamlit", "PCA", "SVM"],
-    github: "https://github.com/WISHERCARTs/face-recognition-system",
-    demo: "https://wishercarts-face-recognition-system-app-vti7zr.streamlit.app/",
-    demoImages: [
-      "/images/Face/face_2.png",
-      "/images/Face/face_3.jpeg",
-      "/images/Face/face_4.jpeg",
-      "/images/Face/face_5.jpeg",
     ],
   },
   {
