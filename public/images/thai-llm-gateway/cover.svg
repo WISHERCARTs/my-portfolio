@@ -1,0 +1,46 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" font-family="monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="55%" stop-color="#0f2a2e"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g opacity="0.12" stroke="#99f6e4" stroke-width="2" fill="none">
+    <circle cx="700" cy="520" r="170"/>
+    <circle cx="100" cy="80" r="130"/>
+  </g>
+
+  <!-- request path -->
+  <g stroke="#5eead4" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="50" y="170" width="130" height="70" rx="12" fill="#0b1a1c"/>
+    <rect x="235" y="170" width="150" height="70" rx="12" fill="#0b1a1c"/>
+    <rect x="440" y="170" width="150" height="70" rx="12" fill="#0b1a1c"/>
+    <rect x="645" y="170" width="110" height="70" rx="12" fill="#0b1a1c"/>
+    <path d="M180 205 H235 M385 205 H440 M590 205 H645"/>
+    <path d="M222 195 L235 205 L222 215 M427 195 L440 205 L427 215 M632 195 L645 205 L632 215"/>
+  </g>
+  <g font-size="15" fill="#ccfbf1" text-anchor="middle">
+    <text x="115" y="210">App</text>
+    <text x="310" y="200">Limits +</text>
+    <text x="310" y="220">budget</text>
+    <text x="515" y="200">Guardrails</text>
+    <text x="515" y="220">PII, injection</text>
+    <text x="700" y="210">Gemini</text>
+  </g>
+
+  <!-- a redacted prompt -->
+  <g>
+    <rect x="50" y="290" width="700" height="170" rx="22" fill="#08141a" stroke="#14b8a6" stroke-width="3"/>
+    <text x="80" y="330" font-size="15" fill="#94a3b8">in</text>
+    <text x="130" y="330" font-size="17" fill="#e2e8f0">โทรหาคุณสมชาย 081-234-5678</text>
+    <text x="80" y="380" font-size="15" fill="#94a3b8">sent</text>
+    <text x="130" y="380" font-size="17" fill="#5eead4">โทรหา [NAME_1] [PHONE_1]</text>
+    <text x="80" y="430" font-size="15" fill="#94a3b8">log</text>
+    <text x="130" y="430" font-size="17" fill="#e2e8f0">cost $0.0004 · trace · 1 row</text>
+  </g>
+
+  <text x="50" y="530" font-size="30" font-weight="700" fill="#f0fdfa">Thai LLM Gateway</text>
+  <text x="50" y="565" font-size="15" fill="#99f6e4">OpenAI-compatible · limits · Thai PII redaction · injection checks</text>
+</svg>
